@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "project-64c2c": {
+      "hosting": {
+        "tlfWeb": [
+          "dev-tlfweb"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "project-64c2c"
+  }
+}

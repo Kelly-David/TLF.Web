@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "tlfWeb:build:production",
+            "firebaseProject": "project-64c2c",
+            "firebaseHostingSite": "dev-tlfweb"
+          }
         }
       }
     }
