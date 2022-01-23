@@ -274,9 +274,7 @@ export class DataImport {
                 id: horse.route
             } as Route;
         });
-
-        console.log(routes);
-
+        
         return this.firestore.reset(Strings.routesCollection, routes);
     }
 
