@@ -1,0 +1,51 @@
+<div class="line"></div>
+<div class="content-header text-center">
+  <a [routerLink]="['/home']">
+    <h3>Turra Lodge Farm</h3>
+  </a>
+  <span class="content-header-subtitle">American Miniature Horses</span>
+</div>
+<div class="container-fluid footer-nav">
+  <div class="text-center">
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <a class="social-icon text-xs-center" [routerLink]="['/horses']">Horses</a>
+      </li>
+      <li class="list-inline-item">
+        <a class="social-icon text-xs-center" [routerLink]="['/showing']">Showing</a>
+      </li>
+      <li class="list-inline-item">
+        <a class="social-icon text-xs-center" [routerLink]="['/breeding']">Breeding</a>
+      </li>
+      <li class="list-inline-item">
+        <a class="social-icon text-xs-center" [routerLink]="['/sales']">Sales</a>
+      </li>
+      <li class="list-inline-item">
+        <a class="social-icon text-xs-center" [routerLink]="['/contact']">Contact</a>
+      </li>
+    </ul>
+    <p>
+      <a class="fb-ic" href="https://www.facebook.com/TLFminiaturehorses">
+        <mdb-icon fab icon="facebook" class="mr-md-3 mr-2 ml-md-3 ml-2"></mdb-icon>
+      </a>
+      <a class="tw-ic" href="https://www.twitter.com/turralodgefarm/">
+        <mdb-icon fab icon="twitter" class="mr-md-3 mr-2 ml-md-3 ml-2"></mdb-icon>
+      </a>
+      <a class="gplus-ic" href="https://www.google.com/search?q=turra+lodge+farm/">
+        <mdb-icon fab fab icon="google-plus" class="mr-md-3 mr-2 ml-md-3 ml-2"></mdb-icon>
+      </a>
+      <a class="ins-ic" href="https://www.instagram.com/turralodgefarm/">
+        <mdb-icon fab icon="instagram" class="mr-md-3 mr-2 ml-md-3 ml-2"></mdb-icon>
+      </a>
+    </p>
+  </div>
+  <div class="line"></div>
+</div>
+
+<footer class="page-footer">
+  <div class="footer-copyright text-center py-3">
+    <a [routerLink]="['/login']">
+      &copy;
+    </a> {{year}} Copyright Turra Lodge Farm
+  </div>
+</footer>
