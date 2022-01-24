@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
-import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -9,12 +8,10 @@ import { AppRoutingModule } from '../app-routing.module';
     
   ],
   imports: [
-    AppRoutingModule,
     CommonModule,
     MDBBootstrapModulesPro.forRoot(),
   ],
   exports: [
-    AppRoutingModule,
     MDBBootstrapModulesPro,
   ]
 })
