@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { NavigationModule } from './navigation/navigation.module';
+import { LandingModule } from './landing/landing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavigationModule } from './navigation/navigation.module';
     CoreModule,
     BrowserAnimationsModule,
     AuthModule,
-    NavigationModule
+    NavigationModule,
+    LandingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
