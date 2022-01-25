@@ -14,7 +14,7 @@ export class FeaturedComponent implements OnInit {
   constructor(private horseService: HorseService) { }
 
   ngOnInit() {
-    console.log('Featured Horses Init');
+
     this.horses$ = this.horseService.GetFeaturedHorses(6);
   }
 

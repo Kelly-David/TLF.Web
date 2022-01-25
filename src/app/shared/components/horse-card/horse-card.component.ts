@@ -24,23 +24,22 @@ export class HorseCardComponent implements OnChanges {
 
   ngOnChanges() {
 
-    console.log(this.horseId);
-
-
     if (this.horseId !== "") {
-      console.log(this.horseId);
+
       this.horse$ = this.horseService.V1GetHorseById(this.horseId);
     }
 
   }
 
   public nameAsRoute(name: string): string {
+
     let route = '';
-    route = name.split(' ').join('-').toLowerCase();
-    return route;
+
+    return name.split(' ').join('-').toLowerCase();
   }
 
   public getThumbnail(name: string) {
+    
     return '../../assets/image/horse/thumb/' + name;
   }
 

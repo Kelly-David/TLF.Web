@@ -19,8 +19,6 @@ export class HorseService {
 
   public V1GetHorseById(horseId: string): Observable<any> {
     
-    console.log(horseId);
-
     return this.firestore.doc$(`${Strings.V1horseCollection}/${horseId}`);
   }
 
