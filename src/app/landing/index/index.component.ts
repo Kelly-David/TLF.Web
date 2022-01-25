@@ -13,8 +13,8 @@ import { filter } from 'rxjs/operators';
 })
 export class IndexComponent implements OnInit {
 
-	public pathToHeader = '../../../assets/image/layout/index-header.jpg' as string;
-	public pathToThumbnails = '../../../assets/image/index/' as string;
+	public pathToHeader = '../../../assets/layout/index-header.jpg' as string;
+	public pathToThumbnails = '../../../../assets/images/' as string;
 	public featured$!: Observable<any>;
 
 	images = [
