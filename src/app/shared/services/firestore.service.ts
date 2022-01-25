@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection, QueryFn } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as firebase from 'firebase/firestore';
@@ -17,7 +17,7 @@ export class FirestoreService {
     private firestore: AngularFirestore,
   ) { }
 
-  col<T>(ref: CollectionPredicate<T>, queryFn?: any): AngularFirestoreCollection<T> {
+  col<T>(ref: CollectionPredicate<T>, queryFn?: QueryFn): AngularFirestoreCollection<T> {
     return typeof ref === 'string' ? this.firestore.collection<T>(ref, queryFn) : ref;
   }
 
@@ -25,7 +25,7 @@ export class FirestoreService {
     return typeof ref === 'string' ? this.firestore.doc<T>(ref) : ref;
   }
 
-  col$<T>(ref: CollectionPredicate<T>, queryFn? : any): Observable<T[]> {
+  col$<T>(ref: CollectionPredicate<T> | string, queryFn? : QueryFn): Observable<T[]> {
     return this.col(ref, queryFn).valueChanges();
   }
 

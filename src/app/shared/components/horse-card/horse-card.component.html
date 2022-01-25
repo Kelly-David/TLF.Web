@@ -1,0 +1,53 @@
+<ng-container *ngIf="horse$ | async as horse">
+
+    <ng-container *ngIf="!splitview">
+      <div class="card horse-card" [routerLink]="['/horse', nameAsRoute(horse.name)]">
+        <div class="card-body card-img-bg" [style]="viewService.GetStyleForImageAsBackground(horse.profile)">
+        </div>
+        <div class="card-body">
+          <small>{{horse.gender | titlecase}}</small>
+          <h5>{{horse.name}}</h5>
+          <ng-container *ngIf="!limitview">
+            <div class="horse-parentage">
+              {{(horse.sire.length + horse.dam.length )>48?(horse.sire+' &times; '+horse.dam | slice:0:45)+'...' : horse.sire+' &times; '+horse.dam}}
+  
+              <!-- {{horse.sire}} &times; {{horse.dam}} -->
+            </div>
+            <div class="horse-info">
+              {{horse.year}} American Miniature {{horse.gender}}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="splitview">
+      <div class="container pb-3 split-card">
+        <div class="row">
+          <div class="col">
+            <div class="card flex-container">
+              <div class="card-body card-body-image col-lg-6">
+                <img [src]="getThumbnail(horse.profile)" class="img-fluid" alt="Responsive image">
+              </div>
+              <div class="card-body align-self-center text-center col-lg-6">
+                <h4>{{horse.name}}</h4>
+                <div class="subheading">
+                  {{(horse.sire.length + horse.dam.length )>30?(horse.sire+' &times; '+horse.dam | slice:0:27)+'...' : horse.sire+' &times; '+horse.dam}}
+                  <!-- {{horse.sire}} &times; {{horse.dam}} -->
+                </div>
+                <p class="info">{{horse.year}} American Miniature {{horse.gender}}</p>
+                <p class="text-justify" *ngFor="let text of horse.info">
+                  {{text}}
+                </p>
+                <p class="info pt-5">
+                  <a [routerLink]="['/horse', nameAsRoute(horse.name)]">
+                    Explore <i class="fas fa-angle-double-right"></i>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  
+  </ng-container>

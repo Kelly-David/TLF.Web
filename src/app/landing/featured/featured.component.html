@@ -1,0 +1,29 @@
+<div class="row">
+    <p class="text-center" *ngIf="(horses$ | async)?.length == 0">
+      No horses to display at this time...
+    </p>
+  </div>
+  
+  <ng-container *ngIf="horses$ | async; let horses; else loading">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-lg-4" *ngFor="let horse of horses">
+
+        <app-horse-card [horseId]="horse.id" [limitview]="true"></app-horse-card>
+
+      </div>
+    </div>
+
+  </ng-container>
+  
+  <ng-template #loading>
+
+      <section>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-info m-3" role="status">
+                <span class="visually-hidden"></span>
+              </div>
+          </div>
+      </section>
+      
+  </ng-template>
