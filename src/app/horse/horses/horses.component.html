@@ -1,22 +1,22 @@
 <nav class="subnav navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand">Our Horses</a>
-      <div class="navbar-expand" id="navbarNav">
+      <div class="navbar-expand">
         <ul class="navbar-nav">
           <li class="nav-item" [ngClass]="filter === 'breeding' ? 'active' : ''" (click)="filterHorseList('breeding')">
-            <a class="nav-link" mdbWavesEffect>Breeding</a>
+            <a class="nav-link">Breeding</a>
           </li>
           <li class="nav-item" [ngClass]="filter === 'stallion' ? 'active' : ''" (click)="filterHorseList('stallion')">
-            <a class="nav-link" mdbWavesEffect>Stallions &amp; Colts</a>
+            <a class="nav-link">Stallions &amp; Colts</a>
           </li>
           <li class="nav-item" [ngClass]="filter === 'mare' ? 'active' : ''" (click)="filterHorseList('mare')">
-            <a class="nav-link" mdbWavesEffect>Mares &amp; Fillies</a>
+            <a class="nav-link">Mares &amp; Fillies</a>
           </li>
           <li class="nav-item" [ngClass]="filter === 'foal' ? 'active' : ''" (click)="filterHorseList('foal')">
-            <a class="nav-link" mdbWavesEffect>Foals</a>
+            <a class="nav-link">Foals</a>
           </li>
           <li class="nav-item" [ngClass]="filter === 'reference' ? 'active' : ''" (click)="filterHorseList('reference')">
-            <a class="nav-link" mdbWavesEffect>Reference</a>
+            <a class="nav-link">Reference</a>
           </li>
         </ul>
       </div>

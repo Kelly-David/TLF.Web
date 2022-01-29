@@ -319,6 +319,14 @@ nav.subnav {
     padding-top: 0;
   }
 
+  .nav-item {
+	  cursor: pointer;
+  }
+
+  .active {
+	background-color: rgba(255,255,255,.1);
+  }
+
   a.nav-link {
     text-transform: uppercase;
     font-size: 0.7rem;
