@@ -1,218 +1,295 @@
-
 // Font Awesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/regular.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
-@import "~ng-uikit-pro-standard/assets/scss/bootstrap/bootstrap.scss";
-@import "~ng-uikit-pro-standard/assets/scss/mdb.scss";
-
-
 /* ---------------------------------------------------
     Fonts
 --------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300');
-@import url('https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC');
-@import url('https://fonts.googleapis.com/css2?family=Meddon&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300");
+@import url("https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC");
+@import url("https://fonts.googleapis.com/css2?family=Meddon&display=swap");
 
 /* ---------------------------------------------------
     Palette
 --------------------------------------------------- */
 #sidebarNavPalette {
-    color: #74b0b1;
-    color: #01616d;
-    color: #005264;
+  color: #74b0b1;
+  color: #01616d;
+  color: #005264;
+}
+
+// Global Colors
+
+.drk-cy-text {
+  color: #007c7c !important;
+}
+.mid-cy-text {
+  color: #00baba !important;
+}
+.lgh-cy-text {
+  color: #00f8f8 !important;
+}
+
+.vdr-cy-bg {
+  background-color: #00575f !important;
+}
+.drk-cy-bg {
+  background-color: #007c7c !important;
+}
+.mid-cy-bg {
+  background-color: #00baba !important;
+}
+.lgh-cy-bg {
+  background-color: #00f8f8 !important;
+}
+
+.drk-cy-brdr {
+  border: 1px solid #007c7c42 !important;
+}
+.mid-cy-brdr {
+  border: 1px solid #00baba !important;
+}
+.lgh-cy-brdr {
+  border: 1px solid #00f8f8 !important;
+}
+
+.cy-gradient {
+  background: linear-gradient(40deg, #00baba, #007c7c) !important;
+}
+
+.btn {
+  margin: 0.375rem 0;
 }
 
 /* ---------------------------------------------------
     Reset
 --------------------------------------------------- */
 body {
-    background: url(assets/layout/bg.jpg);
-    background-position: 100%;
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-attachment: fixed;
-    font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 13px;
+  background: url(assets/layout/bg.jpg);
+  background-position: 100%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
 }
 
 .card {
-    border-radius: 0;
+  border-radius: 0;
 
-    .card-img-top {
-        border-radius: 0;
-    }
+  .card-img-top {
+    border-radius: 0;
+  }
 }
 
 strong {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 h2 {
-    font-family: 'IM Fell French Canon SC', serif;  
-    font-size: 40px;
-    letter-spacing: 4px;
-    margin-bottom: 0;
+  font-family: "IM Fell French Canon SC", serif;
+  font-size: 40px;
+  letter-spacing: 4px;
+  margin-bottom: 0;
 }
 
 h3 {
-    font-family: 'IM Fell French Canon SC', serif;  
-    color: #005264;
-    letter-spacing: 3px;
+  font-family: "IM Fell French Canon SC", serif;
+  color: #005264;
+  letter-spacing: 3px;
 }
 
 h4 {
-    font-family: 'IM Fell French Canon SC', serif;  
-    color: #005264;
-    letter-spacing: 1px;
+  font-family: "IM Fell French Canon SC", serif;
+  color: #005264;
+  letter-spacing: 1px;
 }
 
 h6 {
-    letter-spacing: 1px;    
-    color: #005264;
+  letter-spacing: 1px;
+  color: #005264;
 }
 
 .container-fluid {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .container {
-    padding-top: 2rem;
-    >p {
-        text-align: justify;
-    }
+  padding-top: 2rem;
+  > p {
+    text-align: justify;
+  }
 }
 
-a, a:hover, a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
 .bg-color-dark {
-    background-color: #01616d;
+  background-color: #01616d;
 }
 
 .btn {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .line-nospacing {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 1rem 0 !important;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 1rem 0 !important;
 }
 
 .line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
 }
 
 /* ---------------------------------------------------
     Nav
 --------------------------------------------------- */
- .navbar {
-    box-shadow: none !important;
+.navbar {
+  padding: 1em;
 
-    .navbar-nav {
-        font-size: .8rem !important;
-     }    
+  .navbar-nav {
+    font-size: 0.8rem !important;
 
- }
+    .nav-link {
+      color: whitesmoke;
+      text-transform: uppercase;
+    }
 
- /* ---------------------------------------------------
+    .nav-link:hover {
+      color: rgba(245, 245, 245, 0.562);
+    }
+  }
+
+  .navbar-brand {
+
+    button {
+      border: none;
+    }
+
+    .btn-floating {
+      box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+      width: 38px;
+      height: 38px;
+      position: relative;
+      z-index: 1;
+      vertical-align: middle;
+      display: inline-block;
+      overflow: hidden;
+      transition: all 0.2s ease-in-out;
+      margin: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: linear-gradient(40deg, #00baba, #007c7c) !important;
+      box-sizing: border-box;
+	  text-align: center;
+    }
+	
+	i {
+		color: whitesmoke;
+	}
+  }
+}
+
+/* ---------------------------------------------------
     Site Heading
 --------------------------------------------------- */
 .site-title-text {
-    // letter-spacing: 3px;    
-    font-family: 'Meddon', cursive;
-    // font-family: 'IM Fell French Canon SC', serif;  
-    color: #003d4b8c;
-    font-size: 5em;
+  // letter-spacing: 3px;
+  font-family: "Meddon", cursive;
+  // font-family: 'IM Fell French Canon SC', serif;
+  color: #003d4b8c;
+  font-size: 5em;
 }
 
 .content-header {
-    padding: 20px 0 20px;
+  padding: 20px 0 20px;
 }
-.content-header h3{
-    font-family: 'IM Fell French Canon SC', serif;  
-    color: #005264;  
-    margin-bottom: 0;
-    font-size: 3rem;
+.content-header h3 {
+  font-family: "IM Fell French Canon SC", serif;
+  color: #005264;
+  margin-bottom: 0;
+  font-size: 3rem;
 }
 
 .content-header .content-header-subtitle {
-    font-size: .9rem;
-    font-variant: small-caps;
-    letter-spacing: 4px;
+  font-size: 0.9rem;
+  font-variant: small-caps;
+  letter-spacing: 4px;
 }
 
- /* ---------------------------------------------------
+/* ---------------------------------------------------
     Page Heading
  --------------------------------------------------- */
 
 .content-title {
-    background-color: #017580;
-    padding: 20px 0;
-    color: whitesmoke;
-    text-transform: uppercase;
+  background-color: #017580;
+  padding: 20px 0;
+  color: whitesmoke;
+  text-transform: uppercase;
 }
 
 .content-nav {
-    border-top: #74b0b1 solid 1px;
-    border-bottom: #74b0b1 solid 1px;
-    background-color: #01616d;
-    padding-top: 1rem;
+  border-top: #74b0b1 solid 1px;
+  border-bottom: #74b0b1 solid 1px;
+  background-color: #01616d;
+  padding-top: 1rem;
 }
 
 .content-nav .list-inline {
-    margin: 0;
+  margin: 0;
 }
 
 .content-nav .list-inline li {
-    margin: 0 2rem;
-    font-size: .8rem;
+  margin: 0 2rem;
+  font-size: 0.8rem;
 }
 
-.content-nav .list-inline li span:last-child{
-    display: block;
-    color: #01616d;
-    font-size: 1.5em;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity .1s ease;
+.content-nav .list-inline li span:last-child {
+  display: block;
+  color: #01616d;
+  font-size: 1.5em;
+  line-height: 0;
+  opacity: 0;
+  transition: opacity 0.1s ease;
 }
 
-.content-nav .list-inline li:hover span:last-child{
-    display: block;
-    color: whitesmoke;
-    font-size: 1.5em;
-    line-height: 0;
-    opacity: 1;
-    transition: opacity .3s ease;
+.content-nav .list-inline li:hover span:last-child {
+  display: block;
+  color: whitesmoke;
+  font-size: 1.5em;
+  line-height: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
-.content-nav .list-inline li.active span:last-child{
-    display: block;
-    color: whitesmoke;
-    font-size: 1.5em;
-    line-height: 0;
-    opacity: 1;
-    transition: opacity .3s ease;
+.content-nav .list-inline li.active span:last-child {
+  display: block;
+  color: whitesmoke;
+  font-size: 1.5em;
+  line-height: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 .page-header {
-    .carousel-item {
-        height: 90vh;
-    }
+  .carousel-item {
+    height: 90vh;
+  }
 }
 
 /* ---------------------------------------------------
@@ -220,72 +297,72 @@ a, a:hover, a:focus {
 ------------------------------------------------------*/
 
 nav.subnav {
-    color: whitesmoke;
-    background-color: #017580;
+  color: whitesmoke;
+  background-color: #017580;
 
-    .navbar-brand {
-        font-size: .8rem;
-        letter-spacing: 2px;
-        margin-right: 2em;
-        font-family: 'IM Fell French Canon SC', serif;
-        text-transform: uppercase;
-    }
+  .navbar-brand {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-right: 2em;
+    font-family: "IM Fell French Canon SC", serif;
+    text-transform: uppercase;
+  }
 
-    .container {
-        padding-top: 0;
-    } 
+  .container {
+    padding-top: 0;
+  }
 
-    a.nav-link {
-        text-transform: uppercase;
-        font-size: .7rem;
-    }
+  a.nav-link {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
 }
 
 /* ---------------------------------------------------
     TEXT CARD
 ------------------------------------------------------*/
 .text-card .card {
-    margin: 3rem;
-    padding: 0.5rem 2rem 0rem;
-    border-radius: 0;
-    background-color: whitesmoke;
+  margin: 3rem;
+  padding: 0.5rem 2rem 0rem;
+  border-radius: 0;
+  background-color: whitesmoke;
 }
 
 .text-card .card .card-body {
-    margin: 0;
-    padding: 0;
-    text-align: justify;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
 }
 
 .text-card .card .caption-text {
-    font-size: .7rem;
-    font-variant: small-caps;
-    letter-spacing: 4px;
-    color: #999999;
+  font-size: 0.7rem;
+  font-variant: small-caps;
+  letter-spacing: 4px;
+  color: #999999;
 }
 
 .text-card .card .caption-text .border-atbottom {
-    position: relative;
-    top: .7rem;
-    background-color: whitesmoke
+  position: relative;
+  top: 0.7rem;
+  background-color: whitesmoke;
 }
 
 .text-card .card .caption-text .border-attop {
-    position: relative;
-    top: -1.3rem;
-    background-color: whitesmoke
+  position: relative;
+  top: -1.3rem;
+  background-color: whitesmoke;
 }
 
 .text-card .card .caption-text::before {
-    content: " ";
-    margin-right: 3px;
-    background-color: whitesmoke
+  content: " ";
+  margin-right: 3px;
+  background-color: whitesmoke;
 }
 
 .text-card .card .caption-text::after {
-    content: " ";
-    margin-left: 3px;
-    background-color: whitesmoke
+  content: " ";
+  margin-left: 3px;
+  background-color: whitesmoke;
 }
 
 /* ---------------------------------------------------
@@ -293,53 +370,55 @@ nav.subnav {
 ----------------------------------------------------- */
 
 .header-block {
-    .col-5, .col-2, .col-12, .col-md-5, .col-sm-12 {
-        padding: 0;
+  .col-5,
+  .col-2,
+  .col-12,
+  .col-md-5,
+  .col-sm-12 {
+    padding: 0;
+  }
+  .header-molly {
+    background-image: url(assets/images/home9.jpg);
+    background-position: right;
+    background-size: cover;
+    height: 100%;
+  }
 
-    }
+  .header-uno {
+    background-image: url(assets/images/home8.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 719px) {
+    .header-uno,
     .header-molly {
-        background-image: url(assets/images/home9.jpg);
-        background-position: right;
-        background-size: cover;
-        height: 100%;
+      display: none;
     }
-
-    .header-uno {
-        background-image: url(assets/images/home8.jpg);
-        background-position: center;
-        background-size: cover;
-        height: 100%;
-    }
-
-    @media screen and (max-width: 719px) {
-        .header-uno, .header-molly {
-            display: none;
-        }
-    }
-
+  }
 }
 
-.featured-block{
+.featured-block {
+  padding: 3em 0;
 
-    padding: 3em 0;
-    
-    h2 {
-        font-size: 40px;
-        letter-spacing: 4px;
-        margin-bottom: 0;
-        text-align: center;
-        color: #005264;
+  h2 {
+    font-size: 40px;
+    letter-spacing: 4px;
+    margin-bottom: 0;
+    text-align: center;
+    color: #005264;
+  }
+
+  p {
+    color: #01616d;
+
+    a {
+      display: inline-block;
+      color: white;
+      color: #74b0b1;
     }
-
-    p {
-        color: #01616d;
-
-        a {
-            display: inline-block;
-            color: white;
-            color: #74b0b1;
-        }
-    }
+  }
 }
 
 /* ---------------------------------------------------
@@ -347,174 +426,170 @@ nav.subnav {
 ----------------------------------------------------- */
 
 .list-thumb-border {
-    width: 98%;
-    height: 99%;
-    border: 1px solid rgba(255,255,255,.25);
-    position: relative;
-    top: 1%;
-    left: 1%;
+  width: 98%;
+  height: 99%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+  top: 1%;
+  left: 1%;
 }
 
 .horse-card {
-    margin-bottom: 2rem;
-    border-radius: 0;
-    text-align: center;
-    color: whitesmoke;
-    border: none;
-    box-sizing: border-box;
+  margin-bottom: 2rem;
+  border-radius: 0;
+  text-align: center;
+  color: whitesmoke;
+  border: none;
+  box-sizing: border-box;
 }
 
-@media (min-width: 1200px) { 
-    .horse-card {
-    }
+@media (min-width: 1200px) {
+  .horse-card {
+  }
 }
 
-@media (max-width: 1199.98px) { 
-    .horse-card {
-    }
+@media (max-width: 1199.98px) {
+  .horse-card {
+  }
 }
 
-.horse-card .card-body{
-    background: #01616d;
-    padding: 10px;
+.horse-card .card-body {
+  background: #01616d;
+  padding: 10px;
 }
 
 .horse-card:hover {
-    -webkit-box-shadow: 0px 0px 12px #395757d7;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    0px 0px 12px #395757d7;  /* Firefox 3.5 - 3.6 */
-    box-shadow: 0px 0px 12px #395757d7;
-    cursor: pointer;
-    position: relative;
-    transition: 0.3s ease-in-out;
+  -webkit-box-shadow: 0px 0px 12px #395757d7; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 0px 12px #395757d7; /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 0px 12px #395757d7;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease-in-out;
 }
 
 .horse-card h5 {
-    font-family: 'IM Fell French Canon SC', serif;  
+  font-family: "IM Fell French Canon SC", serif;
 }
 
-.horse-card small { 
-    font-size: .6rem;
-    color: #00baba;
-    text-transform: uppercase;
+.horse-card small {
+  font-size: 0.6rem;
+  color: #00baba;
+  text-transform: uppercase;
 }
 
-.horse-card .horse-parentage { 
-    font-size: .6rem;
-    color: #00baba;
-    text-transform: uppercase;
+.horse-card .horse-parentage {
+  font-size: 0.6rem;
+  color: #00baba;
+  text-transform: uppercase;
 }
-.horse-card .horse-parentage::before{ 
-    content: "(";
-}
-
-.horse-card .horse-parentage::after{ 
-    content: ")";
+.horse-card .horse-parentage::before {
+  content: "(";
 }
 
-.horse-card .horse-divison { 
-    font-size: .8rem;
-    color: #00baba;
+.horse-card .horse-parentage::after {
+  content: ")";
+}
+
+.horse-card .horse-divison {
+  font-size: 0.8rem;
+  color: #00baba;
 }
 
 .horse-card .horse-info {
-    font-size: .7rem;
-    color: whitesmoke; 
-    font-weight: bold; 
-    letter-spacing: 1.5px;  
-    padding-top: .5rem; 
-    text-transform: uppercase;
-    margin-bottom: 1rem;
+  font-size: 0.7rem;
+  color: whitesmoke;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  padding-top: 0.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 .horse-card .card-img-top {
-    border-radius: 0;
-    border: none;
+  border-radius: 0;
+  border: none;
 }
 
 .horse-card .card-body.card-img-bg {
-    height: 300px;
-    width: auto
+  height: 300px;
+  width: auto;
 }
 
- /* ---------------------------------------------------
+/* ---------------------------------------------------
     Horse View
 --------------------------------------------------- */
 
 app-horse-view {
+  section {
+    padding-bottom: 2rem;
 
-    section {
-        padding-bottom: 2rem;
-
-        .edge-header {
-            height: 660px;
-            filter: grayscale(100%);
-        }
-
-        img.profile-img {
-            max-width: 100%;
-        }
-
-        h3.horse-name {
-            letter-spacing: 1px;    
-            font-family: 'IM Fell French Canon SC', serif;  
-            color: #005264;
-
-        }
-
-        div.horse-parentage::before{ 
-            content: "(";
-        }
-        
-        div.horse-parentage::after{ 
-            content: ")";
-        }
-        div.owner,div.breeder {
-            margin-bottom: 1rem;
-            strong {
-                display: block;
-            }
-        }
-        div strong {
-            color: #005264;
-            text-transform: uppercase;
-            font-size: .9em;
-        }
-        div.text-block {
-            padding-bottom: 1em;
-            text-align: justify;
-        }
-
+    .edge-header {
+      height: 660px;
+      filter: grayscale(100%);
     }
 
-    .horse-progeny {
-        .horse-progeny-item:hover {
-            div.mask {
-                opacity: 0;
-                transition: 0.5s ease-in-out;
-                -webkit-transition: all 0.5s ease-in-out;
-            }
-        }
+    img.profile-img {
+      max-width: 100%;
     }
 
-    
-        .accolade-horse {
-            display: block;
-            margin-bottom: 1em;
+    h3.horse-name {
+      letter-spacing: 1px;
+      font-family: "IM Fell French Canon SC", serif;
+      color: #005264;
+    }
 
-            .accolade {
-                padding-left: 1em;
-            }
+    div.horse-parentage::before {
+      content: "(";
+    }
 
-            .accolade:before {
-                content: "\2022";
-            }
+    div.horse-parentage::after {
+      content: ")";
+    }
+    div.owner,
+    div.breeder {
+      margin-bottom: 1rem;
+      strong {
+        display: block;
+      }
+    }
+    div strong {
+      color: #005264;
+      text-transform: uppercase;
+      font-size: 0.9em;
+    }
+    div.text-block {
+      padding-bottom: 1em;
+      text-align: justify;
+    }
+  }
 
-            .name {
-                color: #005264;
-                font-weight: 900;
-            }
-        }
-    
+  .horse-progeny {
+    .horse-progeny-item:hover {
+      div.mask {
+        opacity: 0;
+        transition: 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+
+  .accolade-horse {
+    display: block;
+    margin-bottom: 1em;
+
+    .accolade {
+      padding-left: 1em;
+    }
+
+    .accolade:before {
+      content: "\2022";
+    }
+
+    .name {
+      color: #005264;
+      font-weight: 900;
+    }
+  }
 }
 
 /* ---------------------------------------------------
@@ -522,244 +597,216 @@ app-horse-view {
 --------------------------------------------------- */
 
 .accolade-horse {
-    display: block;
-    margin-bottom: 1em;
+  display: block;
+  margin-bottom: 1em;
 
-    .accolade {
-        padding-left: 1em;
-    }
+  .accolade {
+    padding-left: 1em;
+  }
 
-    .accolade:before {
-        content: "\2022";
-    }
+  .accolade:before {
+    content: "\2022";
+  }
 
-    .name {
-        color: #005264;
-        font-weight: 900;
-    }
+  .name {
+    color: #005264;
+    font-weight: 900;
+  }
 }
 
- /* ---------------------------------------------------
+/* ---------------------------------------------------
     Breeding
 --------------------------------------------------- */
 .planned-breeding {
-    padding-bottom: 2rem;
-    .month {
-        text-transform: uppercase;
-        font-size: 0.9em;
-        padding-bottom: .5em;
-    }
-    .parentage {
-        letter-spacing: 1px;    
-        color: #005264;
-        font-weight: 900;
-    }
-    .registration {
-        padding-top: .5em;
-        padding-bottom: .5em;
-        letter-spacing: 1px;    
-
-    }
+  padding-bottom: 2rem;
+  .month {
+    text-transform: uppercase;
+    font-size: 0.9em;
+    padding-bottom: 0.5em;
+  }
+  .parentage {
+    letter-spacing: 1px;
+    color: #005264;
+    font-weight: 900;
+  }
+  .registration {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    letter-spacing: 1px;
+  }
 }
 
- /* ---------------------------------------------------
+/* ---------------------------------------------------
     Footer
 --------------------------------------------------- */
 
 app-footer .footer-nav li {
-    margin: 2rem;
+  margin: 2rem;
 }
 
-app-footer  .footer-nav p a i {
-    font-size: 2rem;
-    color: #005264;
+app-footer .footer-nav p a i {
+  font-size: 2rem;
+  color: #005264;
 }
 
-app-footer  .footer-nav p {
-    letter-spacing: 10px;
-    font-size: .6rem;
+app-footer .footer-nav p {
+  letter-spacing: 10px;
+  font-size: 0.6rem;
 }
 
 app-footer footer.page-footer {
-    background-color: #005264;
+  background-color: #005264;
 }
- /* ---------------------------------------------------
+/* ---------------------------------------------------
     Common Elements
 --------------------------------------------------- */
-.light-green {
-    background-color: #74b0b1;
+.bg-light {
+  background-color: #74b0b1;
 }
-.mid-green {
-    background-color: #01616d;
+.bg-mid {
+  background-color: #01616d;
 }
-.dark-green {
-    background-color: #005264
+.bg-dark {
+  background-color: #005264;
 }
 
- /* ---------------------------------------------------
+/* ---------------------------------------------------
 
  --------------------------------------------------- */
 
- .navigation-bar {
-    .navbar-nav a.nav-link {
-        text-transform: uppercase;
-    }
+.navigation-bar {
+  .navbar-nav a.nav-link {
+    text-transform: uppercase;
+  }
 
-    .nav, .navbar {
-        background-color: #00575f !important; 
-        color: #fff;
-    } 
- }
-
-
-
-// Global Colors
-
-.drk-cy-text { color: #007c7c !important }
-.mid-cy-text { color: #00baba !important  }
-.lgh-cy-text { color: #00f8f8 !important  }
-
-.vdr-cy-bg { background-color: #00575f !important  }
-.drk-cy-bg { background-color: #007c7c !important  }
-.mid-cy-bg { background-color: #00baba !important  }
-.lgh-cy-bg { background-color: #00f8f8 !important  }
-
-.drk-cy-brdr { border: 1px solid #007c7c42 !important }
-.mid-cy-brdr { border: 1px solid  #00baba !important  }
-.lgh-cy-brdr { border: 1px solid  #00f8f8 !important  }
-
-.cy-gradient {
-    background: linear-gradient(40deg, #00baba, #007c7c) !important;
-}
-
-.btn {
-    margin: 0.375rem 0;
+  .nav,
+  .navbar {
+    background-color: #00575f !important;
+    color: #fff;
+  }
 }
 
 // Forms
 
 form {
-    p {
-        color: #757575;
-        font-size: 0.8rem;
-    }
+  p {
+    color: #757575;
+    font-size: 0.8rem;
+  }
 }
 .md-form {
+  margin-top: 0;
 
-    margin-top: 0;
+  label {
+    font-size: 1em;
+  }
 
-    label {
-        font-size: 1em;
-    }
-
-    .form-control {
-        font-size: 1em;
-    }
+  .form-control {
+    font-size: 1em;
+  }
 }
 
 .split-card {
+  h4 {
+    font-family: "IM Fell French Canon SC", serif;
+    color: #005264;
+  }
 
-    h4 {
-        font-family: 'IM Fell French Canon SC', serif;  
-        color: #005264;  
+  .subheading {
+    font-size: 0.6rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  p.info {
+    font-size: 1em;
+    color: #00baba;
+    text-transform: uppercase;
+    padding: 1em 0;
+  }
+
+  .card-body.card-body-image {
+    padding: 0 !important;
+  }
+
+  .card.flex-container {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-direction: row !important;
+    background: url(assets/layout/bg.jpg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .card-body {
+      display: inline;
     }
+  }
 
-    .subheading {
-        font-size: .6rem;
-    }
-
-    p {
-        margin: 0;
-    }
-
-    p.info {
-        font-size: 1em;
-        color: #00baba;
-        text-transform: uppercase;
-        padding: 1em 0;
-    }
-
-    .card-body.card-body-image {
-        padding: 0 !important;
-    }
-
+  @media screen and (max-width: 992px) {
     .card.flex-container {
-        display: flex;
-        list-style: none;
-        justify-content: center; 
-        flex-direction: row !important;
-        background: url(assets/layout/bg.jpg);
-        background-position: 100%;
-        background-repeat: no-repeat;
-        background-size: cover;
-
-        .card-body {
-            display: inline;
-        }
+      flex-direction: column !important;
     }
-
-    @media screen and (max-width: 992px) {
-        .card.flex-container  {
-            flex-direction: column !important;
-
-        }
-    }
-
+  }
 }
 
 // Tables
 
 table {
-    td, th {
-        font-size: 11px;
-    }
-    th {
-        font-weight: bold;
-        color: #005264;
-    }
-    .clickable {
-        cursor: pointer;
-    }
-    .clickable:hover {
-        text-decoration: underline;
-    }
-    .btn.btn-sm {
-        padding: 0.2rem 1rem;
-        margin: 0;
-    }
+  td,
+  th {
+    font-size: 11px;
+  }
+  th {
+    font-weight: bold;
+    color: #005264;
+  }
+  .clickable {
+    cursor: pointer;
+  }
+  .clickable:hover {
+    text-decoration: underline;
+  }
+  .btn.btn-sm {
+    padding: 0.2rem 1rem;
+    margin: 0;
+  }
 }
 
-.dropzone { 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; 
-    width: 100%;
-    font-weight: 200;
-    height: 300px;
-    border: 2px dashed #f16624;
-    border-radius: 5px;
-    background: white;
-    margin: 10px 0;
-  
-    &.hovering {
-        border: 2px solid #f16624;
-        color: #dadada !important;
-    }
-  
-    .file-label {
-        font-size: 1.2em;
-    }
-  }
-  
-  progress::-webkit-progress-value {
-    transition: width 0.1s ease;
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  font-weight: 200;
+  height: 300px;
+  border: 2px dashed #f16624;
+  border-radius: 5px;
+  background: white;
+  margin: 10px 0;
+
+  &.hovering {
+    border: 2px solid #f16624;
+    color: #dadada !important;
   }
 
-  app-dashboard {
-    .card {
-        background-color: rgba(245, 245, 245, 0.349);
-        box-shadow: none;
-        border: 1px solid rgb(233, 233, 233);
-    }
+  .file-label {
+    font-size: 1.2em;
   }
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}
+
+app-dashboard {
+  .card {
+    background-color: rgba(245, 245, 245, 0.349);
+    box-shadow: none;
+    border: 1px solid rgb(233, 233, 233);
+  }
+}
