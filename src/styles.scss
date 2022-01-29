@@ -68,9 +68,14 @@
 --------------------------------------------------- */
 
 @media (min-width: 1400px) {
-	.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-		max-width: 1140px;
-	}
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1140px;
+  }
 }
 
 body {
@@ -183,7 +188,6 @@ a:focus {
   }
 
   .navbar-brand {
-
     button {
       border: none;
     }
@@ -203,12 +207,12 @@ a:focus {
       cursor: pointer;
       background: linear-gradient(40deg, #00baba, #007c7c) !important;
       box-sizing: border-box;
-	  text-align: center;
+      text-align: center;
     }
-	
-	i {
-		color: whitesmoke;
-	}
+
+    i {
+      color: whitesmoke;
+    }
   }
 }
 
@@ -320,11 +324,11 @@ nav.subnav {
   }
 
   .nav-item {
-	  cursor: pointer;
+    cursor: pointer;
   }
 
   .active {
-	background-color: rgba(255,255,255,.1);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   a.nav-link {
@@ -678,6 +682,20 @@ app-footer footer.page-footer {
 }
 .bg-dark {
   background-color: #005264;
+}
+
+button.btn.block {
+  color: whitesmoke;
+  text-transform: uppercase;
+  font-size: 1em;
+  padding: 1em;
+  letter-spacing: 1px;
+}
+
+button.btn.block:hover {
+  color: whitesmoke;
+  background-color: #017580;
+  transition: all 0.3s ease-in-out;
 }
 
 /* ---------------------------------------------------
