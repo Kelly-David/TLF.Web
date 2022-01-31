@@ -5,6 +5,7 @@ import { ViewService } from '../../shared/services/view.service';
 import { Strings } from '../../shared/strings';
 import { HorseService } from '../../shared/services/horse.service';
 import { filter } from 'rxjs/operators';
+import { Image } from '../../shared/models/web.models';
 
 @Component({
 	selector: 'app-index',
@@ -14,17 +15,17 @@ import { filter } from 'rxjs/operators';
 export class IndexComponent implements OnInit {
 
 	public pathToHeader = '../../../assets/layout/index-header.jpg' as string;
-	public pathToThumbnails = '../../../../assets/images/' as string;
+	public pathToThumbnails = 'assets/images/' as string;
 	public featured$!: Observable<any>;
 
 	images = [
-		{ img: 'home12.jpg', thumb: 'home12.jpg', description: 'TLF Afire Affair', caption: '' },
-		{ img: 'home10.jpg', thumb: 'home10.jpg', description: 'TLF My T Affair', caption: '' },
-		{ img: 'home2.jpg', thumb: 'home2.jpg', description: 'Black Mountain Majestic Midnight', caption: '' },
-		{ img: 'home11.jpg', thumb: 'home11.jpg', description: 'TLF Painted Affair', caption: '' },
-		{ img: 'home5.jpg', thumb: 'home5.jpg', description: 'TLF Aspire Affair', caption: '' },
-		{ img: 'home7.jpg', thumb: 'home7.jpg', description: 'Caluka UK Hearts Echo', caption: '' }
-	];
+		{ PathToFullImg: 'home12.jpg', PathToThumbnail: 'home12.jpg', Description: 'TLF Afire Affair', AltText: '' },
+		{ PathToFullImg: 'home10.jpg', PathToThumbnail: 'home10.jpg', Description: 'TLF My T Affair', AltText: '' },
+		{ PathToFullImg: 'home2.jpg', PathToThumbnail: 'home2.jpg', Description: 'Black Mountain Majestic Midnight', AltText: '' },
+		{ PathToFullImg: 'home11.jpg', PathToThumbnail: 'home11.jpg', Description: 'TLF Painted Affair', AltText: '' },
+		{ PathToFullImg: 'home5.jpg', PathToThumbnail: 'home5.jpg', Description: 'TLF Aspire Affair', AltText: '' },
+		{ PathToFullImg: 'home7.jpg', PathToThumbnail: 'home7.jpg', Description: 'Caluka UK Hearts Echo', AltText: '' }
+	] as Image[];
 
 	constructor(
 		public viewService: ViewService,
@@ -36,7 +37,7 @@ export class IndexComponent implements OnInit {
 	ngOnInit() {
 
 		this.titleService.setTitle('Home');
-
+ 
 		this.metaService.updateTag({
 			name: Strings.metaDataName,
 			content: Strings.metaDataContent 
@@ -46,9 +47,9 @@ export class IndexComponent implements OnInit {
 		this.viewService.SetViewTitle('');
 
 		this.images.forEach(element => {
-			element.img = this.pathToThumbnails + element.img;
-			element.thumb = this.pathToThumbnails + element.thumb;
-			element.caption = element.description;
+			element.PathToFullImg = this.pathToThumbnails + element.PathToFullImg;
+			element.PathToThumbnail = this.pathToThumbnails + element.PathToThumbnail;
+			element.AltText = element.Description;
 		});
 	}
 
