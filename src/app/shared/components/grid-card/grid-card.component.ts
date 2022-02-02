@@ -1,4 +1,5 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Image } from '../../models/web.models';
 
 @Component({
   selector: 'app-grid-card',
@@ -7,8 +8,10 @@ import { Component, OnInit, OnChanges, Input } from '@angular/core';
 })
 export class GridCardComponent implements OnInit, OnChanges {
 
-  @Input() imageUrl!: string;
+  @Input() image!: Image;
+  @Output() imageClickEvent = new EventEmitter<string>();
 
+  public imageUrl!: string;
   private relativeUrlPrefix = "../../../../";
 
   constructor() { }
@@ -18,9 +21,12 @@ export class GridCardComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
 
-    this.imageUrl = this.relativeUrlPrefix + this.imageUrl;
+    this.imageUrl = this.relativeUrlPrefix + this.image.PathToFullImg;
+  }
 
-    console.log(this.imageUrl);
+  public clickEvent(): void {
+    
+    this.imageClickEvent.emit(this.image.Id);
   }
 
 }

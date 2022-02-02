@@ -19,12 +19,12 @@ export class IndexComponent implements OnInit {
 	public featured$!: Observable<any>;
 
 	images = [
-		{ PathToFullImg: 'home12.jpg', PathToThumbnail: 'home12.jpg', Description: 'TLF Afire Affair', AltText: '' },
-		{ PathToFullImg: 'home10.jpg', PathToThumbnail: 'home10.jpg', Description: 'TLF My T Affair', AltText: '' },
-		{ PathToFullImg: 'home2.jpg', PathToThumbnail: 'home2.jpg', Description: 'Black Mountain Majestic Midnight', AltText: '' },
-		{ PathToFullImg: 'home11.jpg', PathToThumbnail: 'home11.jpg', Description: 'TLF Painted Affair', AltText: '' },
-		{ PathToFullImg: 'home5.jpg', PathToThumbnail: 'home5.jpg', Description: 'TLF Aspire Affair', AltText: '' },
-		{ PathToFullImg: 'home7.jpg', PathToThumbnail: 'home7.jpg', Description: 'Caluka UK Hearts Echo', AltText: '' }
+		{Id: "01", PathToFullImg: 'home12.jpg', PathToThumbnail: 'home12.jpg', Description: 'TLF Afire Affair', AltText: '' },
+		{Id: "02", PathToFullImg: 'home10.jpg', PathToThumbnail: 'home10.jpg', Description: 'TLF My T Affair', AltText: '' },
+		{Id: "03", PathToFullImg: 'home2.jpg', PathToThumbnail: 'home2.jpg', Description: 'Black Mountain Majestic Midnight', AltText: '' },
+		{Id: "04", PathToFullImg: 'home11.jpg', PathToThumbnail: 'home11.jpg', Description: 'TLF Painted Affair', AltText: '' },
+		{Id: "05", PathToFullImg: 'home5.jpg', PathToThumbnail: 'home5.jpg', Description: 'TLF Aspire Affair', AltText: '' },
+		{Id: "06", PathToFullImg: 'home7.jpg', PathToThumbnail: 'home7.jpg', Description: 'Caluka UK Hearts Echo', AltText: '' }
 	] as Image[];
 
 	constructor(

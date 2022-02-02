@@ -1,0 +1,16 @@
+
+<div class="card">
+    <img [src]="image.PathToFullImg" class="card-img-top" [alt]="image.AltText">
+    <div class="card-footer d-flex justify-content-between" style="padding: 0 0 0 1em !important;">
+      <b class="flex-fill align-self-center">{{image.Description | uppercase}}</b>
+      <small>
+        <button type="button" class="btn" (click)="arrowClick('Left')">
+            <i class="fas fa-arrow-alt-circle-left"></i>
+        </button>
+
+        <button type="button" class="btn" (click)="arrowClick('Right')">
+            <i class="fas fa-arrow-alt-circle-right"></i>
+        </button>
+    </small>
+    </div>
+  </div>
