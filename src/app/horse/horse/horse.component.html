@@ -1,0 +1,64 @@
+<div class="container">
+    <ng-template #loading>
+      <section class="text-center">
+        <!-- <mdb-spinner></mdb-spinner> -->
+      </section>
+    </ng-template>
+    <ng-container *ngIf="horse$ | async as horse; else loading">
+      <section>
+        <div class="row">
+          <div class="col-lg-6">
+            <img [src]="horse.profile" alt="thumbnail" class="img-fluid">
+          </div>
+          <div class="col-lg-6">
+            <!-- <small>{{horse.id}}</small> -->
+            <h3 class="horse-name">{{horse.name | uppercase}}</h3>
+            <div class="horse-parentage">
+              {{horse.sire | uppercase}} &times; {{horse.dam | uppercase}}
+            </div>
+            <div>
+              {{horse.year}} American Miniature {{horse.gender | titlecase}}</div>
+            <div class="line-nospacing"></div>
+            <div><strong>Height:</strong> {{horse.height}} inches</div>
+            <div><strong>Colour:</strong> {{horse.color}}</div>
+            <div><strong>Registration:</strong>
+              <span *ngFor="let reg of horse.registration"> {{reg}}</span>
+            </div>
+            <div class="line-nospacing"></div>
+            <div class="text-block" *ngFor="let text of horse.info">
+              {{text}}
+            </div>
+            <div class="line-nospacing"></div>
+            <div class="breeder"><strong>Bred by</strong>{{horse.breeder}}</div>
+            <div class="owner"><strong>Owned by</strong>{{horse.owner}}</div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h6>Gallery</h6>
+        <div class="line-nospacing"></div>
+        <!-- <app-horse-gallery [horseID]=horse.id [horseName]=horse.name></app-horse-gallery> -->
+      </section>
+      <section>
+        <h6>Accolades</h6>
+        <div class="line-nospacing"></div>
+        <!-- <app-horse-accolade-collection *ngIf="horse.id" [horseId]=horse.id></app-horse-accolade-collection> -->
+      </section>
+      <section>
+        <h6>Pedigree</h6>
+        <div class="line-nospacing"></div>
+        <!-- <app-pedigree-display *ngIf="horse.id" [horseId]=horse.id></app-pedigree-display> -->
+        <!-- <app-pedigree-edit *ngIf="horse.id" [horseId]=horse.id></app-pedigree-edit> -->
+      </section>
+      <section>
+        <h6>Progeny</h6>
+        <div class="line-nospacing"></div>
+        <!-- <app-horse-progeny-collection [parentID]=horse.id></app-horse-progeny-collection> -->
+      </section>
+      <section *ngIf="horse.family && horse.family.length > 0">
+        <h6>Family Mares</h6>
+        <div class="line-nospacing"></div>
+        <!-- <app-horse-family-collection *ngIf="horse.id" [familyList]=horse.family></app-horse-family-collection> -->
+      </section>
+    </ng-container>
+  </div>

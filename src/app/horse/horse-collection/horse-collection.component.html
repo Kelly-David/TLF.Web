@@ -1,28 +1,32 @@
-<!-- <div class="container">
-    <div class="row d-flex justify-content-center">
-  
-      <p class="text-center" *ngIf="(horses$ | async)?.length == 0">
-        No {{term}} to display at this time...
-      </p>
-  
-      <ng-container *ngIf="horses$ | async; let horses; else loading">
-        <div class="col-xs-12 col-sm-6 col-lg-4" *ngFor="let horse of horses">
+<div class="container">
+  <div class="row d-flex justify-content-center">
 
-          <app-horse-card [horseId]=horse.id></app-horse-card>
+    <p class="text-center" *ngIf="(horses$ | async)?.length == 0">
+      No {{term}} to display at this time...
+    </p>
 
+    <ng-container *ngIf="horses$ | async; let horses; else loading">
+      <div class="col-xs-12 col-sm-6 col-lg-4" *ngFor="let horse of horses">
+
+        <app-horse-card [horseId]=horse.id></app-horse-card>
+
+      </div>
+    </ng-container>
+
+
+    <ng-template #loading>
+      <section class="text-center">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
-      </ng-container>
-
-
-      <ng-template #loading>
-        <section class="text-center">
-          <mdb-spinner></mdb-spinner>
-        </section>
-      </ng-template>
-    </div>
-  
-    <button *ngIf="term === 'foal'" mdbBtn type="button" class="bg-color-dark text-white" [block]="true" mdbWavesEffect
-      [routerLink]="['/breeding/expected-foals']">View our expected foals</button>
-  
+      </section>
+    </ng-template>
   </div>
- -->
+
+  <div class="d-grid" *ngIf="term === 'foal'">
+    <button class="btn block bg-color-dark" type="button" [routerLink]="['/breeding/expected-foals']">
+      View our expected foals
+    </button>
+  </div>
+
+</div>

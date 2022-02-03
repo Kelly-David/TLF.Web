@@ -1,0 +1,8 @@
+<ng-container *ngIf="horse$ | async as horse">
+    <nav class="subnav navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand">{{routeToName(route)}}</a>
+      </div>
+    </nav>
+    <app-horse [horseID]="horse.id"></app-horse>
+  </ng-container>

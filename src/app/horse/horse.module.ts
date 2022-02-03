@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { HorseCollectionComponent } from './horse-collection/horse-collection.component';
 import { HorsesComponent } from './horses/horses.component';
+import { HorseRouteComponent } from './horse-route/horse-route.component';
+import { HorseComponent } from './horse/horse.component';
 
 
 
 @NgModule({
   declarations: [
     HorseCollectionComponent,
-    HorsesComponent
+    HorsesComponent,
+    HorseRouteComponent,
+    HorseComponent
   ],
   imports: [
     CommonModule,

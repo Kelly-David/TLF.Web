@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './landing/index/index.component';
 import { HorsesComponent } from './horse/horses/horses.component';
+import { HorseRouteComponent } from './horse/horse-route/horse-route.component';
 
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
 	{ path: 'home', component: IndexComponent },
 	{ path: 'horses', component: HorsesComponent},
+	{ path: 'horse/:route', component: HorseRouteComponent, runGuardsAndResolvers: 'always' },
 
 	// Redirects from old TLF Website
 	{ path: 'pygmy-goats.html', pathMatch: 'full', redirectTo: 'pygmy-goats' },

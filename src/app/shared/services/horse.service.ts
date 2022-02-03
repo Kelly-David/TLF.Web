@@ -37,6 +37,11 @@ export class HorseService {
     return result;
   }
 
+  public V1GetHorseIdByRoute(route: string): Observable<{}> {
+
+    return this.firestore.doc$(`${Strings.V1routeCollection}/${route}`);
+  }
+
 }
 
 

@@ -5,6 +5,7 @@ export class Strings {
     static routesCollection           = 'routes' as string;
     static V1featuredHorsesCollection = 'featuredhorses' as string;
     static V1horseCollection          = 'horse' as string;
+    static V1routeCollection          = 'horseroute' as string;
 
     // View Content
     static metaDataName    = 'Description' as string;
