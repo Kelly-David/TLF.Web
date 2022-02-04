@@ -34,9 +34,10 @@
           </div>
         </div>
       </section>
-      <section>
+      <section *ngIf="contentReady">
         <h6>Gallery</h6>
         <div class="line-nospacing"></div>
+        <app-grid [imagesContent]="contentImages"></app-grid>
         <!-- <app-horse-gallery [horseID]=horse.id [horseName]=horse.name></app-horse-gallery> -->
       </section>
       <section>

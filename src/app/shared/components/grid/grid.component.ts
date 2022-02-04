@@ -1,19 +1,22 @@
-import { Component, Input, OnInit, OnChanges} from '@angular/core';
+import { Component, Input, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { NgbModal, NgbModalConfig, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Image, Direction } from '../../models/web.models';
 import { LightboxContentComponent } from '../lightbox-content/lightbox-content.component';
 import { ViewService } from '../../services/view.service';
+import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss']
 })
-export class GridComponent implements OnInit, OnChanges {
+export class GridComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() imagesContent!: Image[];
 
   private modalRef!: NgbModalRef
+  private subscription!: Subscription
 
   constructor(
     private modalService: NgbModal,
@@ -23,7 +26,7 @@ export class GridComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
 
-    this.viewService.lightboxClick.subscribe(clickEvent => {
+    this.subscription = this.viewService.lightboxClick.subscribe(clickEvent => {
       if(Object.keys(clickEvent).length !== 0) {
         this.showNext(clickEvent.id, clickEvent.arrow);
       }
@@ -60,6 +63,11 @@ export class GridComponent implements OnInit, OnChanges {
   private open(id: string) {
     this.modalRef = this.modalService.open(LightboxContentComponent, {size: 'lg', centered: true });
     this.modalRef.componentInstance.image = this.imagesContent.filter(item => item.Id === id)[0];
+  }
+
+  ngOnDestroy() {
+
+    this.subscription.unsubscribe();
   }
 
 }

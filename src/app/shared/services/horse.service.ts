@@ -42,6 +42,10 @@ export class HorseService {
     return this.firestore.doc$(`${Strings.V1routeCollection}/${route}`);
   }
 
+  public V1GetImagesByHorseId(horseId: string): Observable<any[]> {
+
+    return this.firestore.col$(`${Strings.V1fileCollection}/${horseId}/images`);
+  }
 }
 
 
