@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, HostListener } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Direction, Image } from '../../models/web.models';
+import { Direction, Image, KEY_CODE } from '../../models/web.models';
 import { ViewService } from '../../services/view.service';
 
 @Component({
@@ -20,7 +20,21 @@ export class LightboxContentComponent implements OnChanges {
   ngOnChanges(): void {
   }
 
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+
+    if (event.code === KEY_CODE.RIGHT_ARROW) {
+      this.arrowClick(Direction[Direction.Right]);
+    }
+
+    if (event.code === KEY_CODE.LEFT_ARROW) {
+      this.arrowClick(Direction[Direction.Left]);
+    }
+  }
+
   public arrowClick(arrow: string) {
+
+    console.log(arrow);
     
     var direction : Direction = Direction[arrow as keyof typeof Direction];
 
