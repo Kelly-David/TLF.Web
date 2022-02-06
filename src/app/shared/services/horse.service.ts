@@ -56,8 +56,8 @@ export class HorseService {
     return this.firestore.col$(`${Strings.V1accoladeCollection}/${horseId}/accolade`, ref => ref.orderBy('year'));
   }
 
-  horsePedigree(id: string) {
-    return this.firestore.doc$(`pedigree/${id}`);
+  horseProgenyCollection(id: string): Observable<{}> {
+    return this.firestore.col$(`progeny/${id}/progeny`);
   }
 
   horses() {

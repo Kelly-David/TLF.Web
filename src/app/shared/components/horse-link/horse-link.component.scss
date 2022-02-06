@@ -1,0 +1,40 @@
+.card {
+    cursor: pointer;
+    border: none;
+
+    .card-img, .card-img-bottom {
+        border: none;
+        border-radius: 0;
+    }
+
+    .card-img-overlay {
+
+        text-transform: uppercase;
+        background-color: #00526493;
+
+        div p {
+            color: whitesmoke;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;            
+            margin-bottom: 0;
+        }
+
+        div .subheading {
+            text-align: center;
+            display: block;
+            color: #00baba;
+        }
+    }
+
+    .card-img-overlay:hover {
+        background-color: transparent;
+        transition: 1s ease;
+
+        div {
+            visibility: hidden;
+        }
+    }
+
+
+}

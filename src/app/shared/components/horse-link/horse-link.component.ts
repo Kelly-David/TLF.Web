@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HorseService } from '../../services/horse.service';
 
 @Component({
   selector: 'app-horse-link',
@@ -7,21 +9,29 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
 })
 export class HorseLinkComponent implements OnChanges {
 
-  @Input() horse: undefined | any;
+  @Input() horse = <any>null;
+  @Input() horseId = '' as string;
 
-  public routerLink!: string;
+  public routerLink!: string; 
+  public horse$!: Observable<any>;
 
-  constructor() { }
+  constructor(
+    private horseService: HorseService
+  ) { }
 
   ngOnChanges(): void {    
     
-    if (this.horse !== null) {
+    if (this.horseId !== '') {
+
+      this.horse$ = this.horseService.V1GetHorseById(this.horseId);
+    }
+    else if (this.horse !== null && this.horse?.id !== "") {
 
       this.routerLink = this.nameAsRoute(this.horse.name);
     }
   }
 
-  private nameAsRoute(name: string): string {
+  public nameAsRoute(name: string): string {
     let route = '';
     route = name.split(' ').join('-').toLowerCase();
     return route;

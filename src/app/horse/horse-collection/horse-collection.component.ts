@@ -26,6 +26,40 @@ export class HorseCollectionComponent implements OnChanges {
 		private horseService: HorseService
 	) { }
 
+	// ngOnInit() {
+
+	// 	this.horses$ = this.horseService.horses();
+
+	// 	this.horses$.pipe(take(1)).subscribe((data) => {
+	// 		if(data !== undefined){
+	// 			console.log(data);
+
+	// 			data.forEach(horse => this.combineProgeny(horse));
+
+	
+	// 		}
+	// 	})
+
+	// }
+
+	// combineProgeny(horse: any) {
+
+	// 	const foals = this.horseService.V1GetProgenyByParentId(horse.id);
+
+	// 	foals.pipe(take(1)).subscribe((data) => {
+	// 		if (data !== undefined && data.length > 0) {
+	// 			console.log(data);
+
+	// 			if (horse.progeny === undefined) {
+
+	// 				horse.progeny = data;
+	// 				this.horseService.updateHorse(horse.id, horse);
+	// 				console.log('Merged: ' + horse.name);
+	// 			}
+	// 		}
+	// 	})
+	// }
+
 	ngOnChanges() {
 		if (this.term === 'foal') {
 

@@ -38,7 +38,6 @@
         <h6>Gallery</h6>
         <div class="line-nospacing"></div>
         <app-grid [imagesContent]="contentImages" [colWidth]="3"></app-grid>
-        <!-- <app-horse-gallery [horseID]=horse.id [horseName]=horse.name></app-horse-gallery> -->
       </section>
       <section>
         <h6>Accolades</h6>
@@ -122,7 +121,11 @@
       <section>
         <h6>Progeny</h6>
         <div class="line-nospacing"></div>
-        <!-- <app-horse-progeny-collection [parentID]=horse.id></app-horse-progeny-collection> -->
+        <div class="row">
+          <div class="col-3 p-2" *ngFor="let item of horse.progeny" >
+            <app-horse-link [horseId]="item.id"></app-horse-link>
+          </div>
+        </div>
       </section>
       <section *ngIf="horse.family && horse.family.length > 0">
         <h6>Family Mares</h6>
