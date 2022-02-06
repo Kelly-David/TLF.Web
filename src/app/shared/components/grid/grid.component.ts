@@ -5,6 +5,7 @@ import { LightboxContentComponent } from '../lightbox-content/lightbox-content.c
 import { ViewService } from '../../services/view.service';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-grid',
@@ -28,7 +29,7 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit(): void {
 
     this.subscription = this.viewService.lightboxClick.subscribe(clickEvent => {
-      if(Object.keys(clickEvent).length !== 0) {
+      if (Object.keys(clickEvent).length !== 0) {
         this.showNext(clickEvent.id, clickEvent.arrow);
       }
     })
@@ -39,35 +40,37 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
 
   public gridCardClickEvent(imageId: any) {
 
-    let id  = imageId as string;
+    let id = imageId as string;
 
     this.open(id);
   }
 
   private showNext(currentId: string, arrow: Direction) {
 
-    const currentIndex = this.imagesContent.indexOf(this.imagesContent.filter(i => i.Id === currentId)[0]);
-    const nextIndex = arrow == Direction.Left ? (currentIndex - 1) : (currentIndex + 1);
+    if (this.modalRef?.componentInstance !== undefined) {
 
-    let nextImage = this.imagesContent[nextIndex];
+      const currentIndex = this.imagesContent.indexOf(this.imagesContent.filter(i => i.Id === currentId)[0]);
+      const nextIndex = arrow == Direction.Left ? (currentIndex - 1) : (currentIndex + 1);
 
-    if (nextImage !== undefined) {
-      
-      this.modalRef.componentInstance.image = nextImage;
-    }
-    else {
-      this.modalRef.componentInstance.image = arrow == Direction.Left ? 
-      this.imagesContent[this.imagesContent.length-1] : this.imagesContent[0];
+      let nextImage = this.imagesContent[nextIndex];
+
+      if (nextImage !== undefined) {
+
+        this.modalRef.componentInstance.image = nextImage;
+      }
+      else {
+        this.modalRef.componentInstance.image = arrow == Direction.Left ?
+          this.imagesContent[this.imagesContent.length - 1] : this.imagesContent[0];
+      }
     }
   }
 
   private open(id: string) {
-    this.modalRef = this.modalService.open(LightboxContentComponent, {size: 'lg', centered: true });
+    this.modalRef = this.modalService.open(LightboxContentComponent, { size: 'lg', centered: true });
     this.modalRef.componentInstance.image = this.imagesContent.filter(item => item.Id === id)[0];
   }
 
   ngOnDestroy() {
-
     this.subscription.unsubscribe();
   }
 
