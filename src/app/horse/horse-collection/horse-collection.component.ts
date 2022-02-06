@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { HorseService } from 'src/app/shared/services/horse.service';
 import { ViewService } from '../../shared/services/view.service';
 import { Strings } from '../../shared/strings';

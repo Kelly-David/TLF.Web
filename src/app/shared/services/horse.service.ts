@@ -46,6 +46,30 @@ export class HorseService {
 
     return this.firestore.col$(`${Strings.V1fileCollection}/${horseId}/images`);
   }
+
+  public V1GetProgenyByParentId(parentId: string): Observable<any> {
+
+    return this.firestore.col$(`${Strings.V1progenyCollection}/${parentId}/progeny`);
+  }
+
+  public V1GetAccoladesByHorseId(horseId: string): Observable<{}> {
+    return this.firestore.col$(`${Strings.V1accoladeCollection}/${horseId}/accolade`, ref => ref.orderBy('year'));
+  }
+
+  horsePedigree(id: string) {
+    return this.firestore.doc$(`pedigree/${id}`);
+  }
+
+  horses() {
+    return this.firestore.col$("horse");
+  }
+
+  public updateHorse(id: string, data: any) {
+    return this.firestore.update(`horse`, id, data).then(_ => {
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 }
 
 

@@ -37,19 +37,87 @@
       <section *ngIf="contentReady">
         <h6>Gallery</h6>
         <div class="line-nospacing"></div>
-        <app-grid [imagesContent]="contentImages"></app-grid>
+        <app-grid [imagesContent]="contentImages" [colWidth]="3"></app-grid>
         <!-- <app-horse-gallery [horseID]=horse.id [horseName]=horse.name></app-horse-gallery> -->
       </section>
       <section>
         <h6>Accolades</h6>
         <div class="line-nospacing"></div>
-        <!-- <app-horse-accolade-collection *ngIf="horse.id" [horseId]=horse.id></app-horse-accolade-collection> -->
+        <app-horse-results *ngIf="horse.id" [horseId]=horse.id></app-horse-results>
       </section>
-      <section>
+      <section *ngIf="horse.pedigree !== undefined">
         <h6>Pedigree</h6>
         <div class="line-nospacing"></div>
-        <!-- <app-pedigree-display *ngIf="horse.id" [horseId]=horse.id></app-pedigree-display> -->
-        <!-- <app-pedigree-edit *ngIf="horse.id" [horseId]=horse.id></app-pedigree-edit> -->
+        <div class="table-responsive">
+          <table class="table table-borderless table-sm text-center">
+            <tbody>
+              <tr>
+                <td rowspan="8">
+                  <div>{{horse.name | uppercase}}</div>
+                </td>
+                <td rowspan="4">
+                  <div>{{horse.pedigree.sire | uppercase}}</div>
+                </td>
+                <td rowspan="2">
+                  <div>{{horse.pedigree.gsiretop | uppercase}}</div>
+                </td>
+                <td>
+                  <div>{{horse.pedigree.gsiretopsire | uppercase}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>{{horse.pedigree.gsiretopdam | uppercase}}</div>
+                </td>
+              </tr>
+    
+              <tr>
+                <td rowspan="2">
+                  <div>{{horse.pedigree.gdamtop | uppercase}}</div>
+                </td>
+                <td>
+                  <div>{{horse.pedigree.gdamtopsire | uppercase}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>{{horse.pedigree.gdamtopdam | uppercase}}</div>
+                </td>
+              </tr>
+    
+              <tr>
+                <td rowspan="4">
+                  <div>{{horse.pedigree.dam | uppercase}}</div>
+                </td>
+                <td rowspan="2">
+                  <div>{{horse.pedigree.gsirebtm | uppercase}}</div>
+                </td>
+                <td>
+                  <div>{{horse.pedigree.gsirebtmsire | uppercase}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>{{horse.pedigree.gsirebtmbtm | uppercase}}</div>
+                </td>
+              </tr>
+    
+              <tr>
+                <td rowspan="2">
+                  <div>{{horse.pedigree.gdambtm | uppercase}}</div>
+                </td>
+                <td>
+                  <div>{{horse.pedigree.gdambtmsire | uppercase}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>{{horse.pedigree.gdambtmbtm | uppercase}}</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
       <section>
         <h6>Progeny</h6>

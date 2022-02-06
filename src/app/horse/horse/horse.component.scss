@@ -1,0 +1,14 @@
+.table-responsive {
+
+    tr:first-child {
+        td:first-child {
+            color: #005264;
+            font-weight: bold;
+        }
+    } 
+
+    td {
+        vertical-align: middle;
+        font-size: 1em;
+    }
+}

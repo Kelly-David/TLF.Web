@@ -7,6 +7,7 @@ import { GridCardComponent } from './components/grid-card/grid-card.component';
 import { LightboxComponent } from './components/lightbox/lightbox.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LightboxContentComponent } from './components/lightbox-content/lightbox-content.component';
+import { HorseLinkComponent } from './components/horse-link/horse-link.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LightboxContentComponent } from './components/lightbox-content/lightbox
     GridComponent,
     GridCardComponent,
     LightboxComponent,
-    LightboxContentComponent
+    LightboxContentComponent,
+    HorseLinkComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { LightboxContentComponent } from './components/lightbox-content/lightbox
     AppRoutingModule,
     HorseCardComponent,
     GridComponent,
-    LightboxContentComponent
+    LightboxContentComponent,
+    HorseLinkComponent
   ]
 })
 export class SharedModule { }

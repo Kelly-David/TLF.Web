@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HorseService } from 'src/app/shared/services/horse.service';
 import { Image } from '../../shared/models/web.models';
 import { ViewService } from '../../shared/services/view.service';
@@ -10,12 +10,13 @@ import { ViewService } from '../../shared/services/view.service';
   templateUrl: './horse.component.html',
   styleUrls: ['./horse.component.scss']
 })
-export class HorseComponent implements OnChanges {
+export class HorseComponent implements OnChanges, OnDestroy {
 
   @Input() horseID = '' as string;
 
   public horse$!: Observable<any>;
-  public images$!: Observable<any[]>;
+
+  private images!: Subscription;
 
   public contentReady = false;
   public contentImages!: Image[];
@@ -24,14 +25,17 @@ export class HorseComponent implements OnChanges {
     private horseService: HorseService,
   ) { }
 
+  ngOnDestroy(): void {
+    
+    this.images.unsubscribe();
+  }
+
   ngOnChanges() {
     if (this.horseID !== '') {
 
-      this.horse$ = this.horseService.V1GetHorseById(this.horseID);
+      this.horse$   = this.horseService.V1GetHorseById(this.horseID);
 
-      this.images$ = this.horseService.V1GetImagesByHorseId(this.horseID);
-
-      this.images$.subscribe(images => {
+      this.images = this.horseService.V1GetImagesByHorseId(this.horseID).subscribe(images => {
         if (images !== undefined) {
 
           let index = 0;

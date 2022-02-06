@@ -7,6 +7,8 @@ export class Strings {
     static V1horseCollection          = 'horse' as string;
     static V1routeCollection          = 'horseroute' as string;
     static V1fileCollection           = 'file' as string;
+    static V1progenyCollection        = 'progeny' as string;
+    static V1accoladeCollection       = 'accolade' as string;
 
     // View Content
     static metaDataName    = 'Description' as string;

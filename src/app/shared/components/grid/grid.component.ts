@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class GridComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() imagesContent!: Image[];
+  @Input() colWidth = 4 as number;
 
   private modalRef!: NgbModalRef
   private subscription!: Subscription

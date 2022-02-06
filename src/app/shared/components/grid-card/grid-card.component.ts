@@ -18,7 +18,9 @@ export class GridCardComponent implements OnInit, OnChanges {
 
   constructor(
     public viewService: ViewService
-  ) { }
+  ) {
+
+   }
 
   ngOnInit(): void {
   }
