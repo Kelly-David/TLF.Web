@@ -1,0 +1,8 @@
+<ng-container *ngIf="loaded">
+    <ng-container *ngFor="let horse of horses">
+        <div class="accolade-horse">
+            <app-horse-link [horseId]="horse" [imageCard]="false"></app-horse-link>
+        </div>
+    </ng-container>
+</ng-container>
+

@@ -56,15 +56,18 @@ export class HorseService {
     return this.firestore.col$(`${Strings.V1accoladeCollection}/${horseId}/accolade`, ref => ref.orderBy('year'));
   }
 
-  horseProgenyCollection(id: string): Observable<{}> {
-    return this.firestore.col$(`progeny/${id}/progeny`);
+  public V1GetHorseFamilyGroupById(id: string): Observable<any> {
+
+    return this.firestore.doc$(`${Strings.V1groupCollection}/${id}`);
   }
 
-  horses() {
+  public horses() {
+
     return this.firestore.col$("horse");
   }
 
   public updateHorse(id: string, data: any) {
+
     return this.firestore.update(`horse`, id, data).then(_ => {
     }).catch(error => {
       console.log(error);

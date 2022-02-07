@@ -3,22 +3,29 @@
     <span class="name" [routerLink]="['/horse', routerLink]">
         {{horse.name | uppercase}}
     </span> {{horse?.year}} {{horse?.color | titlecase}} American Miniature {{horse?.gender | titlecase}}
-        (<span class="name">{{horse?.sire | uppercase}} &times; {{horse?.dam | uppercase}}</span>)
+    (<span class="name">{{horse?.sire | uppercase}} &times; {{horse?.dam | uppercase}}</span>)
 
 </ng-container>
 
 <ng-container *ngIf="horse$ | async as horse$">
 
-    <div class="card text-white" [routerLink]="['/horse', nameAsRoute(horse$.name)]">
-        <img [src]="horse$.profile" class="card-img" [alt]="horse$.name">
-        <div class="card-img-overlay d-flex justify-content-center">
-            <div class="align-self-center">
-                <p>{{horse$.name}}</p>
-                <div class="subheading">{{horse$.year}} {{horse$.gender}}</div>
+    <ng-container *ngIf="imageCard; else noImage">
+        <div class="card text-white" [routerLink]="['/horse', nameAsRoute(horse$.name)]">
+            <img [src]="horse$.profile" class="card-img" [alt]="horse$.name">
+            <div class="card-img-overlay d-flex justify-content-center">
+                <div class="align-self-center">
+                    <p>{{horse$.name}}</p>
+                    <div class="subheading">{{horse$.year}} {{horse$.gender}}</div>
+                </div>
             </div>
         </div>
-      </div>
+    </ng-container>
+
+    <ng-template #noImage>
+        <span class="name" [routerLink]="['/horse', nameAsRoute(horse$.name)]">
+            {{horse$.name | uppercase}}
+        </span> {{horse$?.year}} {{horse$?.color | titlecase}} American Miniature {{horse$?.gender | titlecase}}
+        (<span class="name">{{horse$?.sire | uppercase}} &times; {{horse$?.dam | uppercase}}</span>)
+    </ng-template>
 
 </ng-container>
-
-

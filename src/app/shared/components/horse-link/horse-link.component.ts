@@ -11,6 +11,7 @@ export class HorseLinkComponent implements OnChanges {
 
   @Input() horse = <any>null;
   @Input() horseId = '' as string;
+  @Input() imageCard = true;
 
   public routerLink!: string; 
   public horse$!: Observable<any>;

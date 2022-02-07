@@ -6,6 +6,7 @@ import { HorsesComponent } from './horses/horses.component';
 import { HorseRouteComponent } from './horse-route/horse-route.component';
 import { HorseComponent } from './horse/horse.component';
 import { HorseResultsComponent } from './horse-results/horse-results.component';
+import { HorseGroupsComponent } from './horse-groups/horse-groups.component';
 
 
 
@@ -15,7 +16,8 @@ import { HorseResultsComponent } from './horse-results/horse-results.component';
     HorsesComponent,
     HorseRouteComponent,
     HorseComponent,
-    HorseResultsComponent
+    HorseResultsComponent,
+    HorseGroupsComponent
   ],
   imports: [
     CommonModule,
