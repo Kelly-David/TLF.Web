@@ -8,10 +8,11 @@ import { AuthModule } from './auth/auth.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { LandingModule } from './landing/landing.module';
 import { HorseModule } from './horse/horse.module';
+import { ViewModule } from './views/view.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +22,8 @@ import { HorseModule } from './horse/horse.module';
     AuthModule,
     NavigationModule,
     LandingModule,
-    HorseModule
+    HorseModule,
+    ViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

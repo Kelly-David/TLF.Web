@@ -3,10 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './landing/index/index.component';
 import { HorsesComponent } from './horse/horses/horses.component';
 import { HorseRouteComponent } from './horse/horse-route/horse-route.component';
+import { FarmComponent } from './views/farm/farm.component';
+import { PygmyGoatsComponent } from './views/pygmy-goats/pygmy-goats.component';
 
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
 	{ path: 'home', component: IndexComponent },
+	{ path: 'our-farm', component: FarmComponent },
+	{ path: 'pygmy-goats', component: PygmyGoatsComponent },
 	{ path: 'horses', component: HorsesComponent},
 	{ path: 'horse/:route', component: HorseRouteComponent, runGuardsAndResolvers: 'always' },
 

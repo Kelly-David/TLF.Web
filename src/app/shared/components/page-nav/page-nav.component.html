@@ -1,0 +1,12 @@
+<nav class="subnav navbar navbar-expand-lg navbar-dark">
+    <div class="container"> 
+      <a class="navbar-brand">{{title | titlecase}}</a>
+      <div class="navbar-expand" id="navbarNav">
+        <ul class="navbar-nav">
+          <li *ngFor="let key of routesToShow" class="nav-item" [ngClass]="routes.get(key) === true ? 'active' : ''">
+            <a class="nav-link" [routerLink]="['/'+ key]" mdbWavesEffect>{{links.get(key) | titlecase}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
