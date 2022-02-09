@@ -30,7 +30,7 @@ export class FarmComponent implements OnInit {
 		private metaService: Meta,
 		private titleService: Title
 	) {
-		this.title = 'Our Farm';
+		this.title = Strings.titleOurFarm;
 		this.activeLink = Strings.routeOurFarm;
 
 		this.routesToShow = new Array<string>(

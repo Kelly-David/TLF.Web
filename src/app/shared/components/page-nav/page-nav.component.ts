@@ -23,20 +23,20 @@ export class PageNavComponent implements OnChanges {
       [Strings.routeTheMiniatureHorse, false],
       [Strings.routeOurProgram, false],
       [Strings.routeExpectedFoals, false],
-      [Strings.routeShowHorses, false],
+      [Strings.routeShowing, false],
       [Strings.routeShowResults, false],
       [Strings.routePastChampions, false]
     ]);
 
     this.links = new Map([
-      [Strings.routeOurFarm, Strings.navOurFarm],
-      [Strings.routePygmyGoats, Strings.navPygmyGoats],
-      [Strings.routeTheMiniatureHorse, Strings.navTheMiniatureHorse],
-      [Strings.routeOurProgram, Strings.navOurProgram],
-      [Strings.routeExpectedFoals, Strings.navExpectedFoals],
-      [Strings.routeShowHorses, Strings.navShowHorses],
-      [Strings.routeShowResults, Strings.navShowResults],
-      [Strings.routePastChampions, Strings.navPastChampions]
+      [Strings.routeOurFarm, Strings.titleOurFarm],
+      [Strings.routePygmyGoats, Strings.titlePygmyGoats],
+      [Strings.routeTheMiniatureHorse, Strings.titleTheMiniatureHorse],
+      [Strings.routeOurProgram, Strings.titleOurProgram],
+      [Strings.routeExpectedFoals, Strings.titleExpectedFoals],
+      [Strings.routeShowing, Strings.titleShowing],
+      [Strings.routeShowResults, Strings.titleShowResults],
+      [Strings.routePastChampions, Strings.titlePastChampions]
     ]);
   }
 

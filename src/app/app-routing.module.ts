@@ -5,6 +5,10 @@ import { HorsesComponent } from './horse/horses/horses.component';
 import { HorseRouteComponent } from './horse/horse-route/horse-route.component';
 import { FarmComponent } from './views/farm/farm.component';
 import { PygmyGoatsComponent } from './views/pygmy-goats/pygmy-goats.component';
+import { ShowingComponent } from './views/show-horses/showing.component';
+import { ShowResultsComponent } from './views/show-results/show-results.component';
+import { PastChampionsComponent } from './views/past-champions/past-champions.component';
+import { BreedingComponent } from './views/breeding/breeding.component';
 
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -12,7 +16,21 @@ const routes: Routes = [
 	{ path: 'our-farm', component: FarmComponent },
 	{ path: 'pygmy-goats', component: PygmyGoatsComponent },
 	{ path: 'horses', component: HorsesComponent},
-	{ path: 'horse/:route', component: HorseRouteComponent, runGuardsAndResolvers: 'always' },
+	{ path: 'horse/:route', component: HorseRouteComponent, runGuardsAndResolvers: 'always' },  
+	{
+		path: 'breeding',
+		children: [
+		  { path: '', pathMatch: 'full', redirectTo: 'the-miniature-horse' },
+		  { path: 'the-miniature-horse', component: BreedingComponent },
+		  { path: 'our-program', component: BreedingComponent },
+		  { path: 'expected-foals', component: BreedingComponent },
+		]
+	  },
+	{ path: 'showing', component: ShowingComponent },
+	{ path: 'show-results', component: ShowResultsComponent },
+	{ path: 'past-champions', component: PastChampionsComponent },
+
+
 
 	// Redirects from old TLF Website
 	{ path: 'pygmy-goats.html', pathMatch: 'full', redirectTo: 'pygmy-goats' },

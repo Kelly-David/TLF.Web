@@ -21,7 +21,7 @@ export class PygmyGoatsComponent implements OnInit {
     private metaService: Meta
   ) {
 
-    this.title = 'Pygmy Goats';
+    this.title = Strings.titlePygmyGoats;
 		this.activeLink = Strings.routePygmyGoats;
 
 		this.routesToShow = new Array<string>(
