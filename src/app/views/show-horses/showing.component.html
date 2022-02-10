@@ -1,2 +1,40 @@
 <app-page-nav [activeLink]="activeLink" [title]="title" [routesToShow]="routesToShow"></app-page-nav>
 
+<div class="container">
+    <h3>Showing</h3>
+    <div class="line-nospacing"></div>
+    <p>Showing is the farm's main activity. During the summer we enjoy presenting our horses at AMHA, AMHR
+        and ASPC sanctioned shows throughout Europe.
+        We love to show horses we have bred so each year we will breed a small group of foals. It is our
+        hope that these individuals will become
+        accomplished halter horses before contributing to the gene pool.
+        The focus of our breeding program is to breed beautiful and true to type American Miniature
+        Horses. Halter competitions are where we can assess
+        the quality of our breeding program so we aim to breed horses that are competitive at an
+        international level.
+      </p>
+      <h4>Show Horses</h4>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-lg-4" *ngFor="let horse of horses$ | async">
+            
+            <div class="card horse-card" [routerLink]="['/horse', nameAsRoute(horse.name)]">
+                <div class="card-body card-img-bg" [style]="getStyleForImageAsBackground(horse.profile)">
+                </div>
+                <div class="card-body">
+                  <small>{{horse.gender | titlecase}}</small>
+                  <h5>{{horse.name}}</h5>
+                    <div class="horse-divison">
+                      <!-- {{division}} -->
+                    </div>
+                    <div class="horse-info">
+                      Owned by {{horse.owner | titlecase}}
+                        <!-- {{trainer!='Sold to'?trainer : horse.owner.length>30?(trainer+' '+horse.owner | slice:0:27)+'...' : trainer+' '+horse.owner}} -->
+                    </div>
+                </div>
+              </div>
+    
+        </div>
+    </div>
+
+  </div>
+

@@ -23,7 +23,7 @@ export class HorseService {
     return this.firestore.doc$(`${Strings.V1horseCollection}/${horseId}`);
   }
 
-  public V1GetHorsesByFilterType(type: string, sortField: string, sortOrder = 'asc' as string): Observable<any[]> {
+  public V1GetHorsesByFilterType(type: string, sortField ='name' as string, sortOrder = 'asc' as string): Observable<any[]> {
     
     type      = type.toLowerCase();
     sortField = sortField.toLowerCase();
