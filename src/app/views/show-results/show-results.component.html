@@ -1,2 +1,17 @@
 <app-page-nav [activeLink]="activeLink" [title]="title" [routesToShow]="routesToShow"></app-page-nav>
 
+<div class="container">
+    <h3>Show Results</h3>
+    <div class="line-nospacing"></div>
+
+    <form class="mb-3">
+        <div class="form-group">
+            <input type="text" [(ngModel)]="filter" name="filter" class="form-control" id="search" placeholder="Search by horse name">
+            <!-- <small id="searchTip" class="form-text text-muted">Search by horse name</small> -->
+        </div>
+    </form>
+
+    <div class="row" *ngFor="let horse of horses$ |  async | collectionFilter: filter : 'name'">
+        <app-horse-results [horseId]="horse.id" [showFoals]="false"></app-horse-results>
+    </div>
+</div>

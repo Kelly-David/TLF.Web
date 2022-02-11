@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HorseService } from '../../shared/services/horse.service';
+import { HorseService } from '../../services/horse.service';
 
 @Component({
   selector: 'app-horse-results',
@@ -10,6 +10,7 @@ import { HorseService } from '../../shared/services/horse.service';
 export class HorseResultsComponent implements OnInit {
 
   @Input() horseId!: string;
+  @Input() showFoals = true;
   public horse$!: Observable<any>;
   public results$!: Observable<any>;
   public progeny$!: Observable<any>;

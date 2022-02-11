@@ -9,6 +9,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LightboxContentComponent } from './components/lightbox-content/lightbox-content.component';
 import { HorseLinkComponent } from './components/horse-link/horse-link.component';
 import { PageNavComponent } from './components/page-nav/page-nav.component';
+import { FormsModule } from '@angular/forms';
+import { CollectionFilterPipe } from './pipes/collection-filter.pipe';
+import { HorseResultsComponent } from './components/horse-results/horse-results.component';
 
 
 @NgModule({
@@ -19,12 +22,15 @@ import { PageNavComponent } from './components/page-nav/page-nav.component';
     LightboxComponent,
     LightboxContentComponent,
     HorseLinkComponent,
-    PageNavComponent
+    PageNavComponent,
+    CollectionFilterPipe,
+    HorseResultsComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   exports: [
     AppRoutingModule,
@@ -32,7 +38,10 @@ import { PageNavComponent } from './components/page-nav/page-nav.component';
     GridComponent,
     LightboxContentComponent,
     HorseLinkComponent,
-    PageNavComponent
+    PageNavComponent,
+    FormsModule,
+    CollectionFilterPipe,
+    HorseResultsComponent
   ]
 })
 export class SharedModule { }

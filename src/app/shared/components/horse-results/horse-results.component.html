@@ -1,0 +1,19 @@
+<div class="accolade-horse" *ngIf="(horse$ | async) && ((results$ | async)?.length > 0)">
+
+    <app-horse-link  [horse]="horse$ | async"></app-horse-link>
+    
+    <ng-container *ngFor="let accolade of results$ | async">
+      <div class="accolade">
+        {{accolade.description}} | {{accolade.year}}
+      </div>
+    </ng-container>
+
+  </div>
+  
+  <ng-template *ngIf="showFoals">
+    <ng-container *ngFor="let foal of progeny$ | async">
+      <app-horse-results *ngIf="foal.id" [horseId]="foal.id"></app-horse-results>
+    </ng-container> 
+  </ng-template>
+ 
+  
