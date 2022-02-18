@@ -73,6 +73,11 @@ export class HorseService {
       console.log(error);
     });
   }
+
+  public V1GetExpectedFoalsByYear(year: string): Observable<any> {
+
+    return this.firestore.col$(`expected/${year}/breeding`, ref => ref.orderBy('month'));
+  }
 }
 
 
