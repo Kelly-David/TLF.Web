@@ -27,3 +27,18 @@ export enum KEY_CODE {
     RIGHT_ARROW = "ArrowRight",
     LEFT_ARROW = "ArrowLeft"
   }
+
+  export enum Month {
+      January = 1,
+      February, 
+      March, 
+      April, 
+      May, 
+      June, 
+      July,
+      August, 
+      September, 
+      October, 
+      November,
+      December
+  }

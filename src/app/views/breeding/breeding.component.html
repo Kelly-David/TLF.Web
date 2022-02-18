@@ -1,217 +1,288 @@
 <app-page-nav [activeLink]="activeLink" [title]="title" [routesToShow]="routesToShow"></app-page-nav>
 
 <div class="container">
-  <ng-container *ngIf="activeLink === 'breeding/our-program'">
-    <h3>Our Breeding Program</h3>
-    <div class="line-nospacing"></div>
-    <p>
-      At Turra Lodge Farm we breed American miniature horses. These horses are registered with the American Miniature
-      Horse Association (AMHA), some are also registered with the American Miniature Horse Registry (AMHR), the British
-      Miniature Horse Society (BMHS) or the American Shetland Pony Club (ASPC). All of our horses: measure 34 inches or
-      under; and, are DNA tested and parentage qualified.
-    </p>
-    <p>The focus of our breeding program is to create small, beautiful and true to type American Miniature Horses.</p>
-    <h6>The 'Affair' Daughters</h6>
-    <div class="line-nospacing"></div>
-    <p>The majority of our mares descend from one of our original stallions
-      <strong>
-        <a class="teal-text" [routerLink]="['/horse/donabi-uk-uno-romantic-affair']">Donabi UK Uno Romantic Affair</a>
-      </strong>
-      , a small,
-      colourful horse that exhibited an extreme face and huge eyes. Uno produced several successful show horses for the
-      farm but his best offspring were a result of his breedings with the mare
-      <strong>
-        <a class="teal-text" [routerLink]="['/horse/tazaeos-pecans-inspiration']">Tazaeos Pecans Inspiration</a>
-      </strong>. Together
-      they produced three fillies who are an important part of our breeding program. TLF Painted Affair (born 2014),
-      TLF Afire Affair (born 2015) and TLF Starring Affair (born 2018). </p>
-    <div class="row">
-      <div class="col">
-        <figure class="figure">
-          <img class="img-fluid pb-1" src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FlF6kBydFrp3wjRcz1WCP?alt=media&token=12efdeb5-5849-4bff-b58d-9932f3fce672">
-          <figcaption class="figure-caption text-center">TLF Painted Affair
-          </figcaption>
-        </figure>
-      </div>
-      <div class="col">
-        <figure class="figure">
-          <img class="img-fluid pb-1" src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FrPC0M8GVPNYWaZMiWBME?alt=media&token=6b6cdb8b-f31e-4614-9a5f-5558ff2e7b49">
-          <figcaption class="figure-caption text-center">TLF Afire Affair
-          </figcaption>
-        </figure>
-      </div>
-      <div class="col">
-        <figure class="figure">
-          <img class="img-fluid pb-1" src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2F1wIMQSYu0PWS23pjWEZ7?alt=media&token=6d87eb7e-82f5-4244-b0ad-00c4e474af3c">
-          <figcaption class="figure-caption text-center">TLF Starring Affair
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-    <h6>The 'Bolero' Daughters</h6>
-    <div class="line-nospacing"></div>
-    <p>In 2013, David worked for Alliance Miniatures, a breeding and training center run by Mike and Terry
-      Hlavatovic in Texas. The farm's up and coming sire, SMO Bolero De Suerte, was proving to be a very successful show
-      horse sire. Shortly after, Turra Lodge Farm acquired two Bolero daughters.
-      Exquisite Boleros Evangelista was bred at the Texas farm and foaled in Belgium in 2014. Our second Bolero
-      daughter was bred from ERL Cutty's Berry Blitz, the 2015 World Grand Champion Senior Mare trained by Alliance for
-      Pecan Grove Farm. Pecan
-      Grove Boleros Alessandra was her first offspring and is a World Reserve Champion weanling filly and European
-      Champion.
-    </p>
-    <div class="row">
-      <div class="col">
-        <figure class="figure">
-          <img class="img-fluid pb-1" src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2FBolero.jpg?alt=media&token=8a166186-ef22-4b59-ada5-137818a1fffc">
-          <figcaption class="figure-caption text-center">SMO Bolero De Suerte
-          </figcaption>
-        </figure>
-      </div>
-      <div class="col">
-        <figure class="figure">
-          <img class="img-fluid pb-1" src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2FEve_3.jpg?alt=media&token=0a7c3e21-d78f-4c21-8385-6cd3d8a6f264">
-          <figcaption class="figure-caption text-center">Exquisite Boleros Evangelista
-          </figcaption>
-        </figure>
-      </div>
-      <div class="col">
-        <figure class="figure">
-          <img class="img-fluid pb-1" src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FQ1XEEopulMtYhD2Caujy?alt=media&token=1092c3f3-37cf-4732-a20e-552579adcda1">
-          <figcaption class="figure-caption text-center">Pecan Grove Boleros Alessandra
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-    <h6>The American Shetlands</h6>
-    <div class="line-nospacing"></div>
-    <p>We were very excited to add two triple registered classic American Shetlands to our breeding program.
-    </p>
-    <div class="row">
-      <div class="col">
-        <figure class="figure">
-          <img class="img-fluid pb-1" src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FR8M0Q04uhVcQFM8ZqtCJ?alt=media&token=2a2ece0c-f0e8-4c6a-afee-525755c9e209">
-          <figcaption class="figure-caption text-center">AE Sheza Rouge - triple registered mare
-          </figcaption>
-        </figure>
-      </div>
-      <div class="col">
-        <figure class="figure">
-          <img class="img-fluid pb-1" src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FeoKF5areSAgUVDmeFQSF?alt=media&token=d458eda4-5b4a-48dd-a81b-eea2d0949a7a">
-          <figcaption class="figure-caption text-center">LV Roadmasters Sir Lancelot - triple registered stallion
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="activeLink === 'breeding/the-miniature-horse'">
-    <h3>The Miniature Horse</h3>
-    <div class="line-nospacing"></div>
-    <p class="text-justify">
-      We chose the American miniature for their size and stature. They can be incredibly refined and beautiful. They are
-      intelligent, restless and crave attention from humans. Mandatory DNA testing is also an important factor for us.
-      The AMHA requires every horse be DNA tested before they contribute to the gene pool. Owners can be assured that
-      the parentage of their horse
-      is proven. The AMHA also gives owners the opportunity to compete against some of the best horses in the world in a
-      professional environment.
-    </p>
-    <h4>The American Miniature Horse</h4>
-    <div class="line-spcaing"></div>
-    <p class="text-justify">
-      The American Miniature Horse is a beautiful, small, well balanced horse that if all reference to size were
-      eliminated, would have the same conformational proportions of other full sized light breeds. The mares
-      demonstrate refinement and feminine qualities. The mature stallions show boldness and masculinity. The general
-      impression is to be a balanced individual regardless of size with symmetry, strength, agility and alertness.
-      Movement is strong, natural and athletic. In motion the horse will exude athleticism as demonstrated by
-      suppleness of the shoulders and engaged hocks. In judging when characteristics are almost equal, preference
-      must be given to the smaller horse.
-    </p>
-    <p class="text-justify">American miniature horses are registered with the American Miniature Horse Association (AMHA) and the American
-      Miniature
-      Horse Registry (AMHR). These horses are
-      imported from the U.S. or bred from imported parents. The American Miniature Horse is intelligent, curious,
-      gentle,
-      sensible, willing to cooperate and easy to train.
-    </p>
-    <div class="row">
-      <div class="col">
-        <h6>American Miniature Horse Association</h6>
-        <div class="line-nospacing"></div>
-        <p class="text-justify">
-          The American Miniature Horse Association is the world's leading Miniature Horse registry with over 200,000
-          horses registered and more than 10,000 members in 38 countries and provinces. Founded in 1978, AMHA promotes
-          the breeding, use and perpetuation of a standard of equine excellence in
-          miniature, separate and apart from ponies and other small equine. Horses registered with AMHA must meet the
-          Association standard of perfection and cannot exceed 34 inches in height at the withers as measured from the
-          last hairs of the mane.
-        </p>
-        <a href="https://www.amha.org/">
-          <footer class="blockquote-footer mb-3">Source: <cite title="Source Title">The American Miniature Horse
-              Association</cite></footer>
-        </a>
-        <div class="ratio ratio-16x9 mb-4">
-          <iframe src="https://www.youtube.com/embed/UdQUpw4ZH-E"
-            allowfullscreen></iframe>
-        </div>
-        <h6>American Miniature Horse Registry</h6>
-        <div class="line-nospacing"></div>
-        <p class="text-justify">The American Miniature Horse Registry is the original registry for the Miniature Horse in the United States.
-          Registering as many as 10,000 horses each year and hosting an annual national show, AMHR recognizes two sizes
-          and is the most comprehensive small equine option.
-        </p>
-        <p class="text-justify">
-          Division "A" Miniatures are up to 34" in height while the Division "B" Miniatures are between 34" and 38"
-          tall. Unlike the majority of most equine breeds, miniature horses are measured at the last hair of their mane
-          rather than at their wither. Miniature horses come in a full spectrum of coat colourings and patterns and
-          (unlike Shetlands), a spotted appaloosa is an accepted and popular colouring in the American Miniature Horse
-          Registry.
-        </p>
-        <a href="https://www.shetlandminiature.com/registries/amhr">
-          <footer class="blockquote-footer mb-3">Source: <cite title="Source Title">The American Miniature Horse
-              Registry</cite></footer>
-        </a>
-        <figure class="figure">
-          <img src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2Fmidnight.jpg?alt=media&token=70490824-be97-4643-9e12-be4dd0d0c7b9" class="img-fluid pb-1"
-            alt="Black Mountain Majestic Midnight">
-          <figcaption class="figure-caption text-center">Black Mountain Majestic Midnight - AMHA & AMHR Stallion
-          </figcaption>
-        </figure>
-      </div>
-      <div class="col">
-        <h6>American Shetland Pony Club</h6>
-        <div class="line-nospacing"></div>
-        <p class="text-justify">The American Shetland Pony is a culmulation of more than 120 years of selective breeding for refinement,
-          animation and motion. Breeding programs dating back to the 1800s have brought the breed far from the pony
-          native to
-          the Shetland Isles. The result - a refined, elegant, slender-necked show pony thats exhibits beauty, animation
-          and graceful movement.</p>
-        <figure class="figure">
-          <img src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2Flotto.jpg?alt=media&token=94300ccb-ccfc-40b5-a22b-8d42ec3b2a3e" class="img-fluid pb-1" alt="LV Roadmasters Sir Lancelot">
-          <figcaption class="figure-caption text-center">LV Roadmasters Sir Lancelot - AMHA, AMHR & ASPC Stallion
-          </figcaption>
-        </figure>
-        <p class="text-justify">American Shetland Ponies may measure up to 46 inches at the withers so naturally thet tend to exhibit longer
-          legs, tighter barrels and longer necks than the American miniature horse. Many shetlands mature under 38
-          inches making them eligible to be dual registered with the AMHR as B-division American miniature horses. There
-          are also a small amount of American shetlands maturing under 34 inches being eligible to be triple registered
-          minature horses with the AMHR and the AMHA. </p>
-        <p class="text-justify">The ASPC Registry was the beginning of the American Shetland Pony Club, Inc. and is the main breed registry
-          of the organization - the American Shetland Pony.</p>
-        <p class="text-justify">In recent years, the American Shetland pony is growing in popularty among miniature horse breeders in the
-          U.S. and Europe. Triple registered ponies are being incoroporated into miniature horse breeding programs to
-          further enhance horse-like features and drive a contemporary look. </p>
-        <figure class="figure">
-          <img src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2Feve_2.jpg?alt=media&token=29b02934-edf8-4ddc-bdbd-0ae19f0a35b9" class="img-fluid pb-1" alt="LV Roadmasters Sir Lancelot">
-          <figcaption class="figure-caption text-center">Exquisite Boleros Evangelista - AMHA & AMHR mare carrying 75%
-            ASPC blood.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="activeLink === 'breeding/expected-foals'">
-    <h3>Expected Foals</h3>
-    <div class="line-nospacing"></div>
-    <!-- <app-expected></app-expected> -->
-  </ng-container>
-</div>
+	<ng-container *ngIf="activeLink === 'breeding/our-program'">
+		<h3>Our Breeding Program</h3>
+		<div class="line-nospacing"></div>
+		<p>
+			At Turra Lodge Farm we breed American miniature horses. These horses are registered with the American
+			Miniature
+			Horse Association (AMHA), some are also registered with the American Miniature Horse Registry (AMHR), the
+			British
+			Miniature Horse Society (BMHS) or the American Shetland Pony Club (ASPC). All of our horses: measure 34
+			inches or
+			under; and, are DNA tested and parentage qualified.
+		</p>
+		<p>The focus of our breeding program is to create small, beautiful and true to type American Miniature Horses.
+		</p>
+		<h6>The 'Affair' Daughters</h6>
+		<div class="line-nospacing"></div>
+		<p>The majority of our mares descend from one of our original stallions
+			<strong>
+				<a class="teal-text" [routerLink]="['/horse/donabi-uk-uno-romantic-affair']">Donabi UK Uno Romantic
+					Affair</a>
+			</strong>
+			, a small,
+			colourful horse that exhibited an extreme face and huge eyes. Uno produced several successful show horses
+			for the
+			farm but his best offspring were a result of his breedings with the mare
+			<strong>
+				<a class="teal-text" [routerLink]="['/horse/tazaeos-pecans-inspiration']">Tazaeos Pecans Inspiration</a>
+			</strong>. Together
+			they produced three fillies who are an important part of our breeding program. TLF Painted Affair (born
+			2014),
+			TLF Afire Affair (born 2015) and TLF Starring Affair (born 2018).
+		</p>
+		<div class="row">
+			<div class="col">
+				<figure class="figure">
+					<img class="img-fluid pb-1"
+						src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FlF6kBydFrp3wjRcz1WCP?alt=media&token=12efdeb5-5849-4bff-b58d-9932f3fce672">
+					<figcaption class="figure-caption text-center">TLF Painted Affair
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col">
+				<figure class="figure">
+					<img class="img-fluid pb-1"
+						src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FrPC0M8GVPNYWaZMiWBME?alt=media&token=6b6cdb8b-f31e-4614-9a5f-5558ff2e7b49">
+					<figcaption class="figure-caption text-center">TLF Afire Affair
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col">
+				<figure class="figure">
+					<img class="img-fluid pb-1"
+						src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2F1wIMQSYu0PWS23pjWEZ7?alt=media&token=6d87eb7e-82f5-4244-b0ad-00c4e474af3c">
+					<figcaption class="figure-caption text-center">TLF Starring Affair
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+		<h6>The 'Bolero' Daughters</h6>
+		<div class="line-nospacing"></div>
+		<p>In 2013, David worked for Alliance Miniatures, a breeding and training center run by Mike and Terry
+			Hlavatovic in Texas. The farm's up and coming sire, SMO Bolero De Suerte, was proving to be a very
+			successful show
+			horse sire. Shortly after, Turra Lodge Farm acquired two Bolero daughters.
+			Exquisite Boleros Evangelista was bred at the Texas farm and foaled in Belgium in 2014. Our second Bolero
+			daughter was bred from ERL Cutty's Berry Blitz, the 2015 World Grand Champion Senior Mare trained by
+			Alliance for
+			Pecan Grove Farm. Pecan
+			Grove Boleros Alessandra was her first offspring and is a World Reserve Champion weanling filly and European
+			Champion.
+		</p>
+		<div class="row">
+			<div class="col">
+				<figure class="figure">
+					<img class="img-fluid pb-1"
+						src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2FBolero.jpg?alt=media&token=8a166186-ef22-4b59-ada5-137818a1fffc">
+					<figcaption class="figure-caption text-center">SMO Bolero De Suerte
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col">
+				<figure class="figure">
+					<img class="img-fluid pb-1"
+						src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2FEve_3.jpg?alt=media&token=0a7c3e21-d78f-4c21-8385-6cd3d8a6f264">
+					<figcaption class="figure-caption text-center">Exquisite Boleros Evangelista
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col">
+				<figure class="figure">
+					<img class="img-fluid pb-1" src="../../../assets/images/alex.jpg">
+					<figcaption class="figure-caption text-center">Pecan Grove Boleros Alessandra
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+		<h6>The American Shetlands</h6>
+		<div class="line-nospacing"></div>
+		<p>We were very excited to add two triple registered classic American Shetlands to our breeding program.
+		</p>
+		<div class="row">
+			<div class="col">
+				<figure class="figure">
+					<img class="img-fluid pb-1"
+						src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FR8M0Q04uhVcQFM8ZqtCJ?alt=media&token=2a2ece0c-f0e8-4c6a-afee-525755c9e209">
+					<figcaption class="figure-caption text-center">AE Sheza Rouge - triple registered mare
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col">
+				<figure class="figure">
+					<img class="img-fluid pb-1"
+						src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/uploads%2FeoKF5areSAgUVDmeFQSF?alt=media&token=d458eda4-5b4a-48dd-a81b-eea2d0949a7a">
+					<figcaption class="figure-caption text-center">LV Roadmasters Sir Lancelot - triple registered
+						stallion
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="activeLink === 'breeding/the-miniature-horse'">
+		<h3>The Miniature Horse</h3>
+		<div class="line-nospacing"></div>
+		<p class="text-justify">
+			We chose the American miniature for their size and stature. They can be incredibly refined and beautiful.
+			They are
+			intelligent, restless and crave attention from humans. Mandatory DNA testing is also an important factor for
+			us.
+			The AMHA requires every horse be DNA tested before they contribute to the gene pool. Owners can be assured
+			that
+			the parentage of their horse
+			is proven. The AMHA also gives owners the opportunity to compete against some of the best horses in the
+			world in a
+			professional environment.
+		</p>
+		<h4>The American Miniature Horse</h4>
+		<div class="line-spcaing"></div>
+		<p class="text-justify">
+			The American Miniature Horse is a beautiful, small, well balanced horse that if all reference to size were
+			eliminated, would have the same conformational proportions of other full sized light breeds. The mares
+			demonstrate refinement and feminine qualities. The mature stallions show boldness and masculinity. The
+			general
+			impression is to be a balanced individual regardless of size with symmetry, strength, agility and alertness.
+			Movement is strong, natural and athletic. In motion the horse will exude athleticism as demonstrated by
+			suppleness of the shoulders and engaged hocks. In judging when characteristics are almost equal, preference
+			must be given to the smaller horse.
+		</p>
+		<p class="text-justify">American miniature horses are registered with the American Miniature Horse Association
+			(AMHA) and the American
+			Miniature
+			Horse Registry (AMHR). These horses are
+			imported from the U.S. or bred from imported parents. The American Miniature Horse is intelligent, curious,
+			gentle,
+			sensible, willing to cooperate and easy to train.
+		</p>
+		<div class="row">
+			<div class="col">
+				<h6>American Miniature Horse Association</h6>
+				<div class="line-nospacing"></div>
+				<p class="text-justify">
+					The American Miniature Horse Association is the world's leading Miniature Horse registry with over
+					200,000
+					horses registered and more than 10,000 members in 38 countries and provinces. Founded in 1978, AMHA
+					promotes
+					the breeding, use and perpetuation of a standard of equine excellence in
+					miniature, separate and apart from ponies and other small equine. Horses registered with AMHA must
+					meet the
+					Association standard of perfection and cannot exceed 34 inches in height at the withers as measured
+					from the
+					last hairs of the mane.
+				</p>
+				<a href="https://www.amha.org/">
+					<footer class="blockquote-footer mb-3">Source: <cite title="Source Title">The American Miniature
+							Horse
+							Association</cite></footer>
+				</a>
+				<div class="ratio ratio-16x9 mb-4">
+					<iframe src="https://www.youtube.com/embed/UdQUpw4ZH-E" allowfullscreen></iframe>
+				</div>
+				<h6>American Miniature Horse Registry</h6>
+				<div class="line-nospacing"></div>
+				<p class="text-justify">The American Miniature Horse Registry is the original registry for the Miniature
+					Horse in the United States.
+					Registering as many as 10,000 horses each year and hosting an annual national show, AMHR recognizes
+					two sizes
+					and is the most comprehensive small equine option.
+				</p>
+				<p class="text-justify">
+					Division "A" Miniatures are up to 34" in height while the Division "B" Miniatures are between 34"
+					and 38"
+					tall. Unlike the majority of most equine breeds, miniature horses are measured at the last hair of
+					their mane
+					rather than at their wither. Miniature horses come in a full spectrum of coat colourings and
+					patterns and
+					(unlike Shetlands), a spotted appaloosa is an accepted and popular colouring in the American
+					Miniature Horse
+					Registry.
+				</p>
+				<a href="https://www.shetlandminiature.com/registries/amhr">
+					<footer class="blockquote-footer mb-3">Source: <cite title="Source Title">The American Miniature
+							Horse
+							Registry</cite></footer>
+				</a>
+				<figure class="figure">
+					<img src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2Fmidnight.jpg?alt=media&token=70490824-be97-4643-9e12-be4dd0d0c7b9"
+						class="img-fluid pb-1" alt="Black Mountain Majestic Midnight">
+					<figcaption class="figure-caption text-center">Black Mountain Majestic Midnight - AMHA & AMHR
+						Stallion
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col">
+				<h6>American Shetland Pony Club</h6>
+				<div class="line-nospacing"></div>
+				<p class="text-justify">The American Shetland Pony is a culmulation of more than 120 years of selective
+					breeding for refinement,
+					animation and motion. Breeding programs dating back to the 1800s have brought the breed far from the
+					pony
+					native to
+					the Shetland Isles. The result - a refined, elegant, slender-necked show pony thats exhibits beauty,
+					animation
+					and graceful movement.</p>
+				<figure class="figure">
+					<img src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2Flotto.jpg?alt=media&token=94300ccb-ccfc-40b5-a22b-8d42ec3b2a3e"
+						class="img-fluid pb-1" alt="LV Roadmasters Sir Lancelot">
+					<figcaption class="figure-caption text-center">LV Roadmasters Sir Lancelot - AMHA, AMHR & ASPC
+						Stallion
+					</figcaption>
+				</figure>
+				<p class="text-justify">American Shetland Ponies may measure up to 46 inches at the withers so naturally
+					thet tend to exhibit longer
+					legs, tighter barrels and longer necks than the American miniature horse. Many shetlands mature
+					under 38
+					inches making them eligible to be dual registered with the AMHR as B-division American miniature
+					horses. There
+					are also a small amount of American shetlands maturing under 34 inches being eligible to be triple
+					registered
+					minature horses with the AMHR and the AMHA. </p>
+				<p class="text-justify">The ASPC Registry was the beginning of the American Shetland Pony Club, Inc. and
+					is the main breed registry
+					of the organization - the American Shetland Pony.</p>
+				<p class="text-justify">In recent years, the American Shetland pony is growing in popularty among
+					miniature horse breeders in the
+					U.S. and Europe. Triple registered ponies are being incoroporated into miniature horse breeding
+					programs to
+					further enhance horse-like features and drive a contemporary look. </p>
+				<figure class="figure">
+					<img src="https://firebasestorage.googleapis.com/v0/b/project-64c2c.appspot.com/o/layout%2Feve_2.jpg?alt=media&token=29b02934-edf8-4ddc-bdbd-0ae19f0a35b9"
+						class="img-fluid pb-1" alt="LV Roadmasters Sir Lancelot">
+					<figcaption class="figure-caption text-center">Exquisite Boleros Evangelista - AMHA & AMHR mare
+						carrying 75%
+						ASPC blood.
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="activeLink === 'breeding/expected-foals'">
+		<h3>Expected Foals</h3>
+		<div class="line-nospacing"></div>
+		<div class="row">
+			<div class="col-6 pb-4" *ngFor="let item of expectedFoals$ | async">
+				<div class="card flex-container">
+					<div class="card-body text-center">
+						<h4>Planned Breeding</h4>
+						<p class="text-justify">
+							{{item.registration}} | Expected {{GetMonthString(item.month)}} {{yearToDisplay}}
+						</p>
+						<div class="row">
+							<div class="col">
+								<app-horse-link [horseId]="item.sire"></app-horse-link>
+							</div>
+							<div class="col">
+								<app-horse-link [horseId]="item.dam"></app-horse-link>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<ng-container *ngFor="let item of expectedFoals$ | async">
 
+		</ng-container>
+	</ng-container>
+</div>
