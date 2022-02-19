@@ -9,6 +9,7 @@ import { ShowingComponent } from './views/show-horses/showing.component';
 import { ShowResultsComponent } from './views/show-results/show-results.component';
 import { PastChampionsComponent } from './views/past-champions/past-champions.component';
 import { BreedingComponent } from './views/breeding/breeding.component';
+import { SalesComponent } from './views/sales/sales.component';
 
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -29,8 +30,8 @@ const routes: Routes = [
 	{ path: 'showing', component: ShowingComponent },
 	{ path: 'show-results', component: ShowResultsComponent },
 	{ path: 'past-champions', component: PastChampionsComponent },
-
-
+	{ path: 'sales', component: SalesComponent },
+	{ path: 'recent-sales', component: SalesComponent },
 
 	// Redirects from old TLF Website
 	{ path: 'pygmy-goats.html', pathMatch: 'full', redirectTo: 'pygmy-goats' },
