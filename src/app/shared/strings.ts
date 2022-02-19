@@ -23,7 +23,7 @@ export class Strings {
     static titleShowing              = "Showing" as string;
     static titleShowResults          = "Show Results" as string;
     static titlePastChampions        = "Past Champions" as string;
-    static titleCurrentOpportunities = "Current Opportunities" as string;
+    static titleCurrentOpportunities = "Sales" as string;
     static titleRecentSales          = "Recent Sales" as string;
 
     static routeOurFarm              = "our-farm" as string;
@@ -34,7 +34,7 @@ export class Strings {
     static routeShowing              = "showing" as string;
     static routeShowResults          = "show-results" as string;
     static routePastChampions        = "past-champions" as string;
-    static routeCurrentOpportunities = "current-opportunities" as string;
+    static routeCurrentOpportunities = "sales" as string;
     static routeRecentSales          = "recent-sales" as string;
 
 }

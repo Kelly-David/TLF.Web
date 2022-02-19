@@ -25,7 +25,9 @@ export class PageNavComponent implements OnChanges {
       [Strings.routeExpectedFoals, false],
       [Strings.routeShowing, false],
       [Strings.routeShowResults, false],
-      [Strings.routePastChampions, false]
+      [Strings.routePastChampions, false],
+      [Strings.routeCurrentOpportunities, false],
+      [Strings.routeRecentSales, false]
     ]);
 
     this.links = new Map([
@@ -36,7 +38,9 @@ export class PageNavComponent implements OnChanges {
       [Strings.routeExpectedFoals, Strings.titleExpectedFoals],
       [Strings.routeShowing, Strings.titleShowing],
       [Strings.routeShowResults, Strings.titleShowResults],
-      [Strings.routePastChampions, Strings.titlePastChampions]
+      [Strings.routePastChampions, Strings.titlePastChampions],
+      [Strings.routeCurrentOpportunities, Strings.titleCurrentOpportunities],
+      [Strings.routeRecentSales, Strings.titleRecentSales]
     ]);
   }
 

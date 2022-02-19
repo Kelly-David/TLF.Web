@@ -7,6 +7,7 @@ import { ShowingComponent } from './show-horses/showing.component';
 import { ShowResultsComponent } from './show-results/show-results.component';
 import { PastChampionsComponent } from './past-champions/past-champions.component';
 import { BreedingComponent } from './breeding/breeding.component';
+import { SalesComponent } from './sales/sales.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BreedingComponent } from './breeding/breeding.component';
     ShowingComponent,
     ShowResultsComponent,
     PastChampionsComponent,
-    BreedingComponent
+    BreedingComponent,
+    SalesComponent
   ],
   imports: [
     CommonModule,
