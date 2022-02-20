@@ -1,1 +1,43 @@
 <app-page-nav [activeLink]="activeLink" [title]="title" [routesToShow]="routesToShow"></app-page-nav>
+
+<div class="container">
+
+    <ng-template [ngIf]="activeLink === 'sales'" [ngIfElse]="sold">
+        <div class="d-flex justify-content-between">
+            <h3>Current Opportunities</h3>
+            <small class="align-self-center"><i>Updated: {{updatedDate | date}}</i></small>
+        </div>
+        <div class="line-nospacing"></div>
+        <p>
+            Creating beautiful show horses has been a primary focus of the TLF program for over a decade. Some of the
+            very best show ring achievers, in Ireland and Europe, can claim a TLF origin. Occasionally we do offer some
+            horses
+            for sale. As we continue to breed toward the next generation unfortunately we cannot keep them all. From
+            time to
+            time a broodmare, stallion or young colt/gelding will come up for sale. Please contact us with any
+            questions, we
+            are
+            happy to help you learn about the American mininature horse.
+        </p>
+        <p>If you would like information on any of our horses please <strong><a class="teal-text"
+                    [routerLink]="['/contact']">contact us.</a></strong>
+        </p>
+    </ng-template>
+
+    <ng-template #sold>
+        <h3>Recent Sales</h3>
+        <div class="line-nospacing"></div>
+        <p>Congratulations to each and every owner of a TLF-bred horse around the world. We look forward to sharing in
+            your success for many years to come.
+        </p>
+    </ng-template>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-lg-4" *ngFor="let horse of horses$ | async | collectionFilter: (activeLink === 'sales' ? false : true) : 'sold'">
+
+            <app-horse-card [horseId]="horse.id" [limitview]="true" [showOwner]="true"></app-horse-card>
+
+        </div>
+    </div>
+
+</div>

@@ -10,6 +10,7 @@ export class Strings {
     static V1progenyCollection        = 'progeny' as string;
     static V1accoladeCollection       = 'accolade' as string;
     static V1groupCollection          = 'family' as string;
+    static V1salesCollection          = 'salehorses' as string;
 
     // View Content
     static metaDataName         = 'Description' as string;

@@ -14,6 +14,7 @@ export class HorseCardComponent implements OnChanges {
   @Input() horseId!: string;
   @Input() limitview = false as boolean;
   @Input() splitview = false as boolean;
+  @Input() showOwner = false as boolean;
 
   public horse$!: Observable<any>;
 

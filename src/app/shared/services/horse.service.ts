@@ -78,6 +78,11 @@ export class HorseService {
 
     return this.firestore.col$(`expected/${year}/breeding`, ref => ref.orderBy('month'));
   }
+
+  public V1GetSalesHorses(): Observable<any[]> {
+
+    return this.firestore.col$(Strings.V1salesCollection);
+  }
 }
 
 

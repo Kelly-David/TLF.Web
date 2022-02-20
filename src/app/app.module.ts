@@ -9,10 +9,12 @@ import { NavigationModule } from './navigation/navigation.module';
 import { LandingModule } from './landing/landing.module';
 import { HorseModule } from './horse/horse.module';
 import { ViewModule } from './views/view.module';
+import { ContactViewComponent } from './contact/contact-view/contact-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ContactViewComponent,
   ],
   imports: [
     BrowserModule,

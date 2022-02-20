@@ -277,12 +277,10 @@
 								<app-horse-link [horseId]="item.dam"></app-horse-link>
 							</div>
 						</div>
+						<p class="pt-4">{{item.description}}</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<ng-container *ngFor="let item of expectedFoals$ | async">
-
-		</ng-container>
 	</ng-container>
 </div>

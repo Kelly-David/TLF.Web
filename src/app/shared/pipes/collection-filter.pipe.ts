@@ -5,12 +5,20 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CollectionFilterPipe implements PipeTransform {
 
-  transform(collection: any[] | null, term: string, filterByField: string): any {
+  transform(collection: any[] | null, term: string | boolean, filterByField: string): any {
 
     if (term !== undefined) {
 
-      return term ? collection?.filter(item => item[filterByField].toLowerCase().indexOf(term.toLowerCase()) !== -1) : collection;
+      if (typeof term === "boolean") {
+
+        return collection?.filter(item => item[filterByField] === term);
+      } 
+      else {
+
+        return term ? collection?.filter(item => item[filterByField].toLowerCase().indexOf(term.toLowerCase()) !== -1) : collection;
+      }
     }
+
     else return collection;
   }
 
