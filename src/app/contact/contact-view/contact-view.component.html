@@ -1,1 +1,45 @@
-<p>contact-view works!</p>
+<app-page-nav [activeLink]="activeLink" [title]="title" [routesToShow]="routesToShow"></app-page-nav>
+
+<div class="container">
+
+    <ng-template [ngIf]="activeLink === 'contact'" [ngIfElse]="links">
+        <div class="d-flex justify-content-between">
+            <h3>Contact Us</h3>
+        </div>
+        <div class="line-nospacing"></div>
+        <p>
+            Turra Lodge Farm, Ballickmoyler, Carlow, R93 X7Y5, Ireland. <br>
+            <small><i>Visitors by appointment only.</i></small>
+        </p>
+
+        <p><strong>Email: </strong><a href="mailto:info@turralodgefarm.com">info@turralodgefarm.com</a></p>
+        <p><strong>Phone: </strong>+353(0)876865388 | +353(0)879630097 </p>
+    </ng-template>
+
+    <ng-template #links>
+        <div class="d-flex justify-content-between">
+            <h3>Links</h3>
+        </div>
+        <div class="line-nospacing"></div>
+
+        <p>American Miniature Horse and American Shetland Pony Breeders & Trainers</p>
+        <div class="row">
+            <div class="col-12" *ngFor="let country of linkByCountry">
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6>{{country.country | uppercase}}</h6>
+                            <div class="row">
+                                <div class="col-6" *ngFor="let link of country.links">
+                                    <a class="stretched-link" [href]="link.url" target="_blank">
+                                        {{link.description | uppercase}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

@@ -9,12 +9,11 @@ import { NavigationModule } from './navigation/navigation.module';
 import { LandingModule } from './landing/landing.module';
 import { HorseModule } from './horse/horse.module';
 import { ViewModule } from './views/view.module';
-import { ContactViewComponent } from './contact/contact-view/contact-view.component';
+import { ContactModule } from './contact/contact.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ContactViewComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +24,8 @@ import { ContactViewComponent } from './contact/contact-view/contact-view.compon
     NavigationModule,
     LandingModule,
     HorseModule,
-    ViewModule
+    ViewModule,
+    ContactModule
   ],
   providers: [],
   bootstrap: [AppComponent]

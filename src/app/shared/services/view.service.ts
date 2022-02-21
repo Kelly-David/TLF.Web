@@ -43,4 +43,12 @@ export class ViewService {
 		return this.lightboxDirection.next(event);
 	}
 
+	public activeLinkCollection(filter: string) {
+
+		return this.firestore.col$(`link`, ref => ref
+			.where('type', '==', filter.toUpperCase())
+			.where('active', '==', true)
+			.orderBy('description'));
+	}
+
 }

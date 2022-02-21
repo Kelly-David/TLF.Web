@@ -26,6 +26,8 @@ export class Strings {
     static titlePastChampions        = "Past Champions" as string;
     static titleCurrentOpportunities = "Sales" as string;
     static titleRecentSales          = "Recent Sales" as string;
+    static titleContact              = "Contact" as string;
+    static titleLinks                = "Links" as string;
 
     static routeOurFarm              = "our-farm" as string;
     static routePygmyGoats           = "pygmy-goats" as string;
@@ -37,5 +39,7 @@ export class Strings {
     static routePastChampions        = "past-champions" as string;
     static routeCurrentOpportunities = "sales" as string;
     static routeRecentSales          = "recent-sales" as string;
+    static routeContact              = "contact" as string;
+    static routeLinks                = "links" as string;
 
 }
