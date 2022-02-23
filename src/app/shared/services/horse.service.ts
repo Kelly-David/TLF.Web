@@ -3,6 +3,7 @@ import { OrderByDirection } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Strings } from '../strings';
 import { FirestoreService } from './firestore.service';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -83,6 +84,22 @@ export class HorseService {
 
     return this.firestore.col$(Strings.V1salesCollection);
   }
+
+  public Migrate() {
+
+    const sourceId = "Cgo3NDhYD8budYXSnZUC";
+
+    const targetId = "Ex5JzuujuPIzbQjZhjeq";
+
+    this.firestore.doc$('horse/' + sourceId).pipe(take(1)).subscribe((data: any) =>
+      {
+        let horse = { pedigree: data.pedigree};
+        this.updateHorse(targetId, horse)
+      });
+
+  }
+
+
 }
 
 

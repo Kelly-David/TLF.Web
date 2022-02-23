@@ -14,7 +14,7 @@ export class AppComponent {
     private dataImport: DataImport
   ) {
     
-    this.dataImport.ImportHorses();
+    //this.dataImport.ImportHorses();
   }
   
 }

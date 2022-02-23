@@ -11,7 +11,7 @@ import { Strings } from '../../shared/strings';
 	templateUrl: './horse-collection.component.html',
 	styleUrls: ['./horse-collection.component.scss']
 })
-export class HorseCollectionComponent implements OnChanges {
+export class HorseCollectionComponent implements OnChanges, OnInit {
 
 	@Input() term!: string;
 	@Input() selector = '' as string;
@@ -26,21 +26,10 @@ export class HorseCollectionComponent implements OnChanges {
 		private horseService: HorseService
 	) { }
 
-	// ngOnInit() {
+	ngOnInit() {
 
-	// 	this.horses$ = this.horseService.horses();
 
-	// 	this.horses$.pipe(take(1)).subscribe((data) => {
-	// 		if(data !== undefined){
-	// 			console.log(data);
-
-	// 			data.forEach(horse => this.combineProgeny(horse));
-
-	
-	// 		}
-	// 	})
-
-	// }
+	}
 
 	// combineProgeny(horse: any) {
 
