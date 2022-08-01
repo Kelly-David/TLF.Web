@@ -28,10 +28,12 @@ export class HorseCollectionComponent implements OnChanges, OnInit {
 
 	ngOnInit() {
 
+		//this.horseService.Migrate();
+
 
 	}
 
-	// combineProgeny(horse: any) {
+	// mer(horse: any) {
 
 	// 	const foals = this.horseService.V1GetProgenyByParentId(horse.id);
 

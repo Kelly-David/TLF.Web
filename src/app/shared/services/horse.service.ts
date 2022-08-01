@@ -87,9 +87,11 @@ export class HorseService {
 
   public Migrate() {
 
-    const sourceId = "Cgo3NDhYD8budYXSnZUC";
+    const sourceId = "RpPZ0pR8QO98w9riKZOY";
 
-    const targetId = "Ex5JzuujuPIzbQjZhjeq";
+    const targetId = "xwYcCI62g6s3Nz84RcTs";
+
+    console.log("Migrating horseId: {{" + sourceId + "}} data to horseId: {{" + targetId + "}}.")
 
     this.firestore.doc$('horse/' + sourceId).pipe(take(1)).subscribe((data: any) =>
       {
