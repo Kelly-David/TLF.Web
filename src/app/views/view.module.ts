@@ -8,6 +8,7 @@ import { ShowResultsComponent } from './show-results/show-results.component';
 import { PastChampionsComponent } from './past-champions/past-champions.component';
 import { BreedingComponent } from './breeding/breeding.component';
 import { SalesComponent } from './sales/sales.component';
+import { VisitComponent } from './visit/visit.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SalesComponent } from './sales/sales.component';
     ShowResultsComponent,
     PastChampionsComponent,
     BreedingComponent,
-    SalesComponent
+    SalesComponent,
+    VisitComponent
   ],
   imports: [
     CommonModule,

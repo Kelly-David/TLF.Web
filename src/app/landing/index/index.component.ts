@@ -17,6 +17,9 @@ export class IndexComponent implements OnInit {
 	public pathToHeader = '../../../assets/layout/index-header.jpg' as string;
 	public pathToThumbnails = 'assets/images/' as string;
 	public featured$!: Observable<any>;
+	public title!: string;
+	public activeLink!: string;
+	public routesToShow!: Array<string>;
 
 	images = [
 		{Id: "01", PathToFullImg: 'home12.jpg', PathToThumbnail: 'home12.jpg', Description: 'TLF Afire Affair', AltText: '' },
@@ -32,7 +35,14 @@ export class IndexComponent implements OnInit {
 		public titleService: Title,
 		public metaService: Meta,
 		public horseService: HorseService
-	) { }
+	) {
+		this.title = Strings.titleIndex;
+		this.activeLink = Strings.routeVisit;
+
+		this.routesToShow = new Array<string>(
+			Strings.routeVisit			
+			);
+	 }
 
 	ngOnInit() {
 

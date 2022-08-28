@@ -11,6 +11,7 @@ import { PastChampionsComponent } from './views/past-champions/past-champions.co
 import { BreedingComponent } from './views/breeding/breeding.component';
 import { SalesComponent } from './views/sales/sales.component';
 import { ContactViewComponent } from './contact/contact-view/contact-view.component';
+import { VisitComponent } from './views/visit/visit.component';
 
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -35,6 +36,7 @@ const routes: Routes = [
 	{ path: 'recent-sales', component: SalesComponent },
 	{ path: 'contact', component: ContactViewComponent },
 	{ path: 'links', component: ContactViewComponent },
+	{ path: 'visit', component: VisitComponent },
 
 	// Redirects from old TLF Website
 	{ path: 'pygmy-goats.html', pathMatch: 'full', redirectTo: 'pygmy-goats' },

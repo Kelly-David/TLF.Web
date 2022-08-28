@@ -35,7 +35,7 @@ export class FarmComponent implements OnInit {
 
 		this.routesToShow = new Array<string>(
 			Strings.routeOurFarm,
-			Strings.routePygmyGoats
+			Strings.routePygmyGoats, 
 			);
 	 }
 

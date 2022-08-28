@@ -16,6 +16,8 @@ export class Strings {
     static metaDataName         = 'Description' as string;
     static metaDataContent      = 'Turra Lodge Farm breeding American miniature horses, pygmy goats, miniature pigs in Ireland. AMHA, AMHR, ASPC, BMHS registered miniature horses for sale in Ireland. Turra Lodge Farm, Ballickmoyler, Carlow.' as string;
     
+    static titleIndex                = "TLF | American Miniature Horses" as string;
+    static titleVisit                = "Plan your visit" as string;
     static titleOurFarm              = "Our Farm" as string;
     static titlePygmyGoats           = "Pygmy Goats" as string;
     static titleTheMiniatureHorse    = "The Miniature Horse" as string;
@@ -29,6 +31,8 @@ export class Strings {
     static titleContact              = "Contact" as string;
     static titleLinks                = "Links" as string;
 
+    static routeIndex                = "home" as string;
+    static routeVisit                = "visit" as string;
     static routeOurFarm              = "our-farm" as string;
     static routePygmyGoats           = "pygmy-goats" as string;
     static routeTheMiniatureHorse    = "breeding/the-miniature-horse" as string;

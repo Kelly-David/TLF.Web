@@ -1,0 +1,67 @@
+<app-page-nav [activeLink]="activeLink" [title]="title" [routesToShow]="routesToShow"></app-page-nav>
+
+<div class="container">
+    <h3>Turra Lodge Farm & Gardens</h3>
+    <div class="line-nospacing"></div>
+    <p class="text-justify">
+        Turra Lodge Farm and Gardens are now open to the public. Visit with the animals and explore our various lakeside gardens. We have a horsebox cafe on site serving a variety of treats and refreshments, including
+        barista coffee, ice-cream, soft drinks and freshly baked goods.
+    </p>
+    <div class="row">
+        <div class="col-lg-8">
+            <h4>The Gardens</h4>
+            <div class="line-nospacing"></div>
+            <p class="text-justify">
+                Over the past 20 years the Kelly Family have developed an extensive array of plants, trees and shrubbery
+                in one of the most unique landscapes you will ever see.
+                What once was an abandoned opencast coal mine has been transformed into a sanctuary for flora, fauna and
+                visitors alike.
+                In 2021, the gardens at Turra Lodge Farm where featured on the <strong>RTE series 'Ireland's Garden
+                    Heroes'</strong> with the Kelly Family being named one of Ireland's Garden Heroes.
+                The farm and gardens will also be featured on <strong>'Beidh Mé Ar Ais' on TG4</strong>.
+            </p>
+            <div class="ratio ratio-16x9 mb-4">
+                <iframe src="https://www.youtube.com/embed/kHIYeuXdleo?start=113" allowfullscreen></iframe>
+            </div>
+            <h4>The Animals</h4>
+            <div class="line-nospacing"></div>
+            <p class="text-justify">
+                Turra Lodge Farm is home to a variety of animals. Visitors will of course get to experience our <strong>American miniature horses</strong> but also see the several other species of rare breeds that live on the farm
+                including: <strong>Pygmy Goats, Pot Bellied Pigs, Soay Sheep, American Silky Chickens, Bantam Chickens and Donkeys.</strong>
+            </p>
+            <p>
+                <app-grid [imagesContent]="images" type="margin"></app-grid>    
+            </p>
+        </div>
+
+        <div class="col-lg-4">
+            <h4>Visitor Information</h4>
+            <div class="line-nospacing"></div>
+            <h6>Opening Hours</h6>
+            <p>Saturday & Sunday 11am - 5pm<br>
+                <small>Closed Monday through Friday.</small>
+            </p>
+            <h6>Admission</h6>
+            <p>€5 per person or €15 per family</p>
+            <h6>Facilities</h6>
+            <ul class="list-unstyled">
+                <li>Parking</li>
+                <li>Toilets</li>
+                <li>Picnic areas</li>
+                <li>Snacks and refreshments</li>
+            </ul>
+            <h6>Farm Rules</h6>
+            <ul class="list-unstyled">
+                <li>Children must be accompanied by an adult at all times</li>
+                <li>No dogs allowed</li>
+                <li>No feeding the animals</li>
+                <li>No playing in the water</li>
+                <li>No chasing the animals</li>
+            </ul>
+            <h6>Location</h6>
+            <div class="ratio ratio-16x9 mb-4">
+                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Turra+Lodge+Farm" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>

@@ -29,10 +29,14 @@ export class PageNavComponent implements OnChanges {
       [Strings.routeCurrentOpportunities, false],
       [Strings.routeRecentSales, false],
       [Strings.routeContact, false],
-      [Strings.routeLinks, false]
+      [Strings.routeLinks, false],
+      [Strings.routeIndex, false],
+      [Strings.routeVisit, false],
     ]);
 
     this.links = new Map([
+      [Strings.routeIndex, Strings.titleIndex],
+      [Strings.routeVisit, Strings.titleVisit],
       [Strings.routeOurFarm, Strings.titleOurFarm],
       [Strings.routePygmyGoats, Strings.titlePygmyGoats],
       [Strings.routeTheMiniatureHorse, Strings.titleTheMiniatureHorse],
