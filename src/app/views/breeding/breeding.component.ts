@@ -5,6 +5,8 @@ import { Title, Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { HorseService } from '../../shared/services/horse.service';
 import { Month } from '../../shared/models/web.models';
+import { ConfigurationService } from '../../shared/services/configuration.service';
+import { take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-breeding',
@@ -17,7 +19,7 @@ export class BreedingComponent implements OnInit {
 	public activeLink!: string;
 	public routesToShow!: Array<string>;
   public expectedFoals$!: Observable<any[]>;
-  public yearToDisplay!: string;
+  public yearToDisplay!: number;
 
   private routePrefix = "breeding/"
 
@@ -25,7 +27,8 @@ export class BreedingComponent implements OnInit {
     private route: ActivatedRoute,
     private titleService: Title,
     private metaService: Meta,
-    private horseService: HorseService
+    private horseService: HorseService,
+    private configService: ConfigurationService
   ) {
 
     this.title = Strings.titleShowing;
@@ -36,17 +39,17 @@ export class BreedingComponent implements OnInit {
       Strings.routeOurProgram,
       Strings.routeExpectedFoals
 			);
-
-      this.yearToDisplay = this.deriveYearToDisplay();
    }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    this.configService.config$.pipe(take(1)).subscribe(c => this.SetBreedingsToDisplay(c.BreedingYearToDisplay));
 
     this.route.url.subscribe(params => {
       this.setActiveView(params[0].path);
     });
 
-    this.expectedFoals$ = this.horseService.V1GetExpectedFoalsByYear(this.yearToDisplay);
+    this.expectedFoals$ = this.horseService.V1GetExpectedFoalsByYear('2023');
 
     this.titleService.setTitle('Breeding American miniature horses in Ireland');
 
@@ -56,6 +59,11 @@ export class BreedingComponent implements OnInit {
       Horse Association (AMHA), some are also registered with the American Miniature Horse Registry (AMHR), the British
       Miniature Horse Society (BMHS) or the American Shetland Pony Club (ASPC). All of our horses: measure 34 inches or
       under; and, are DNA tested and parentage qualified.`});
+  }
+
+  private SetBreedingsToDisplay(year: number): void {
+
+    this.expectedFoals$ = this.horseService.V1GetExpectedFoalsByYear(year.toString());
   }
 
   private setActiveView(route: string) {
@@ -76,18 +84,6 @@ export class BreedingComponent implements OnInit {
       this.title = Strings.titleExpectedFoals;
       this.activeLink = Strings.routeExpectedFoals;
     }
-  }
-
-  private deriveYearToDisplay(): string {
-
-    var thisYear = new Date().getFullYear()
-
-    if (new Date().getMonth() > 8) {
-
-      return (++thisYear).toString();
-    }
-
-    return thisYear.toString();
   }
 
   public GetMonthString(monthNumber: number): string {

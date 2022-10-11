@@ -11,6 +11,7 @@ export class Strings {
     static V1accoladeCollection       = 'accolade' as string;
     static V1groupCollection          = 'family' as string;
     static V1salesCollection          = 'salehorses' as string;
+    static V1ConfigurationCollection  = 'configuration' as string;
 
     // View Content
     static metaDataName         = 'Description' as string;

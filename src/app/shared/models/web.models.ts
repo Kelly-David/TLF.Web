@@ -42,3 +42,7 @@ export enum KEY_CODE {
       November,
       December
   }
+
+  export interface GlobalConfig {
+      BreedingYearToDisplay: number
+  }
