@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection, QueryFn } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { empty, Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import * as firebase from 'firebase/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { User } from '../models/web.models';
 
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;
@@ -14,6 +16,8 @@ export class FirestoreService {
 
   constructor(
     private firestore: AngularFirestore,
+    private fireAuth: AngularFireAuth,
+
   ) { }
 
   col<T>(ref: CollectionPredicate<T>, queryFn?: QueryFn): AngularFirestoreCollection<T> {
@@ -36,10 +40,6 @@ export class FirestoreService {
       return doc.payload.data() as T;
     }));
   }
-
-  /**********
-   * WRITE DATA
-   *********/
 
   /**
    * @description Return server timestamp
@@ -127,6 +127,26 @@ export class FirestoreService {
     */
   delete<T>(ref: DocPredicate<T>, id: string) {
     return this.doc(ref + `/${id}`).delete();
+  }
+
+  public GetAuthState(): Observable<User> | Observable<any> {
+
+    return this.fireAuth.authState.pipe(switchMap(user => {
+      if (user) {
+        return this.firestore.doc<User>(`user/${user.uid}`).valueChanges();
+      } else {
+        return of(null) as Observable<any>;
+      }
+    }));
+  }
+
+  public LoginWithEmailAndPassword(email: string, password: string) {
+
+    return this.fireAuth.signInWithEmailAndPassword(email, password);
+  }
+
+  public SignOut() {
+    return this.fireAuth.signOut();
   }
 
 }

@@ -12,6 +12,10 @@ import { BreedingComponent } from './views/breeding/breeding.component';
 import { SalesComponent } from './views/sales/sales.component';
 import { ContactViewComponent } from './contact/contact-view/contact-view.component';
 import { VisitComponent } from './views/visit/visit.component';
+import { LoginComponent } from './auth/login/login.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -37,6 +41,9 @@ const routes: Routes = [
 	{ path: 'contact', component: ContactViewComponent },
 	{ path: 'links', component: ContactViewComponent },
 	{ path: 'visit', component: VisitComponent },
+	{ path: 'login', component: LoginComponent },
+	{ path: 'logout', component: LogoutComponent },
+	{ path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
 	// Redirects from old TLF Website
 	{ path: 'pygmy-goats.html', pathMatch: 'full', redirectTo: 'pygmy-goats' },

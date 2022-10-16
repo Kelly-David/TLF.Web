@@ -263,22 +263,22 @@
 		<div class="line-nospacing"></div>
 
 		<div class="row d-flex justify-content-center">
-			<div class="col-12 pb-4" *ngFor="let item of expectedFoals$ | async">
+			<div class="col-12 pb-4" *ngFor="let foal of expectedFoals$ | async">
 
 				<div class="pb-3 split-card">
 					<div class="row">
 						<div class="col">
 							<div class="card flex-container">
 								<div class="card-body card-body-image col-lg-4">
-									<app-horse-link [horseId]="item.sire"></app-horse-link>
+									<app-horse-link [horseId]="foal.sire"></app-horse-link>
 								</div>
 								<div class="card-body align-self-center text-center col-lg-4">
-									<h4>{{GetMonthString(item.month)}} {{yearToDisplay}}</h4>
-									<p class="info">{{item.registration}}</p>
-									<p>{{item.description}}</p>
+									<h4>{{GetMonthString(foal.month)}} {{yearToDisplay}}</h4>
+									<p class="info">{{foal.registration}}</p>
+									<p>{{foal.description}}</p>
 								</div>
 								<div class="card-body card-body-image col-lg-4">
-									<app-horse-link [horseId]="item.dam"></app-horse-link>
+									<app-horse-link [horseId]="foal.dam"></app-horse-link>
 								</div>
 							</div>
 						</div>

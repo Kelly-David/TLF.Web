@@ -10,6 +10,7 @@ import { LandingModule } from './landing/landing.module';
 import { HorseModule } from './horse/horse.module';
 import { ViewModule } from './views/view.module';
 import { ContactModule } from './contact/contact.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ContactModule } from './contact/contact.module';
     LandingModule,
     HorseModule,
     ViewModule,
-    ContactModule
+    ContactModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

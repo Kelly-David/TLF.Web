@@ -1,0 +1,14 @@
+<app-page-nav [activeLink]="activeLink" [title]="'Dashboard'" [routesToShow]="routesToShow"></app-page-nav>
+
+<div class="container">
+    <h3>Dashboard</h3>
+    <div class="line-nospacing"></div>
+
+    <ng-container *ngIf="user$ | async as user">
+
+
+        {{user.Name}}
+        {{user.Email}}
+
+    </ng-container>
+</div>

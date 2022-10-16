@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LightboxContentComponent } from './components/lightbox-content/lightbox-content.component';
 import { HorseLinkComponent } from './components/horse-link/horse-link.component';
 import { PageNavComponent } from './components/page-nav/page-nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollectionFilterPipe } from './pipes/collection-filter.pipe';
 import { HorseResultsComponent } from './components/horse-results/horse-results.component';
 
@@ -30,7 +30,8 @@ import { HorseResultsComponent } from './components/horse-results/horse-results.
     CommonModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     AppRoutingModule,
@@ -40,6 +41,7 @@ import { HorseResultsComponent } from './components/horse-results/horse-results.
     HorseLinkComponent,
     PageNavComponent,
     FormsModule,
+    ReactiveFormsModule,
     CollectionFilterPipe,
     HorseResultsComponent
   ]

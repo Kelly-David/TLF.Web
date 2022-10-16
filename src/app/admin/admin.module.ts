@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from '../auth/login/login.component';
 import { SharedModule } from '../shared/shared.module';
-import { LogoutComponent } from './logout/logout.component';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    LogoutComponent
+  
+    DashboardComponent
   ],
   imports: [
     CommonModule,
     SharedModule
   ]
 })
-export class AuthModule { }
+export class AdminModule { }

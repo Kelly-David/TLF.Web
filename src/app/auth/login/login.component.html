@@ -1,0 +1,41 @@
+<app-page-nav [activeLink]="activeLink" [title]="title" [routesToShow]="routesToShow"></app-page-nav>
+
+
+<div class="container">
+    <h3>Webmaster Portal</h3>
+    <div class="line-nospacing"></div>
+
+    <div *ngIf="errorMessage !== ''">
+        <p class="alert alert-warning" role="alert">
+            {{errorMessage}}
+        </p>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6">
+            <form [formGroup]="form" (ngSubmit)="Login()">
+
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email address</label>
+                    <input type="email" formControlName="FormEmail" class="form-control" id="emailInput" autocomplete="username">
+                  </div>
+                  <div class="mb-3">
+                    <label for="passwordInput" class="form-label">Password</label>
+                    <input type="password" formControlName="FormPassword" class="form-control" id="passwordInput" autocomplete="current-password">
+                  </div>
+                
+                  <button type="submit" class="btn btn-info" [disabled]="form.invalid">Submit</button>
+        
+            </form>
+        </div>
+    </div>
+
+    
+
+
+
+
+
+
+
+</div>

@@ -31,6 +31,7 @@ export class Strings {
     static titleRecentSales          = "Recent Sales" as string;
     static titleContact              = "Contact" as string;
     static titleLinks                = "Links" as string;
+    static titleLogout               = "Logout" as string;
 
     static routeIndex                = "home" as string;
     static routeVisit                = "visit" as string;
@@ -46,5 +47,6 @@ export class Strings {
     static routeRecentSales          = "recent-sales" as string;
     static routeContact              = "contact" as string;
     static routeLinks                = "links" as string;
+    static routeLogout               = "logout" as string;
 
 }

@@ -63,6 +63,7 @@ export class BreedingComponent implements OnInit {
 
   private SetBreedingsToDisplay(year: number): void {
 
+    this.yearToDisplay = year;
     this.expectedFoals$ = this.horseService.V1GetExpectedFoalsByYear(year.toString());
   }
 

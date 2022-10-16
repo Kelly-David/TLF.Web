@@ -32,6 +32,7 @@ export class PageNavComponent implements OnChanges {
       [Strings.routeLinks, false],
       [Strings.routeIndex, false],
       [Strings.routeVisit, false],
+      [Strings.routeLogout, false],
     ]);
 
     this.links = new Map([
@@ -48,7 +49,8 @@ export class PageNavComponent implements OnChanges {
       [Strings.routeCurrentOpportunities, Strings.titleCurrentOpportunities],
       [Strings.routeRecentSales, Strings.titleRecentSales],
       [Strings.routeContact, Strings.titleContact],
-      [Strings.routeLinks, Strings.titleLinks]
+      [Strings.routeLinks, Strings.titleLinks],
+      [Strings.routeLogout, Strings.titleLogout]
     ]);
   }
 
