@@ -1,14 +1,16 @@
 <app-page-nav [activeLink]="activeLink" [title]="'Dashboard'" [routesToShow]="routesToShow"></app-page-nav>
 
 <div class="container">
-    <h3>Dashboard</h3>
+    <div class="d-flex justify-content-between">
+        <h3>Dashboard</h3>
+        <small class="align-self-center"><i>
+            <ng-container *ngIf="user$ | async as user">
+                {{user.Name}}
+                ({{user.Email}})
+            </ng-container>
+        </i></small>
+    </div>
     <div class="line-nospacing"></div>
 
-    <ng-container *ngIf="user$ | async as user">
-
-
-        {{user.Name}}
-        {{user.Email}}
-
-    </ng-container>
+    <app-horse-list></app-horse-list>
 </div>

@@ -62,9 +62,9 @@ export class HorseService {
     return this.firestore.doc$(`${Strings.V1groupCollection}/${id}`);
   }
 
-  public horses() {
+  public horses(): Observable<any[]> {
 
-    return this.firestore.col$("horse");
+    return this.firestore.col$(Strings.V1horseCollection, ref => ref.orderBy('name'));
   }
 
   public updateHorse(id: string, data: any) {

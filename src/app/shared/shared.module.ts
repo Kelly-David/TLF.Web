@@ -12,6 +12,7 @@ import { PageNavComponent } from './components/page-nav/page-nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollectionFilterPipe } from './pipes/collection-filter.pipe';
 import { HorseResultsComponent } from './components/horse-results/horse-results.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { HorseResultsComponent } from './components/horse-results/horse-results.
     CommonModule,
     AppRoutingModule,
     NgbModule,
+    //NgSelectModule,
     FormsModule,
     ReactiveFormsModule
   ],

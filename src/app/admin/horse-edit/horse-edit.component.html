@@ -1,0 +1,81 @@
+<ng-container *ngIf="horse$ | async as horse">
+    <div class="row">
+        <div class="col-8">
+            <form [formGroup]="form" (ngSubmit)="SaveForm()">
+
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="idInput">ID</span>
+                        <input type="text" class="form-control" aria-describedby="idInput" formControlName="FormId">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="nameInput">Name</span>
+                        <input type="text" class="form-control" aria-describedby="nameInput"
+                            formControlName="FormName">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="yearInput">Year</span>
+                            <input type="number" class="form-control" aria-describedby="yearInput"
+                                formControlName="FormYear">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="heightInput">Height</span>
+                            <input type="number" class="form-control" aria-describedby="heightInput"
+                                formControlName="FormHeight">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="colorInput">Colour</span>
+                            <input type="text" class="form-control" aria-describedby="colorInput"
+                                formControlName="FormColor">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="sireInput">Sire</span>
+                            <input type="text" class="form-control" aria-describedby="sireInput"
+                                formControlName="FormSire">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="damInput">Dam</span>
+                            <input type="text" class="form-control" aria-describedby="damInput" formControlName="FormDam">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="breederInput">Breeder</span>
+                        <input type="text" class="form-control" aria-describedby="breederInput" formControlName="FormBreeder">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="ownerInput">Owner</span>
+                        <input type="text" class="form-control" aria-describedby="nameInput"
+                            formControlName="FormOwner">
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+</ng-container>
