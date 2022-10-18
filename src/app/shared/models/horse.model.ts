@@ -3,6 +3,7 @@ import { Timestamp } from "firebase/firestore";
 export interface Horse {
     id           : string,
     name         : string,
+    year?         : number,
     dateOfBirth  : string,
     colour       : string,
     height       : number,

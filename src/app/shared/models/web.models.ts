@@ -59,3 +59,20 @@ export interface UserRoles {
     Editor: boolean;
     Admin: boolean;
 }
+
+export interface ListItem {
+    Index: number;
+    Value: string;
+}
+
+export interface FormEvent {
+    Type: FormEventType,
+    Item: ListItem
+}
+
+export enum FormEventType {
+    Add,
+    Update,
+    Delete,
+    Unknown
+}

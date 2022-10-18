@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Horse } from 'src/app/shared/models/horse.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take, filter } from 'rxjs/operators';
+import { ListItem, FormEvent, FormEventType } from '../../shared/models/web.models';
 
 @Component({
   selector: 'app-horse-edit',
@@ -13,8 +14,8 @@ import { take, filter } from 'rxjs/operators';
 export class HorseEditComponent implements OnChanges {
 
   @Input() id: string | undefined;
-  public horse$: Observable<Horse> | undefined;
   public form: FormGroup;
+  public infoList = [] as Array<ListItem>;
 
   constructor(
     private horseService: HorseService,
@@ -47,9 +48,9 @@ export class HorseEditComponent implements OnChanges {
 
   ngOnChanges(): void {
 
-    if (this.id != undefined) {
+    this.infoList = [];
 
-      this.horse$ = this.horseService.V1GetHorseById(this.id);
+    if (this.id != undefined) {
 
       this.horseService.V1GetHorseById(this.id).pipe(take(1)).pipe(filter(data => !!data)).subscribe(data => this.PatchForm(data));
     }
@@ -57,9 +58,65 @@ export class HorseEditComponent implements OnChanges {
 
   public SaveForm() {
 
+    let horse = {
+      name: this.FormName,
+      year: this.FormYear,
+      height: this.FormHeight,
+      color: this.FormColor,
+      gender: this.FormGender,
+      sire: this.FormSire,
+      dam: this.FormDam,
+      breeder: this.FormBreeder,
+      owner: this.FormOwner,
+      profile: this.FormProfile,
+      registrations: [],
+      filter: [],
+      info: []
+    } as any;
+
+    if (this.FormCheckAMHA == true) {
+      horse.registrations.push("AMHA");
+    }
+    if (this.FormCheckAMHR == true) {
+      horse.registrations.push("AMHR");
+    }
+    if (this.FormCheckASPC == true) {
+      horse.registrations.push("ASPC");
+    }
+    if (this.FormCheckBMHS == true) {
+      horse.registrations.push("BMHS");
+    }
+
+    if (this.FormCheckFilterBreeding == true) {
+      horse.filter.push("breeding");
+    }
+    if (this.FormCheckFilterStallion == true) {
+      horse.filter.push("stallion");
+    }
+    if (this.FormCheckFilterMare == true) {
+      horse.filter.push("mare");
+    }
+    if (this.FormCheckFilterFoal == true) {
+      horse.filter.push("foal");
+    }
+    if (this.FormCheckFilterReference == true) {
+      horse.filter.push("reference");
+    }
+
+    horse.info = this.infoList.map(item => item.Value);
+
+    console.log(horse);
   }
 
   private PatchForm(data: any) {
+
+    this.infoList = [];
+
+    let i = 0;
+    data.info.forEach((val: string) => {
+      this.infoList.push({ Index: i, Value: val });
+      i++;
+    });
 
     this.form.patchValue({
       FormId: data.id ? data.id : '',
@@ -132,4 +189,57 @@ export class HorseEditComponent implements OnChanges {
       }
     });
   }
+
+  get FormId() { return this.form.get('FormId')?.value }
+  get FormName() { return this.form.get('FormName')?.value }
+  get FormSire() { return this.form.get('FormSire')?.value }
+  get FormDam() { return this.form.get('FormDam')?.value }
+  get FormColor() { return this.form.get('FormColor')?.value }
+  get FormYear() { return this.form.get('FormYear')?.value }
+  get FormGender() { return this.form.get('FormGender')?.value }
+  get FormHeight() { return this.form.get('FormHeight')?.value }
+  get FormProfile() { return this.form.get('FormProfile')?.value }
+  get FormOwner() { return this.form.get('FormOwner')?.value }
+  get FormBreeder() { return this.form.get('FormBreeder')?.value }
+  get FormCheckAMHA() { return this.form.get('FormCheckAMHA')?.value }
+  get FormCheckAMHR() { return this.form.get('FormCheckAMHR')?.value }
+  get FormCheckASPC() { return this.form.get('FormCheckASPC')?.value }
+  get FormCheckBMHS() { return this.form.get('FormCheckBMHS')?.value }
+  get FormCheckFilterReference() { return this.form.get('FormCheckFilterReference')?.value }
+  get FormCheckFilterStallion() { return this.form.get('FormCheckFilterStallion')?.value }
+  get FormCheckFilterBreeding() { return this.form.get('FormCheckFilterBreeding')?.value }
+  get FormCheckFilterMare() { return this.form.get('FormCheckFilterMare')?.value }
+  get FormCheckFilterFoal() { return this.form.get('FormCheckFilterFoal')?.value }
+
+  public InfoChanges(event: FormEvent) {
+
+    switch (event.Type) {
+
+      case FormEventType.Update: {
+        this.infoList[event.Item.Index] = event.Item;
+        break;
+      }
+      case FormEventType.Delete: {
+        this.infoList.forEach((item, index) => {
+          if (event.Item.Index == index) this.infoList.splice(index, 1);
+        })
+
+        // Reset the indexes
+        let i = 0;
+        this.infoList.forEach(item => {
+          item.Index = i;
+          i++;
+        })
+
+        break;
+      }
+      case FormEventType.Update: {
+        this.infoList[event.Item.Index] = event.Item;
+        break;
+      }
+    }
+
+  }
+
+
 }
