@@ -33,7 +33,19 @@ export class TextareaComponent implements OnChanges {
   }
 
   public Update() {
+
     this.item.Value = this.form.get('FormControl')?.value;
-    this.changes.emit({Type: FormEventType.Update, Item: this.item});
+
+    this.changes.emit({ Type: FormEventType.Update, Item: this.item });
+  }
+
+  public Delete() {
+
+    if (confirm("Confirm delete")) {
+
+      this.item.Value = this.form.get('FormControl')?.value;
+
+      this.changes.emit({ Type: FormEventType.Delete, Item: this.item });
+    }
   }
 }

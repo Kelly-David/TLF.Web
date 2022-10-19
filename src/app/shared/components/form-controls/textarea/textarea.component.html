@@ -1,5 +1,13 @@
-<form [formGroup]="form">
-    <div class="input-group mb-3">
-        <textarea class="form-control" aria-label="With textarea" formControlName="FormControl" (input)="Update()">{{item}}</textarea>
-    </div>
-</form>
+<div class="d-flex mb-3">
+
+    <form [formGroup]="form" class="flex-grow-1">
+        <div class="input-group">
+            <textarea class="form-control" aria-label="With textarea" formControlName="FormControl"
+                (input)="Update()">{{item}}</textarea>
+        </div>
+    </form>
+
+    <div class="btn-group align-self-center ms-2">
+        <button class="btn btn-light btn-sm" type="button" (click)="Delete()"><i class="fas fa-trash"></i></button>
+        </div>
+</div>

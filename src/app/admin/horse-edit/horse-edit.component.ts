@@ -237,9 +237,19 @@ export class HorseEditComponent implements OnChanges {
         this.infoList[event.Item.Index] = event.Item;
         break;
       }
-    }
-
+    };
   }
+
+  public AddItemToInfo() {
+    let item = {
+      Index: this.infoList?.length,
+      Value: ""
+    } as ListItem;
+
+    this.infoList.push(item);
+  }
+
+
 
 
 }
