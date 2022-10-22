@@ -1,0 +1,12 @@
+<h6>{{title | titlecase}}</h6>
+<div class="col-12 mb-3">
+    <ng-select [items]="selectItems" bindLabel="Value" autofocus placeholder="Select" bindValue="Id"
+        (change)="AddSelectedItem($event)">
+    </ng-select>
+</div>
+<ul class="list-group pb-2">
+    <li class="list-group-item" *ngFor="let item of items">
+        <app-list-item class="d-flex justify-content-between align-items-start" [item]="item" (changes)="ListItemChanges($event)"></app-list-item>
+    </li>
+</ul>
+

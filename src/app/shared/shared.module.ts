@@ -15,6 +15,8 @@ import { HorseResultsComponent } from './components/horse-results/horse-results.
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TextareaComponent } from './components/form-controls/textarea/textarea.component';
 import { InputComponent } from './components/form-controls/input/input.component';
+import { ListItemComponent } from './components/form-controls/list-item/list-item.component';
+import { ListGroupComponent } from './components/form-controls/list-group/list-group.component';
 
 
 @NgModule({
@@ -29,13 +31,15 @@ import { InputComponent } from './components/form-controls/input/input.component
     CollectionFilterPipe,
     HorseResultsComponent,
     TextareaComponent,
-    InputComponent
+    InputComponent,
+    ListItemComponent,
+    ListGroupComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     NgbModule,
-    //NgSelectModule,
+    NgSelectModule,
     FormsModule,
     ReactiveFormsModule
   ],
@@ -50,7 +54,8 @@ import { InputComponent } from './components/form-controls/input/input.component
     ReactiveFormsModule,
     CollectionFilterPipe,
     HorseResultsComponent,
-    TextareaComponent
+    TextareaComponent,
+    ListGroupComponent
   ]
 })
 export class SharedModule { }

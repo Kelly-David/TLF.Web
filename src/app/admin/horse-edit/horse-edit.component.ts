@@ -16,13 +16,22 @@ export class HorseEditComponent implements OnChanges {
   @Input() id: string | undefined;
   public form: FormGroup;
   public infoList = [] as Array<ListItem>;
+  public familyList = [] as Array<ListItem>;
+  public familyCollection = [] as Array<ListItem>;
+  public loaded: boolean;
 
   constructor(
     private horseService: HorseService,
     private formBuilder: FormBuilder) {
 
-    this.form = this.formBuilder.group({
+    this.loaded = false;
+    this.horseService.V1GetFamilyCollection().pipe(take(1)).pipe(filter(data => !!data))
+      .subscribe(data => {
 
+        this.familyCollection = data.map((item: any) => ({ Id: item.id, Value: item.description }))
+      });
+
+    this.form = this.formBuilder.group({
       'FormId': [{ value: this.id, disabled: true }, [Validators.required]],
       'FormName': ['', [Validators.required]],
       'FormSire': ['', [Validators.required]],
@@ -47,6 +56,8 @@ export class HorseEditComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
+
+    this.loaded = false;
 
     this.infoList = [];
 
@@ -111,10 +122,17 @@ export class HorseEditComponent implements OnChanges {
   private PatchForm(data: any) {
 
     this.infoList = [];
+    this.familyList = [];
 
     let i = 0;
-    data.info.forEach((val: string) => {
+    data.info?.forEach((val: string) => {
       this.infoList.push({ Index: i, Value: val });
+      i++;
+    });
+
+    i = 0;
+    data.family?.forEach((val: string) => {
+      this.familyList.push({ Id: val });
       i++;
     });
 
@@ -188,6 +206,8 @@ export class HorseEditComponent implements OnChanges {
         }
       }
     });
+
+    this.loaded = true;
   }
 
   get FormId() { return this.form.get('FormId')?.value }
@@ -216,7 +236,7 @@ export class HorseEditComponent implements OnChanges {
     switch (event.Type) {
 
       case FormEventType.Update: {
-        this.infoList[event.Item.Index] = event.Item;
+        this.infoList[event.Item.Index!] = event.Item;
         break;
       }
       case FormEventType.Delete: {
@@ -234,13 +254,13 @@ export class HorseEditComponent implements OnChanges {
         break;
       }
       case FormEventType.Update: {
-        this.infoList[event.Item.Index] = event.Item;
+        this.infoList[event.Item.Index!] = event.Item;
         break;
       }
     };
   }
 
-  public AddItemToInfo() {
+  public AddInfoItem() {
     let item = {
       Index: this.infoList?.length,
       Value: ""

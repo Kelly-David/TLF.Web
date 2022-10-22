@@ -61,8 +61,9 @@ export interface UserRoles {
 }
 
 export interface ListItem {
-    Index: number;
-    Value: string;
+    Index?: number;
+    Id?: string;
+    Value?: string;
 }
 
 export interface FormEvent {

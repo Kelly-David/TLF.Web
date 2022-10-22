@@ -85,6 +85,10 @@ export class HorseService {
     return this.firestore.col$(Strings.V1salesCollection);
   }
 
+  public V1GetFamilyCollection() {
+    return this.firestore.col$(`family`);
+  }
+
   public Migrate() {
 
     const sourceId = "RpPZ0pR8QO98w9riKZOY";

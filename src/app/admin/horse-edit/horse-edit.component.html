@@ -1,160 +1,158 @@
+<form *ngIf="loaded" [formGroup]="form" (ngSubmit)="SaveForm()">
     <div class="row">
         <div class="col">
-            <form [formGroup]="form" (ngSubmit)="SaveForm()">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="idInput">ID</span>
+                    <input type="text" class="form-control" aria-describedby="idInput" formControlName="FormId">
+                </div>
+            </div>
 
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="nameInput">Name</span>
+                    <input type="text" class="form-control" aria-describedby="nameInput" formControlName="FormName">
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="idInput">ID</span>
-                        <input type="text" class="form-control" aria-describedby="idInput" formControlName="FormId">
+                        <span class="input-group-text" id="genderInput">Gender</span>
+                        <input type="text" class="form-control" aria-describedby="genderInput"
+                            formControlName="FormGender">
                     </div>
                 </div>
-
                 <div class="col">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="nameInput">Name</span>
-                        <input type="text" class="form-control" aria-describedby="nameInput" formControlName="FormName">
+                        <span class="input-group-text" id="yearInput">Year</span>
+                        <input type="number" class="form-control" aria-describedby="yearInput"
+                            formControlName="FormYear">
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="genderInput">Gender</span>
-                            <input type="text" class="form-control" aria-describedby="genderInput"
-                                formControlName="FormGender">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="yearInput">Year</span>
-                            <input type="number" class="form-control" aria-describedby="yearInput"
-                                formControlName="FormYear">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="heightInput">Height</span>
-                            <input type="number" class="form-control" aria-describedby="heightInput"
-                                formControlName="FormHeight">
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="colorInput">Colour</span>
-                        <input type="text" class="form-control" aria-describedby="colorInput"
-                            formControlName="FormColor">
+                        <span class="input-group-text" id="heightInput">Height</span>
+                        <input type="number" class="form-control" aria-describedby="heightInput"
+                            formControlName="FormHeight">
                     </div>
                 </div>
+            </div>
 
-                <div class="row pt-2">
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="regCheck1"
-                                formControlName="FormCheckAMHA">
-                            <label class="form-check-label" for="regCheck1">AMHA</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="regCheck2"
-                                formControlName="FormCheckAMHR">
-                            <label class="form-check-label" for="regCheck2">AMHR</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="regCheck3"
-                                formControlName="FormCheckASPC">
-                            <label class="form-check-label" for="regCheck3">ASPC</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="regCheck4"
-                                formControlName="FormCheckBMHS">
-                            <label class="form-check-label" for="regCheck4">BMHS</label>
-                        </div>
-                    </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="colorInput">Colour</span>
+                    <input type="text" class="form-control" aria-describedby="colorInput" formControlName="FormColor">
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-6">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="sireInput">Sire</span>
-                            <input type="text" class="form-control" aria-describedby="sireInput"
-                                formControlName="FormSire">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="damInput">Dam</span>
-                            <input type="text" class="form-control" aria-describedby="damInput"
-                                formControlName="FormDam">
-                        </div>
-                    </div>
-                </div>
-
+            <div class="row py-2">
                 <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="breederInput">Breeder</span>
-                        <input type="text" class="form-control" aria-describedby="breederInput"
-                            formControlName="FormBreeder">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="regCheck1" formControlName="FormCheckAMHA">
+                        <label class="form-check-label" for="regCheck1">AMHA</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="regCheck2" formControlName="FormCheckAMHR">
+                        <label class="form-check-label" for="regCheck2">AMHR</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="regCheck3" formControlName="FormCheckASPC">
+                        <label class="form-check-label" for="regCheck3">ASPC</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="regCheck4" formControlName="FormCheckBMHS">
+                        <label class="form-check-label" for="regCheck4">BMHS</label>
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="sireInput">Sire</span>
+                        <input type="text" class="form-control" aria-describedby="sireInput" formControlName="FormSire">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="damInput">Dam</span>
+                        <input type="text" class="form-control" aria-describedby="damInput" formControlName="FormDam">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="breederInput">Breeder</span>
+                    <input type="text" class="form-control" aria-describedby="breederInput"
+                        formControlName="FormBreeder">
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="ownerInput">Owner</span>
+                    <input type="text" class="form-control" aria-describedby="ownerInput" formControlName="FormOwner">
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="profileInput">Profile Img</span>
+                    <input type="text" class="form-control" aria-describedby="profileInput"
+                        formControlName="FormProfile">
+                </div>
+            </div>
+
+            <div class="row py-2">
                 <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="ownerInput">Owner</span>
-                        <input type="text" class="form-control" aria-describedby="ownerInput"
-                            formControlName="FormOwner">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="filterCheck1"
+                            formControlName="FormCheckFilterBreeding">
+                        <label class="form-check-label" for="filterCheck1">Breeding</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="filterCheck2"
+                            formControlName="FormCheckFilterStallion">
+                        <label class="form-check-label" for="filterCheck2">Stallion</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="filterCheck3"
+                            formControlName="FormCheckFilterMare">
+                        <label class="form-check-label" for="filterCheck3">Mare</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="filterCheck4"
+                            formControlName="FormCheckFilterFoal">
+                        <label class="form-check-label" for="filterCheck4">Foal</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="filterCheck5"
+                            formControlName="FormCheckFilterReference">
+                        <label class="form-check-label" for="filterCheck5">Reference</label>
                     </div>
                 </div>
+            </div>
 
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="profileInput">Profile Img</span>
-                        <input type="text" class="form-control" aria-describedby="profileInput"
-                            formControlName="FormProfile">
+            <ng-container *ngIf="infoList.length > 0">
+                <div class="d-flex justify-content-end pb-2">
+                    <div class="btn-group">
+                        <button class="btn btn-light btn-sm" type="button" (click)="AddInfoItem()">Add info
+                            block <i class="fas fa-plus-circle"></i></button>
                     </div>
                 </div>
+                <app-textarea *ngFor="let item of infoList" [item]="item" (changes)="InfoChanges($event)">
+                </app-textarea>
+            </ng-container>
 
-                <div class="row pt-2">
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="filterCheck1"
-                                formControlName="FormCheckFilterBreeding">
-                            <label class="form-check-label" for="filterCheck1">Breeding</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="filterCheck2"
-                                formControlName="FormCheckFilterStallion">
-                            <label class="form-check-label" for="filterCheck2">Stallion</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="filterCheck3"
-                                formControlName="FormCheckFilterMare">
-                            <label class="form-check-label" for="filterCheck3">Mare</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="filterCheck4"
-                                formControlName="FormCheckFilterFoal">
-                            <label class="form-check-label" for="filterCheck4">Foal</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="filterCheck5"
-                                formControlName="FormCheckFilterReference">
-                            <label class="form-check-label" for="filterCheck5">Reference</label>
-                        </div>
-                    </div>
-                </div>
-
-                <ng-container *ngIf="infoList.length > 0">
-                    <div class="d-flex justify-content-end pb-2">
-                        <div class="btn-group">
-                            <button class="btn btn-light btn-sm" type="button" (click)="AddItemToInfo()">Add info block <i class="fas fa-plus-circle"></i></button>
-                            </div>
-                    </div>
-                    <app-textarea *ngFor="let item of infoList" [item]="item" (changes)="InfoChanges($event)"></app-textarea>
-                </ng-container>
-
-                <button type="submit" class="btn btn-form" [disabled]="form.invalid">Save</button>
-
-            </form>
+        </div>
+        <div class="col-4">
+                <app-list-group [title]="'Families'" [items]="familyList" [source]="familyCollection">
+                </app-list-group>
         </div>
     </div>
+
+    <button type="submit" class="btn btn-form" [disabled]="form.invalid">Save</button>
+
+</form>
