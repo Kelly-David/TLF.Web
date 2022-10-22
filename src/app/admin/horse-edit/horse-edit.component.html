@@ -148,7 +148,7 @@
 
         </div>
         <div class="col-4">
-                <app-list-group [title]="'Families'" [items]="familyList" [source]="familyCollection">
+                <app-list-group [title]="'Families'" [items]="familyList" [source]="familyCollection" (changes)="UpdateFamilyList($event)">
                 </app-list-group>
         </div>
     </div>

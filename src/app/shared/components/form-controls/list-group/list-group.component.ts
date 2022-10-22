@@ -16,7 +16,7 @@ export class ListGroupComponent implements OnChanges {
   public selected: string | undefined;
 
   constructor() {
-    this.changes = new EventEmitter<FormEvent>();
+    this.changes = new EventEmitter<ListItem[]>();
   }
 
   ngOnChanges(): void {
@@ -36,23 +36,21 @@ export class ListGroupComponent implements OnChanges {
     this.SetAvailableSelectItems();
   }
 
-  public AddSelectedItem(item: ListItem) {
+  public AddItem(item: ListItem) {
     if (item?.Id && item?.Value) {
       this.items.push(item);
+      this.changes.emit(this.items);
       this.SetAvailableSelectItems();
     }
   }
 
-  public RemoveItem(item: ListItem) {
-    this.items = this.items.filter(i => i.Id != item.Id);
+  public DeleteItem(event: FormEvent) {
+    this.items = this.items.filter(item => item.Id != event.Item.Id);
+    this.changes.emit(this.items);
+    this.SetAvailableSelectItems();
   }
 
   private SetAvailableSelectItems() {
     this.selectItems = this.source.filter(item => (this.items.find(i => i.Id == item.Id) == null));
-  }
-
-  public ListItemChanges(event: FormEvent) {
-    this.items = this.items.filter(item => item.Id != event.Item.Id);
-    this.SetAvailableSelectItems();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { HorseService } from '../../shared/services/horse.service';
 import { Observable } from 'rxjs';
 import { Horse } from 'src/app/shared/models/horse.model';
@@ -20,11 +20,10 @@ export class HorseEditComponent implements OnChanges {
   public familyCollection = [] as Array<ListItem>;
   public loaded: boolean;
 
-  constructor(
-    private horseService: HorseService,
-    private formBuilder: FormBuilder) {
-
+  constructor(private horseService: HorseService, private formBuilder: FormBuilder) {
+    
     this.loaded = false;
+
     this.horseService.V1GetFamilyCollection().pipe(take(1)).pipe(filter(data => !!data))
       .subscribe(data => {
 
@@ -267,6 +266,12 @@ export class HorseEditComponent implements OnChanges {
     } as ListItem;
 
     this.infoList.push(item);
+  }
+
+  public UpdateFamilyList(list: Array<ListItem>) {
+
+    console.log(list);
+
   }
 
 
