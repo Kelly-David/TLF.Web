@@ -1,0 +1,4 @@
+<img [src]="imageUrl" class="img-fluid mb-2" (click)="edit = !edit">
+<div *ngIf="edit" class="d-flex justify-content-end pb-2">
+    <input class="form-control" type="file" (change)="Upload($event)">
+</div>

@@ -77,3 +77,13 @@ export enum FormEventType {
     Delete,
     Unknown
 }
+
+export interface FileUpload {
+    FileName: string,
+    File: File
+}
+
+export interface FileUploadResult {
+    FileName: string;
+    Url: string;
+}

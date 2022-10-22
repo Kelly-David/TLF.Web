@@ -149,4 +149,8 @@ export class FirestoreService {
     return this.fireAuth.signOut();
   }
 
+  public NewUid(): string {
+    return this.firestore.createId();
+  }
+
 }

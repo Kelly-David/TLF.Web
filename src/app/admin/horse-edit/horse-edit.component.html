@@ -148,8 +148,13 @@
 
         </div>
         <div class="col-4">
-                <app-list-group [title]="'Families'" [items]="familyList" [source]="familyCollection" (changes)="UpdateFamilyList($event)">
-                </app-list-group>
+
+            <app-image-upload [imageUrl]="FormProfile" (changes)="UpdateProfile($event)"></app-image-upload>
+
+            <app-list-group [title]="'Families'" [items]="familyList" [source]="familyCollection"
+                (changes)="UpdateFamilyList($event)">
+            </app-list-group>
+
         </div>
     </div>
 

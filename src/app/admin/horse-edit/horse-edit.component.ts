@@ -81,7 +81,8 @@ export class HorseEditComponent implements OnChanges {
       profile: this.FormProfile,
       registrations: [],
       filter: [],
-      info: []
+      info: [],
+      family: []
     } as any;
 
     if (this.FormCheckAMHA == true) {
@@ -114,6 +115,7 @@ export class HorseEditComponent implements OnChanges {
     }
 
     horse.info = this.infoList.map(item => item.Value);
+    horse.family = this.familyList.map(item => item.Id);
 
     console.log(horse);
   }
@@ -217,7 +219,7 @@ export class HorseEditComponent implements OnChanges {
   get FormYear() { return this.form.get('FormYear')?.value }
   get FormGender() { return this.form.get('FormGender')?.value }
   get FormHeight() { return this.form.get('FormHeight')?.value }
-  get FormProfile() { return this.form.get('FormProfile')?.value }
+  get FormProfile() { return this.form.get('FormProfile')?.value as string }
   get FormOwner() { return this.form.get('FormOwner')?.value }
   get FormBreeder() { return this.form.get('FormBreeder')?.value }
   get FormCheckAMHA() { return this.form.get('FormCheckAMHA')?.value }
@@ -269,12 +271,11 @@ export class HorseEditComponent implements OnChanges {
   }
 
   public UpdateFamilyList(list: Array<ListItem>) {
-
-    console.log(list);
-
+    this.familyList = list;
   }
 
-
-
+  public UpdateProfile(url: string) {
+    this.form.patchValue({ FormProfile: url });
+  }
 
 }
