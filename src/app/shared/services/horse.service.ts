@@ -67,9 +67,9 @@ export class HorseService {
     return this.firestore.col$(Strings.V1horseCollection, ref => ref.orderBy('name'));
   }
 
-  public updateHorse(id: string, data: any) {
+  public V1UpdateHorse(id: string, data: any) {
 
-    return this.firestore.update(`horse`, id, data).then(_ => {
+    return this.firestore.update(Strings.V1horseCollection, id, data).then(_ => {
     }).catch(error => {
       console.log(error);
     });
@@ -100,7 +100,7 @@ export class HorseService {
     this.firestore.doc$('horse/' + sourceId).pipe(take(1)).subscribe((data: any) =>
       {
         let horse = { pedigree: data.pedigree};
-        this.updateHorse(targetId, horse)
+        this.V1UpdateHorse(targetId, horse)
       });
 
   }
