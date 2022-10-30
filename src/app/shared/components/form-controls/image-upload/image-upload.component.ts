@@ -17,6 +17,7 @@ export class ImageUploadComponent implements OnChanges {
     private mediaService: MediaService
   ) {
 
+    this.imageUrl = "";
     this.changes = new EventEmitter<string>();
    }
 

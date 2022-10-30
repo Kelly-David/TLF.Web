@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import { FormEvent, ListItem, FormEventType } from '../../../models/web.models';
+import { FormEvent, ListItem, ActionType } from '../../../models/web.models';
 
 @Component({
   selector: 'app-list-item',
@@ -22,7 +22,7 @@ export class ListItemComponent implements OnChanges {
 
     if (confirm("Confirm delete")) {
 
-      this.changes.emit({ Type: FormEventType.Delete, Item: this.item });
+      this.changes.emit({ Type: ActionType.Delete, Item: this.item });
     }
   }
 

@@ -1,9 +1,19 @@
+
+
 <div class="row">
-    <div class="col-12 mb-3">
-            <ng-select [items]="horses$ | async" bindLabel="name" autofocus placeholder="Select a horse" bindValue="id" [(ngModel)]="selected">
-            </ng-select>
-        </div>
-    <div class="col-12">
-        <app-horse-edit [id]="selected"></app-horse-edit>
+    <div class="col-8 mb-3">
+        <ng-select [items]="horses$ | async" bindLabel="name" autofocus placeholder="Select a horse" (change)="UpdateHorse($event)">
+        </ng-select>
     </div>
+    <div class="col">
+        <div class="d-flex justify-content-end pb-2">
+            <div class="btn-group">
+                <button class="btn btn-light btn-sm" type="button" (click)="AddHorse()">Add horse <i class="fas fa-plus-circle"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <app-horse-edit [input]="selected"></app-horse-edit>
 </div>

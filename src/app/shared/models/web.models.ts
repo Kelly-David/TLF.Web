@@ -67,11 +67,11 @@ export interface ListItem {
 }
 
 export interface FormEvent {
-    Type: FormEventType,
+    Type: ActionType,
     Item: ListItem
 }
 
-export enum FormEventType {
+export enum ActionType {
     Add,
     Update,
     Delete,
@@ -87,3 +87,9 @@ export interface FileUploadResult {
     FileName: string;
     Url: string;
 }
+
+export interface CrudAction<T> {
+    Type: ActionType,
+    Object: T | undefined
+}
+

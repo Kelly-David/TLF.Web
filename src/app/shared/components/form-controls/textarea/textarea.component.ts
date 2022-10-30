@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ListItem, FormEvent, FormEventType } from '../../../models/web.models';
+import { ListItem, FormEvent, ActionType } from '../../../models/web.models';
 
 @Component({
   selector: 'app-textarea',
@@ -36,7 +36,7 @@ export class TextareaComponent implements OnChanges {
 
     this.item.Value = this.form.get('FormControl')?.value;
 
-    this.changes.emit({ Type: FormEventType.Update, Item: this.item });
+    this.changes.emit({ Type: ActionType.Update, Item: this.item });
   }
 
   public Delete() {
@@ -45,7 +45,7 @@ export class TextareaComponent implements OnChanges {
 
       this.item.Value = this.form.get('FormControl')?.value;
 
-      this.changes.emit({ Type: FormEventType.Delete, Item: this.item });
+      this.changes.emit({ Type: ActionType.Delete, Item: this.item });
     }
   }
 }

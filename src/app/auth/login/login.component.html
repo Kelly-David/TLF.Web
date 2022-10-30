@@ -15,12 +15,12 @@
         <div class="col-lg-6">
             <form [formGroup]="form" (ngSubmit)="Login()">
 
-                <div class="mb-3">
-                    <label for="emailInput" class="form-label">Email address</label>
+                <div class="input-group mb-3">
+                    <span for="emailInput" class="input-group-text">Username</span>
                     <input type="email" formControlName="FormEmail" class="form-control" id="emailInput" autocomplete="username">
                   </div>
-                  <div class="mb-3">
-                    <label for="passwordInput" class="form-label">Password</label>
+                  <div class="input-group mb-3">
+                    <span for="passwordInput" class="input-group-text">Password</span>
                     <input type="password" formControlName="FormPassword" class="form-control" id="passwordInput" autocomplete="current-password">
                   </div>
                 
@@ -29,13 +29,5 @@
             </form>
         </div>
     </div>
-
-    
-
-
-
-
-
-
 
 </div>

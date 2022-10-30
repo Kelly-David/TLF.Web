@@ -2,7 +2,8 @@ import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core
 import { HorseService } from '../../shared/services/horse.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take, filter } from 'rxjs/operators';
-import { ListItem, FormEvent, FormEventType } from '../../shared/models/web.models';
+import { ListItem, FormEvent, ActionType, CrudAction } from '../../shared/models/web.models';
+import { V1Horse } from 'src/app/shared/models/v1.model';
 
 @Component({
   selector: 'app-horse-edit',
@@ -11,7 +12,8 @@ import { ListItem, FormEvent, FormEventType } from '../../shared/models/web.mode
 })
 export class HorseEditComponent implements OnChanges {
 
-  @Input() id: string | undefined;
+  @Input() input: CrudAction<V1Horse> | undefined;
+  public horse!: V1Horse;
   public form: FormGroup;
   public infoList = [] as Array<ListItem>;
   public familyList = [] as Array<ListItem>;
@@ -29,7 +31,7 @@ export class HorseEditComponent implements OnChanges {
       });
 
     this.form = this.formBuilder.group({
-      'FormId': [{ value: this.id, disabled: true }, [Validators.required]],
+      'FormId': [{ value: '', disabled: true }, [Validators.required]],
       'FormName': ['', [Validators.required]],
       'FormSire': ['', [Validators.required]],
       'FormDam': ['', [Validators.required]],
@@ -55,74 +57,31 @@ export class HorseEditComponent implements OnChanges {
   ngOnChanges(): void {
 
     this.loaded = false;
-
     this.infoList = [];
 
-    if (this.id != undefined) {
+    if (this.input != undefined) {
 
-      this.horseService.V1GetHorseById(this.id).pipe(take(1)).pipe(filter(data => !!data)).subscribe(data => this.PatchForm(data));
+      this.horse = this.input.Object as V1Horse;
+
+      switch (this.input.Type) {
+
+        case ActionType.Add: {
+
+          this.PatchForm(this.horse);
+
+          break;
+        } 
+        case ActionType.Update: {
+
+          this.horseService.V1GetHorseById(this.horse.id!).pipe(take(1)).pipe(filter(data => !!data)).subscribe(data => this.PatchForm(data));
+          
+          break;
+        }
+      }
     }
   }
 
-  public SaveForm() {
-
-    if (confirm("Are you sure?")) {
-      let horse = {
-        id: this.FormId,
-        name: this.FormName,
-        year: this.FormYear,
-        height: this.FormHeight,
-        color: this.FormColor,
-        gender: this.FormGender,
-        sire: this.FormSire,
-        dam: this.FormDam,
-        breeder: this.FormBreeder,
-        owner: this.FormOwner,
-        profile: this.FormProfile,
-        registration: [],
-        filter: [],
-        info: [],
-        family: []
-      } as any;
-  
-      if (this.FormCheckAMHA == true) {
-        horse.registration.push("AMHA");
-      }
-      if (this.FormCheckAMHR == true) {
-        horse.registration.push("AMHR");
-      }
-      if (this.FormCheckASPC == true) {
-        horse.registration.push("ASPC");
-      }
-      if (this.FormCheckBMHS == true) {
-        horse.registration.push("BMHS");
-      }
-  
-      if (this.FormCheckFilterBreeding == true) {
-        horse.filter.push("breeding");
-      }
-      if (this.FormCheckFilterStallion == true) {
-        horse.filter.push("stallion");
-      }
-      if (this.FormCheckFilterMare == true) {
-        horse.filter.push("mare");
-      }
-      if (this.FormCheckFilterFoal == true) {
-        horse.filter.push("foal");
-      }
-      if (this.FormCheckFilterReference == true) {
-        horse.filter.push("reference");
-      }
-  
-      horse.info = this.infoList.map(item => item.Value);
-      horse.family = this.familyList.map(item => item.Id);
-
-      this.horseService.V1UpdateHorse(horse.id, horse);
-    }
-
-  }
-
-  private PatchForm(data: any) {
+  private PatchForm(data: V1Horse) {
 
     this.infoList = [];
     this.familyList = [];
@@ -162,7 +121,7 @@ export class HorseEditComponent implements OnChanges {
       FormCheckFilterFoal: false
     });
 
-    data.registration.forEach((val: any) => {
+    data.registration?.forEach((val: any) => {
 
       switch (val) {
         case "AMHA": {
@@ -184,7 +143,7 @@ export class HorseEditComponent implements OnChanges {
       }
     });
 
-    data.filter.forEach((val: any) => {
+    data.filter?.forEach((val: any) => {
 
       switch (val) {
         case "foal": {
@@ -238,11 +197,11 @@ export class HorseEditComponent implements OnChanges {
 
     switch (event.Type) {
 
-      case FormEventType.Update: {
+      case ActionType.Update: {
         this.infoList[event.Item.Index!] = event.Item;
         break;
       }
-      case FormEventType.Delete: {
+      case ActionType.Delete: {
         this.infoList.forEach((item, index) => {
           if (event.Item.Index == index) this.infoList.splice(index, 1);
         })
@@ -256,7 +215,7 @@ export class HorseEditComponent implements OnChanges {
 
         break;
       }
-      case FormEventType.Update: {
+      case ActionType.Update: {
         this.infoList[event.Item.Index!] = event.Item;
         break;
       }
@@ -280,4 +239,77 @@ export class HorseEditComponent implements OnChanges {
     this.form.patchValue({ FormProfile: url });
   }
 
+  public DeleteHorse() {
+    if (confirm("Are you sure?")) {
+      this.horseService.V1DeleteHorse(this.horse.id!, this.horse.name!);
+      this.input = undefined;
+      this.ngOnChanges();
+    }
+  }
+
+  public SaveForm() {
+
+    if (confirm("Are you sure?")) {
+      this.horse = {
+        id: this.FormId,
+        name: this.FormName,
+        year: this.FormYear,
+        height: this.FormHeight,
+        color: this.FormColor,
+        gender: this.FormGender,
+        sire: this.FormSire,
+        dam: this.FormDam,
+        breeder: this.FormBreeder,
+        owner: this.FormOwner,
+        profile: this.FormProfile,
+        registration: [],
+        filter: [],
+        info: [],
+        family: []
+      } as any;
+  
+      if (this.FormCheckAMHA == true) {
+        this.horse.registration?.push("AMHA");
+      }
+      if (this.FormCheckAMHR == true) {
+        this.horse.registration?.push("AMHR");
+      }
+      if (this.FormCheckASPC == true) {
+        this.horse.registration?.push("ASPC");
+      }
+      if (this.FormCheckBMHS == true) {
+        this.horse.registration?.push("BMHS");
+      }
+  
+      if (this.FormCheckFilterBreeding == true) {
+        this.horse.filter?.push("breeding");
+      }
+      if (this.FormCheckFilterStallion == true) {
+        this.horse.filter?.push("stallion");
+      }
+      if (this.FormCheckFilterMare == true) {
+        this.horse.filter?.push("mare");
+      }
+      if (this.FormCheckFilterFoal == true) {
+        this.horse.filter?.push("foal");
+      }
+      if (this.FormCheckFilterReference == true) {
+        this.horse.filter?.push("reference");
+      }
+  
+      this.horse.info = this.infoList?.map(item => item.Value!);
+      this.horse.family = this.familyList?.map(item => item.Id!);
+
+      switch (this.input?.Type) {
+        case ActionType.Add: {
+          this.horseService.V1AddHorse(this.horse);
+          break;
+        }
+        case ActionType.Update: {
+          this.horseService.V1UpdateHorse(this.horse.id!, this.horse);
+          break;
+        }
+      }
+    }
+  }
 }

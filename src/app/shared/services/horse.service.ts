@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Strings } from '../strings';
 import { FirestoreService } from './firestore.service';
 import { take } from 'rxjs/operators';
+import { V1Horse } from '../models/v1.model';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +76,27 @@ export class HorseService {
     });
   }
 
+  public async V1DeleteHorse(id: string, name: string) {
+
+    try {
+      const _ = await this.firestore.delete(Strings.V1horseCollection, id);
+      this.firestore.delete(Strings.V1routeCollection, this.HorseNameAsRoute(name));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async V1AddHorse(horse: V1Horse) {
+    try {
+      const _ = await this.firestore.set<V1Horse>(Strings.V1horseCollection, horse, horse.id!);
+      let route = this.HorseNameAsRoute(horse.name!);
+      let id = horse.id;
+      this.firestore.set<any>(Strings.V1routeCollection, { route: route, id: id } as any, route);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public V1GetExpectedFoalsByYear(year: string): Observable<any> {
 
     return this.firestore.col$(`expected/${year}/breeding`, ref => ref.orderBy('month'));
@@ -87,6 +109,10 @@ export class HorseService {
 
   public V1GetFamilyCollection() {
     return this.firestore.col$(`family`);
+  }
+
+  public UniqueId(): string {
+    return this.firestore.NewUid();
   }
 
   public Migrate() {
@@ -103,6 +129,10 @@ export class HorseService {
         this.V1UpdateHorse(targetId, horse)
       });
 
+  }
+
+  private HorseNameAsRoute(name: string) {
+    return name.replace(/-/g, ' ').toLowerCase();
   }
 
 

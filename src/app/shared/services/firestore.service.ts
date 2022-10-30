@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection, QueryFn } from '@angular/fire/compat/firestore';
-import { empty, Observable, of } from 'rxjs';
+import { empty, identity, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import * as firebase from 'firebase/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -61,13 +61,11 @@ export class FirestoreService {
   /**
     * @description Custom set method - add a single doc to a specified collection
     */
-  set<T>(ref: DocPredicate<T>, data: any, id?: string) {
+  set<T>(ref: DocPredicate<T>, data: any, id: string) {
     const timeStamp = this.timeStamp;
     // If we pass an id, don't create one
-    const uniqueRef = data.id ? data.id : this.firestore.createId();
-    return this.doc(ref + `/${uniqueRef}`).set({
+    return this.doc(ref + `/${id}`).set({
       ...data,
-      id: uniqueRef,
       updatedAt: timeStamp,
       createdAt: timeStamp,
       deleted: false
