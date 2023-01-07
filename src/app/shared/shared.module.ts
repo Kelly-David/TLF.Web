@@ -18,8 +18,6 @@ import { InputComponent } from './components/form-controls/input/input.component
 import { ListItemComponent } from './components/form-controls/list-item/list-item.component';
 import { ListGroupComponent } from './components/form-controls/list-group/list-group.component';
 import { ImageUploadComponent } from './components/form-controls/image-upload/image-upload.component';
-import { CoreModule } from '../core/core.module';
-
 
 @NgModule({
   declarations: [
