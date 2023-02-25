@@ -117,9 +117,9 @@ export class HorseService {
 
   public Migrate() {
 
-    const sourceId = "RpPZ0pR8QO98w9riKZOY";
+    const sourceId = "Ex5JzuujuPIzbQjZhjeq";
 
-    const targetId = "xwYcCI62g6s3Nz84RcTs";
+    const targetId = "CaC7jRrRYexzEno5hmpf";
 
     console.log("Migrating horseId: {{" + sourceId + "}} data to horseId: {{" + targetId + "}}.")
 
