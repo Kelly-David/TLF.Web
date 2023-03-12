@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { FirestoreService } from './firestore.service';
 import { LightBoxClick } from '../models/web.models';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root'
@@ -49,6 +50,79 @@ export class ViewService {
 			.where('type', '==', filter.toUpperCase())
 			.where('active', '==', true)
 			.orderBy('description'));
+	}
+
+	public updateLinks() {
+
+		let links;
+
+		this.firestore.col$(`link`, ref => ref
+			//.where('type', '==', 'FARM')
+			//.where('active', '==', true)
+			.orderBy('description')).pipe(filter(data => !!data)).subscribe(data => {
+				links = data as Array<any>;
+
+				links.forEach(element => {
+
+					let types = [] as Array<string>;
+
+					if (element.location == "Denmark") {
+
+						types.push('AMHA');
+					}
+
+					if (element.location == "France") {
+
+						types.push('AMHA');
+						types.push('AMHR');
+					}
+
+					if (element.location == "UK") {
+
+						types.push('AMHA');
+						types.push('AMHR');
+					}
+
+					if (element.location == "USA") {
+
+						types.push('AMHA');
+						types.push('AMHR');
+					}
+
+					if (element.location == "Austria") {
+
+						types.push('AMHA');
+						types.push('AMHR');
+					}
+
+					if (element.location == "Czechia") {
+
+						types.push('AMHA');
+						types.push('AMHR');
+					}
+
+					if (element.location == "Sweden") {
+
+						types.push('AMHA');
+						types.push('AMHR');
+					}
+
+					if (element.location == "Germany") {
+
+						types.push('AMHA');
+						types.push('AMHR');
+					}
+
+					element.breeds = types;
+
+					element.type = 'FARM';
+
+					this.firestore.update('link', element.id, element);
+
+					console.log(element);
+				});
+			})
+
 	}
 
 }

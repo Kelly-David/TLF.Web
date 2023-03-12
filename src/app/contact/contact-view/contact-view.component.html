@@ -13,7 +13,7 @@
         </p>
 
         <p><strong>Email: </strong><a href="mailto:info@turralodgefarm.com">info@turralodgefarm.com</a></p>
-        
+
         <div class="row">
             <div class="col">
 
@@ -23,7 +23,7 @@
                 <h6>General Enquiries</h6>
                 <p><strong>Phone: </strong>+353(0)87 686 5388 | +353(0)87 963 0097</p>
                 <p><a class="teal-text" [routerLink]="['/visit']">Click here for Turra Lodge Farm & Gardens visitor
-                            information.</a>
+                        information.</a>
                 </p>
             </div>
         </div>
@@ -36,22 +36,65 @@
         <div class="line-nospacing"></div>
 
         <p>American Miniature Horse and American Shetland Pony Breeders & Trainers</p>
-        <div class="row">
-            <div class="col-12" *ngFor="let country of linkByCountry">
-                <div class="col mb-3">
+
+        <form class="mb-3">
+
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="searchInput">Search</span>
+                        <input type="text" class="form-control" [(ngModel)]="searchTerm" name="nameFilter"
+                            aria-describedby="searchInput">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="countrySelect">Country</span>
+                        <select class="form-control form-select" [(ngModel)]="selectedCountry" name="countrySelect"
+                            aria-describedby="countrySelect">
+                            <option value="">Any</option>
+                            <option *ngFor="let country of linkByCountry" value="{{country.country}}">
+                                {{country.country}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <!-- <div class="row">
+            <div class="col-lg-4 mb-3"
+                *ngFor="let link of linksList | collectionFilter: searchTerm : 'description' | collectionFilter: selectedCountry : 'location'">
+                <a [href]="link.url" target="_blank">
                     <div class="card">
                         <div class="card-body">
-                            <h6>{{country.country | uppercase}}</h6>
-                            <div class="row">
-                                <div class="col-lg-4" *ngFor="let link of country.links">
-                                    <a [href]="link.url" target="_blank">
-                                        {{link.description | uppercase}}
-                                    </a>
-                                </div>
+                            <h6 class="card-title">{{link.description}}</h6>
+                            <p class="card-subtitle mb-2 text-muted">{{link.location | uppercase}} 
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div> -->
+
+
+        <div class="row">
+            <div class="col-12 mb-3" *ngFor="let country of linkByCountry | collectionFilter: selectedCountry : 'country'">
+                <div class="card">
+                    <div class="card-body">
+                        <h6>{{country.country | uppercase}}</h6>
+                        <div class="row">
+                            <div class="col-lg-4"
+                                *ngFor="let link of country.links | collectionFilter: searchTerm : 'description'">
+                                <a [href]="link.url" target="_blank">
+                                    {{link.description | uppercase}}
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </ng-template>

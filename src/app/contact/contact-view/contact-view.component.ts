@@ -18,9 +18,12 @@ export class ContactViewComponent implements OnInit {
   public routesToShow!: Array<string>;
 
   private subscription = new Subject();
-  public links!: Array<any>;
+  public linksList!: Array<any>;
   public clubs!: Observable<any>;
   public linkByCountry!: Array<{ country: string; links: Array<any>; }>;
+
+  public searchTerm!: string;
+  public selectedCountry!: string;
 
   constructor(
     private metaService: Meta,
@@ -35,6 +38,8 @@ export class ContactViewComponent implements OnInit {
       Strings.routeContact,
       Strings.routeLinks
     );
+
+    this.selectedCountry = "";
   }
 
   ngOnInit() {
@@ -53,24 +58,26 @@ export class ContactViewComponent implements OnInit {
       group of AMHA registered miniature horses, some of which are also registered with the AMHR or
       the BMHS.`});
 
-    this.clubs = (this.viewService.activeLinkCollection('club') as any);
+    //this.clubs = (this.viewService.activeLinkCollection('club') as any);
     
     this.viewService.activeLinkCollection('farm').pipe(
       takeUntil(this.subscription),
       filter(data => !!data)
     ).subscribe(data => {
-      this.links = data as Array<any>;
-      const countries = (Array.from(new Set(this.links.map(item => item.location)))).sort();
+      this.linksList = data as Array<any>;
+      const countries = (Array.from(new Set(this.linksList.map(item => item.location)))).sort();
       this.linkByCountry = [];
       countries.forEach(country => {
         this.linkByCountry.push(
           {
             country: country,
-            links: this.links.filter(link => link.location.toUpperCase() === country.toUpperCase()).sort()
+            links: this.linksList.filter(link => link.location.toUpperCase() === country.toUpperCase()).sort()
           }
         );
       });
     });
+
+    //this.viewService.updateLinks(); // link data one shot
   }
 
   ngOnDestroy() {
