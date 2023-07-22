@@ -21,12 +21,12 @@ export class HorseService {
   }
 
   public V1GetHorseById(horseId: string): Observable<any> {
-    
+
     return this.firestore.doc$(`${Strings.V1horseCollection}/${horseId}`);
   }
 
   public V1GetHorsesByFilterType(type: string, sortField ='name' as string, sortOrder = 'asc' as string): Observable<any[]> {
-    
+
     type      = type.toLowerCase();
     sortField = sortField.toLowerCase();
 
@@ -117,9 +117,9 @@ export class HorseService {
 
   public Migrate() {
 
-    const sourceId = "Ex5JzuujuPIzbQjZhjeq";
+    const sourceId = "3fjOjFSDSuL4tKhiAB4M";
 
-    const targetId = "CaC7jRrRYexzEno5hmpf";
+    const targetId = "0HFuOLCvhVQvUOj9KnoX";
 
     console.log("Migrating horseId: {{" + sourceId + "}} data to horseId: {{" + targetId + "}}.")
 
