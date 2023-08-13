@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { HorseService } from '../../shared/services/horse.service';
-import { Month } from '../../shared/models/web.models';
+import { Month, ExpectedFoals } from '../../shared/models/web.models';
 import { ConfigurationService } from '../../shared/services/configuration.service';
 import { take, tap } from 'rxjs/operators';
 
@@ -18,7 +18,7 @@ export class BreedingComponent implements OnInit {
   public title!: string;
 	public activeLink!: string;
 	public routesToShow!: Array<string>;
-  public expectedFoals$!: Observable<any[]>;
+  public expectedFoals$!: Observable<ExpectedFoals>;
   public yearToDisplay!: number;
 
   private routePrefix = "breeding/"
@@ -49,7 +49,7 @@ export class BreedingComponent implements OnInit {
       this.setActiveView(params[0].path);
     });
 
-    this.expectedFoals$ = this.horseService.V1GetExpectedFoalsByYear('2023');
+    //this.expectedFoals$ = this.horseService.V1GetExpectedFoalsByYear('2023');
 
     this.titleService.setTitle('Breeding American miniature horses in Ireland');
 
@@ -64,7 +64,7 @@ export class BreedingComponent implements OnInit {
   private SetBreedingsToDisplay(year: number): void {
 
     this.yearToDisplay = year;
-    this.expectedFoals$ = this.horseService.V1GetExpectedFoalsByYear(year.toString());
+    this.expectedFoals$ = this.horseService.V2GetExpectedFoalsByYear(year.toString());
   }
 
   private setActiveView(route: string) {
@@ -90,6 +90,11 @@ export class BreedingComponent implements OnInit {
   public GetMonthString(monthNumber: number): string {
 
     return Month[monthNumber];
+  }
+
+  public FetchHorseById(horseId: string) {
+    console.log(horseId);
+    //return this.horseService.V1GetHorseById(horseId);
   }
 
 }

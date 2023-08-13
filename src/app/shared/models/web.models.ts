@@ -93,3 +93,14 @@ export interface CrudAction<T> {
     Object: T | undefined
 }
 
+export interface ExpectedFoals {
+  BreedingYear: number;
+  Stallions: Sire[]
+}
+
+export interface Sire {
+  Id: string;
+  Name: string;
+  Mares: string[];
+}
+
