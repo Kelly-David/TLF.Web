@@ -115,6 +115,16 @@ export class HorseService {
     return this.firestore.col$(`family`);
   }
 
+  public V1GetAvailableHorses(): Observable<any[]> {
+    // Query horses collection where available == true
+    return this.firestore.col$(Strings.V1horseCollection, ref => ref.where('available', '==', true).orderBy('name')) as Observable<any[]>;
+  }
+
+  public V1GetSoldHorses(): Observable<any[]> {
+    // Query horses collection where sold == true
+    return this.firestore.col$(Strings.V1horseCollection, ref => ref.where('sold', '==', true).orderBy('name')) as Observable<any[]>;
+  }
+
   public UniqueId(): string {
     return this.firestore.NewUid();
   }
@@ -136,7 +146,11 @@ export class HorseService {
   }
 
   private HorseNameAsRoute(name: string) {
-    return name.replace(/-/g, ' ').toLowerCase();
+    return name
+      .toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with hyphens
+      .replace(/[^a-z0-9\-]/g, '')    // Remove non-alphanumeric characters except hyphens
+      .replace(/-+/g, '-');           // Replace multiple hyphens with a single hyphen
   }
 
 

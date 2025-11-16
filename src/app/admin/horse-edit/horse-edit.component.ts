@@ -1,16 +1,19 @@
-import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { HorseService } from '../../shared/services/horse.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take, filter } from 'rxjs/operators';
 import { ListItem, FormEvent, ActionType, CrudAction } from '../../shared/models/web.models';
 import { V1Horse } from 'src/app/shared/models/v1.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-horse-edit',
   templateUrl: './horse-edit.component.html',
   styleUrls: ['./horse-edit.component.scss']
 })
-export class HorseEditComponent implements OnChanges {
+export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
+
+  private subscriptions: Subscription[] = [];
 
   @Input() input: CrudAction<V1Horse> | undefined;
   public horse!: V1Horse;
@@ -19,6 +22,11 @@ export class HorseEditComponent implements OnChanges {
   public familyList = [] as Array<ListItem>;
   public familyCollection = [] as Array<ListItem>;
   public loaded: boolean;
+
+  // new properties
+  public allHorses = [] as Array<{ Id?: string; Name?: string }>;
+  public copiedPedigree: any = undefined;
+  public ActionType = ActionType;
 
   constructor(private horseService: HorseService, private formBuilder: FormBuilder) {
     
@@ -49,9 +57,42 @@ export class HorseEditComponent implements OnChanges {
       'FormCheckFilterReference': [],
       'FormCheckFilterStallion': [],
       'FormCheckFilterBreeding': [],
+      'FormCheckFilterShowing': [],
       'FormCheckFilterMare': [],
       'FormCheckFilterFoal': [],
+      'FormAvailable': [],
+      'FormSold': []
     })
+  }
+
+  ngOnInit(): void {
+    // load minimal list of all horses for the dropdown (id + name)
+    this.horseService.horses().pipe(take(1)).pipe(filter(data => !!data)).subscribe(data => {
+      this.allHorses = data.map((item: any) => ({ Id: item.id, Name: item.name }));
+    });
+
+    // mutual exclusivity: if Available checked, clear Sold; if Sold checked, clear Available
+    const availControl = this.form.get('FormAvailable');
+    const soldControl = this.form.get('FormSold');
+
+    if (availControl && soldControl) {
+      const sub1 = availControl.valueChanges.subscribe(val => {
+        if (val === true) {
+          soldControl.setValue(false, { emitEvent: false });
+        }
+      });
+      const sub2 = soldControl.valueChanges.subscribe(val => {
+        if (val === true) {
+          availControl.setValue(false, { emitEvent: false });
+        }
+      });
+
+      this.subscriptions.push(sub1, sub2);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   ngOnChanges(): void {
@@ -79,6 +120,26 @@ export class HorseEditComponent implements OnChanges {
         }
       }
     }
+  }
+
+  // copy pedigree from another horse id; also patch sire/dam for convenience
+  public CopyPedigreeFrom(horseId: string) {
+    if (!horseId) {
+      this.copiedPedigree = undefined;
+      return;
+    }
+
+    this.horseService.V1GetHorseById(horseId).pipe(take(1)).pipe(filter(data => !!data)).subscribe((h: any) => {
+      if (!h) return;
+      // store pedigree to apply on save
+      this.copiedPedigree = h.pedigree ? h.pedigree : undefined;
+
+      // also copy top-level sire/dam fields into the form so user can see them
+      this.form.patchValue({
+        FormSire: h.sire ? h.sire : this.form.get('FormSire')?.value,
+        FormDam: h.dam ? h.dam : this.form.get('FormDam')?.value
+      });
+    });
   }
 
   private PatchForm(data: V1Horse) {
@@ -117,8 +178,11 @@ export class HorseEditComponent implements OnChanges {
       FormCheckFilterReference: false,
       FormCheckFilterStallion: false,
       FormCheckFilterBreeding: false,
+      FormCheckFilterShowing: false,
       FormCheckFilterMare: false,
-      FormCheckFilterFoal: false
+      FormCheckFilterFoal: false,
+      FormAvailable: data.available === true,
+      FormSold: data.sold === true
     });
 
     data.registration?.forEach((val: any) => {
@@ -162,6 +226,10 @@ export class HorseEditComponent implements OnChanges {
           this.form.patchValue({ FormCheckFilterBreeding: true });
           break;
         }
+        case "showing": {
+          this.form.patchValue({ FormCheckFilterShowing: true });
+          break;
+        }
         case "reference": {
           this.form.patchValue({ FormCheckFilterReference: true });
           break;
@@ -190,8 +258,11 @@ export class HorseEditComponent implements OnChanges {
   get FormCheckFilterReference() { return this.form.get('FormCheckFilterReference')?.value }
   get FormCheckFilterStallion() { return this.form.get('FormCheckFilterStallion')?.value }
   get FormCheckFilterBreeding() { return this.form.get('FormCheckFilterBreeding')?.value }
+  get FormCheckFilterShowing() { return this.form.get('FormCheckFilterShowing')?.value }
   get FormCheckFilterMare() { return this.form.get('FormCheckFilterMare')?.value }
   get FormCheckFilterFoal() { return this.form.get('FormCheckFilterFoal')?.value }
+  get FormAvailable() { return this.form.get('FormAvailable')?.value }
+  get FormSold() { return this.form.get('FormSold')?.value }
 
   public InfoChanges(event: FormEvent) {
 
@@ -267,7 +338,12 @@ export class HorseEditComponent implements OnChanges {
         info: [],
         family: []
       } as any;
-  
+
+      // if a pedigree was copied from another horse, include it on the saved object
+      if (this.copiedPedigree) {
+        (this.horse as any).pedigree = this.copiedPedigree;
+      }
+
       if (this.FormCheckAMHA == true) {
         this.horse.registration?.push("AMHA");
       }
@@ -280,12 +356,15 @@ export class HorseEditComponent implements OnChanges {
       if (this.FormCheckBMHS == true) {
         this.horse.registration?.push("BMHS");
       }
-  
+
       if (this.FormCheckFilterBreeding == true) {
         this.horse.filter?.push("breeding");
       }
       if (this.FormCheckFilterStallion == true) {
         this.horse.filter?.push("stallion");
+      }
+      if (this.FormCheckFilterShowing == true) {
+        this.horse.filter?.push("showing");
       }
       if (this.FormCheckFilterMare == true) {
         this.horse.filter?.push("mare");
@@ -296,7 +375,20 @@ export class HorseEditComponent implements OnChanges {
       if (this.FormCheckFilterReference == true) {
         this.horse.filter?.push("reference");
       }
-  
+
+      // available / sold flags
+      if (this.FormAvailable === true) {
+        this.horse.available = true;
+      } else {
+        this.horse.available = false;
+      }
+
+      if (this.FormSold === true) {
+        this.horse.sold = true;
+      } else {
+        this.horse.sold = false;
+      }
+
       this.horse.info = this.infoList?.map(item => item.Value!);
       this.horse.family = this.familyList?.map(item => item.Id!);
 

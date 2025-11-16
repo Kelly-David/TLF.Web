@@ -22,47 +22,52 @@
 --------------------------------------------------- */
 #sidebarNavPalette {
   color: #74b0b1;
-  color: #01616d;
-  color: #005264;
+  color: #5e548e;
+  color: #5e548e;
 }
 
 // Global Colors
 
 .drk-cy-text {
-  color: #007c7c !important;
+  color: #be95c4 !important;
 }
 .mid-cy-text {
-  color: #00baba !important;
+  color: #e0b1cb !important;
 }
 .lgh-cy-text {
   color: #00f8f8 !important;
 }
 
 .vdr-cy-bg {
-  background-color: #00575f !important;
+    background-color: #5e548e!important
 }
+
 .drk-cy-bg {
-  background-color: #007c7c !important;
+    background-color: #9f86c0!important
 }
+
 .mid-cy-bg {
-  background-color: #00baba !important;
+    background-color: #e0b1cb!important
 }
+
 .lgh-cy-bg {
   background-color: #00f8f8 !important;
 }
 
 .drk-cy-brdr {
-  border: 1px solid #007c7c42 !important;
+    border: 1px solid #be95c442!important
 }
+
 .mid-cy-brdr {
-  border: 1px solid #00baba !important;
+    border: 1px solid #e0b1cb!important
 }
+
 .lgh-cy-brdr {
   border: 1px solid #00f8f8 !important;
 }
 
 .cy-gradient {
-  background: linear-gradient(40deg, #00baba, #007c7c) !important;
+    background: linear-gradient(40deg,#e0b1cb,#be95c4)!important
 }
 
 .btn-form {
@@ -74,8 +79,8 @@
 }
 
 .btn-form:hover {
-  color: whitesmoke;
-  background-color: #017580;
+    color: #f5f5f5;
+    background-color: #9f86c0
 }
 
 /* ---------------------------------------------------
@@ -126,19 +131,19 @@ h2 {
 
 h3 {
   font-family: "IM Fell French Canon SC", serif;
-  color: #005264;
+  color: #5e548e;
   letter-spacing: 3px;
 }
 
 h4 {
   font-family: "IM Fell French Canon SC", serif;
-  color: #005264;
+  color: #5e548e;
   letter-spacing: 1px;
 }
 
 h6 {
   letter-spacing: 1px;
-  color: #005264;
+  color: #5e548e;
 }
 
 .container-fluid {
@@ -162,7 +167,7 @@ a:focus {
 }
 
 .bg-color-dark {
-  background-color: #01616d;
+  background-color: #5e548e;
 }
 
 .btn {
@@ -220,7 +225,7 @@ a:focus {
       margin: 10px;
       border-radius: 50%;
       cursor: pointer;
-      background: linear-gradient(40deg, #00baba, #007c7c) !important;
+      background: linear-gradient(40deg, #e0b1cb, #be95c4) !important;
       box-sizing: border-box;
       text-align: center;
     }
@@ -247,7 +252,7 @@ a:focus {
 }
 .content-header h3 {
   font-family: "IM Fell French Canon SC", serif;
-  color: #005264;
+  color: #5e548e;
   margin-bottom: 0;
   font-size: 3rem;
 }
@@ -263,7 +268,7 @@ a:focus {
  --------------------------------------------------- */
 
 .content-title {
-  background-color: #017580;
+  background-color: #9f86c0;
   padding: 20px 0;
   color: whitesmoke;
   text-transform: uppercase;
@@ -272,7 +277,7 @@ a:focus {
 .content-nav {
   border-top: #74b0b1 solid 1px;
   border-bottom: #74b0b1 solid 1px;
-  background-color: #01616d;
+  background-color: #5e548e;
   padding-top: 1rem;
 }
 
@@ -287,7 +292,7 @@ a:focus {
 
 .content-nav .list-inline li span:last-child {
   display: block;
-  color: #01616d;
+  color: #5e548e;
   font-size: 1.5em;
   line-height: 0;
   opacity: 0;
@@ -324,7 +329,7 @@ a:focus {
 
 nav.subnav {
   color: whitesmoke;
-  background-color: #017580;
+  background-color: #9f86c0;
 
   .navbar-brand {
     font-size: 0.8rem;
@@ -441,11 +446,11 @@ nav.subnav {
     letter-spacing: 4px;
     margin-bottom: 0;
     text-align: center;
-    color: #005264;
+    color: #5e548e;
   }
 
   p {
-    color: #01616d;
+    color: #5e548e;
 
     a {
       display: inline-block;
@@ -488,7 +493,7 @@ nav.subnav {
 }
 
 .horse-card .card-body {
-  background: #01616d;
+  background: #5e548e;
   padding: 10px;
 }
 
@@ -507,13 +512,13 @@ nav.subnav {
 
 .horse-card small {
   font-size: 0.6rem;
-  color: #00baba;
+  color: #e0b1cb;
   text-transform: uppercase;
 }
 
 .horse-card .horse-parentage {
   font-size: 0.6rem;
-  color: #00baba;
+  color: #e0b1cb;
   text-transform: uppercase;
 }
 .horse-card .horse-parentage::before {
@@ -526,7 +531,7 @@ nav.subnav {
 
 .horse-card .horse-divison {
   font-size: 0.8rem;
-  color: #00baba;
+  color: #e0b1cb;
 }
 
 .horse-card .horse-info {
@@ -569,7 +574,7 @@ app-horse {
     h3.horse-name {
       letter-spacing: 1px;
       font-family: "IM Fell French Canon SC", serif;
-      color: #005264;
+      color: #5e548e;
     }
 
     div.horse-parentage::before {
@@ -587,7 +592,7 @@ app-horse {
       }
     }
     div strong {
-      color: #005264;
+      color: #5e548e;
       text-transform: uppercase;
       font-size: 0.9em;
     }
@@ -620,7 +625,7 @@ app-horse {
     }
 
     .name {
-      color: #005264;
+      color: #5e548e;
       font-weight: 900;
     }
   }
@@ -643,7 +648,7 @@ app-horse {
   }
 
   .name {
-    color: #005264;
+    color: #5e548e;
     font-weight: 900;
   }
 }
@@ -660,7 +665,7 @@ app-horse {
   }
   .parentage {
     letter-spacing: 1px;
-    color: #005264;
+    color: #5e548e;
     font-weight: 900;
   }
   .registration {
@@ -679,12 +684,12 @@ app-footer .footer-nav li {
 }
 
 app-footer .footer-nav a i {
-  color: #005264;
+  color: #5e548e;
 }
 
 app-footer footer.page-footer {
-  background-color: #005264;
-  color: whitesmoke;
+  background-color: #5e548e;
+  color: #e0b1cb;
 }
 /* ---------------------------------------------------
     Common Elements
@@ -693,10 +698,10 @@ app-footer footer.page-footer {
   background-color: #74b0b1;
 }
 .bg-mid {
-  background-color: #01616d;
+  background-color: #5e548e;
 }
 .bg-dark {
-  background-color: #005264;
+  background-color: #5e548e;
 }
 
 button.btn.block {
@@ -709,7 +714,7 @@ button.btn.block {
 
 button.btn.block:hover {
   color: whitesmoke;
-  background-color: #017580;
+  background-color: #9f86c0;
   transition: all 0.3s ease-in-out;
 }
 
@@ -752,7 +757,7 @@ form {
 .split-card {
   h4 {
     font-family: "IM Fell French Canon SC", serif;
-    color: #005264;
+    color: #5e548e;
   }
 
   .subheading {
@@ -765,7 +770,7 @@ form {
 
   p.info {
     font-size: 1em;
-    color: #00baba;
+    color: #e0b1cb;
     text-transform: uppercase;
     padding: 1em 0;
   }
@@ -805,7 +810,7 @@ table {
   }
   th {
     font-weight: bold;
-    color: #005264;
+    color: #5e548e;
   }
   .clickable {
     cursor: pointer;

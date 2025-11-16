@@ -51,7 +51,13 @@ export class SalesComponent implements OnInit {
       group of AMHA registered miniature horses, some of which are also registered with the AMHR or
       the BMHS.`});
 
-    this.horses$ = this.horseService.V1GetSalesHorses();
+    // use flag-based queries instead of separate salehorses collection
+    // if current opportunities view
+    if (this.activeLink === Strings.routeCurrentOpportunities) {
+      this.horses$ = this.horseService.V1GetAvailableHorses();
+    } else {
+      this.horses$ = this.horseService.V1GetSoldHorses();
+    }
 
     this.updatedDate = new Date();
     this.updatedDate.setDate(this.updatedDate.getDate() - 3);

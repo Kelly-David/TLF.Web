@@ -15,6 +15,21 @@
                 </div>
             </div>
 
+            <!-- Added: dropdown to pick existing horse to copy pedigree from (visible when adding) -->
+            <div *ngIf="input?.Type === ActionType.Add" class="col">
+                <label class="form-label">Copy pedigree from existing horse</label>
+                <div class="input-group mb-3">
+                    <select #pedSelect class="form-select" (change)="CopyPedigreeFrom(pedSelect.value)">
+                        <option value="">-- select horse --</option>
+                        <option *ngFor="let h of allHorses" [value]="h.Id">{{h.Id}} - {{h.Name}}</option>
+                    </select>
+                    <button class="btn btn-outline-secondary" type="button" (click)="CopyPedigreeFrom('')">Clear</button>
+                </div>
+                <div *ngIf="copiedPedigree">
+                    <small class="text-muted">Pedigree copied and will be saved with this horse.</small>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col">
                     <div class="input-group mb-3">
@@ -118,6 +133,10 @@
                         <label class="form-check-label" for="filterCheck2">Stallion</label>
                     </div>
                     <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="filterCheckShowing" formControlName="FormCheckFilterShowing">
+                        <label class="form-check-label" for="filterCheckShowing">Showing</label>
+                    </div>
+                    <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="filterCheck3"
                             formControlName="FormCheckFilterMare">
                         <label class="form-check-label" for="filterCheck3">Mare</label>
@@ -131,6 +150,20 @@
                         <input class="form-check-input" type="checkbox" id="filterCheck5"
                             formControlName="FormCheckFilterReference">
                         <label class="form-check-label" for="filterCheck5">Reference</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available / Sold flags -->
+            <div class="row py-2">
+                <div class="col">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="availableCheck" formControlName="FormAvailable">
+                        <label class="form-check-label" for="availableCheck">Available</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="soldCheck" formControlName="FormSold">
+                        <label class="form-check-label" for="soldCheck">Sold</label>
                     </div>
                 </div>
             </div>

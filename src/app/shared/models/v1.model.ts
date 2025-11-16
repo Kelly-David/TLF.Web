@@ -14,4 +14,6 @@ export interface V1Horse {
     registration?: string[];
     family?: string[];
     info?: string[];
+    available?: boolean;
+    sold?: boolean;
 }
