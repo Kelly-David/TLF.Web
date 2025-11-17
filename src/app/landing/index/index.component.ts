@@ -37,11 +37,6 @@ export class IndexComponent implements OnInit {
 		public horseService: HorseService
 	) {
 		this.title = Strings.titleIndex;
-		this.activeLink = Strings.routeVisit;
-
-		this.routesToShow = new Array<string>(
-			Strings.routeVisit			
-			);
 	 }
 
 	ngOnInit() {
