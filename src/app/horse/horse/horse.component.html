@@ -125,7 +125,7 @@
         <div class="line-nospacing"></div>
         <div *ngIf="horse.progeny?.length > 0; else noProgeny" class="row">
           <div class="col-lg-3 p-2" *ngFor="let item of horse.progeny" >
-            <app-horse-link [horseId]="item.id"></app-horse-link>
+            <app-horse-link [horseId]="item"></app-horse-link>
           </div>
         </div>
         <ng-template #noProgeny><p>No foals to display.</p></ng-template>

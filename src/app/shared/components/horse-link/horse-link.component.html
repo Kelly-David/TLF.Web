@@ -11,7 +11,9 @@
 
     <ng-container *ngIf="imageCard; else noImage">
         <div class="card text-white" [routerLink]="['/horse', nameAsRoute(horse$.name)]">
-            <img [src]="horse$.profile" class="card-img" [alt]="horse$.name">
+            <div class="card-img-wrapper">
+                <img [src]="horse$.profile" class="card-img" [alt]="horse$.name">
+            </div>
             <div class="card-img-overlay d-flex justify-content-center">
                 <div class="align-self-center">
                     <p>{{horse$.name}}</p>

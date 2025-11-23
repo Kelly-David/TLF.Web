@@ -120,6 +120,27 @@
                 </div>
             </div>
 
+            <!-- Progeny multi-select -->
+            <div class="col">
+                <label class="form-label">Progeny</label>
+                <div class="input-group mb-3">
+                    <select class="form-select" multiple formControlName="FormProgeny">
+                        <option *ngFor="let h of allHorses" [value]="h.Id">{{h.Name}} ({{h.Id}})</option>
+                    </select>
+                </div>
+                <div *ngIf="FormProgeny?.length">
+                    <small class="text-muted">Selected: {{FormProgeny.length}} progeny</small>
+                </div>
+
+                <!-- Visible selected progeny list -->
+                <div *ngIf="selectedProgeny?.length" class="mt-2">
+                    <div *ngFor="let p of selectedProgeny" class="d-flex align-items-center mb-1">
+                        <div class="flex-grow-1">{{p.Name}} <small class="text-muted">({{p.Id}})</small></div>
+                        <button class="btn btn-sm btn-outline-danger ms-2" type="button" (click)="RemoveProgeny(p.Id)">Remove</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="row py-2">
                 <div class="col">
                     <div class="form-check form-check-inline">

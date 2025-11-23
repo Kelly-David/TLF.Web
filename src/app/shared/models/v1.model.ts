@@ -16,4 +16,5 @@ export interface V1Horse {
     info?: string[];
     available?: boolean;
     sold?: boolean;
+    progeny?: string[];
 }

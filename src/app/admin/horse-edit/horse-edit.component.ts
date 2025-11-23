@@ -27,6 +27,7 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
   public allHorses = [] as Array<{ Id?: string; Name?: string }>;
   public copiedPedigree: any = undefined;
   public ActionType = ActionType;
+  public selectedProgeny: Array<{ Id?: string; Name?: string }> = [];
 
   constructor(private horseService: HorseService, private formBuilder: FormBuilder) {
     
@@ -61,7 +62,8 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
       'FormCheckFilterMare': [],
       'FormCheckFilterFoal': [],
       'FormAvailable': [],
-      'FormSold': []
+      'FormSold': [],
+      'FormProgeny': [[]]
     })
   }
 
@@ -69,6 +71,10 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
     // load minimal list of all horses for the dropdown (id + name)
     this.horseService.horses().pipe(take(1)).pipe(filter(data => !!data)).subscribe(data => {
       this.allHorses = data.map((item: any) => ({ Id: item.id, Name: item.name }));
+      
+      // initialize selectedProgeny from current form value (if any)
+      const current = this.form.get('FormProgeny')?.value || [];
+      this.selectedProgeny = (current || []).map((id: string) => this.allHorses.find(h => h.Id === id)).filter(Boolean) as any[];
     });
 
     // mutual exclusivity: if Available checked, clear Sold; if Sold checked, clear Available
@@ -88,6 +94,15 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
       });
 
       this.subscriptions.push(sub1, sub2);
+    }
+
+    // update selectedProgeny when FormProgeny changes
+    const progenyControl = this.form.get('FormProgeny');
+    if (progenyControl) {
+      const subP = progenyControl.valueChanges.subscribe((ids: string[]) => {
+        this.selectedProgeny = (ids || []).map((id: string) => this.allHorses.find(h => h.Id === id)).filter(Boolean) as any[];
+      });
+      this.subscriptions.push(subP);
     }
   }
 
@@ -182,7 +197,8 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
       FormCheckFilterMare: false,
       FormCheckFilterFoal: false,
       FormAvailable: data.available === true,
-      FormSold: data.sold === true
+      FormSold: data.sold === true,
+      FormProgeny: data.progeny ? data.progeny : []
     });
 
     data.registration?.forEach((val: any) => {
@@ -263,6 +279,7 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
   get FormCheckFilterFoal() { return this.form.get('FormCheckFilterFoal')?.value }
   get FormAvailable() { return this.form.get('FormAvailable')?.value }
   get FormSold() { return this.form.get('FormSold')?.value }
+  get FormProgeny() { return this.form.get('FormProgeny')?.value as string[] }
 
   public InfoChanges(event: FormEvent) {
 
@@ -389,6 +406,9 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
         this.horse.sold = false;
       }
 
+      // progeny
+      this.horse.progeny = this.FormProgeny ? this.FormProgeny : [];
+
       this.horse.info = this.infoList?.map(item => item.Value!);
       this.horse.family = this.familyList?.map(item => item.Id!);
 
@@ -402,6 +422,16 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
           break;
         }
       }
+    }
+  }
+
+  public RemoveProgeny(id?: string) {
+    if (!id) return;
+    const list = this.FormProgeny ? [...this.FormProgeny] : [];
+    const idx = list.indexOf(id);
+    if (idx >= 0) {
+      list.splice(idx, 1);
+      this.form.patchValue({ FormProgeny: list });
     }
   }
 }
