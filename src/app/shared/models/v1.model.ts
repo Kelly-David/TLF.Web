@@ -33,4 +33,6 @@ export interface V1Horse {
         gdambtmsire?: string;
         gdambtmbtm?: string;
     };
+    // Show results / accolades
+    accolades?: Array<{ year?: number; description?: string }>;
 }

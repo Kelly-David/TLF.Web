@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { HorseService } from '../../shared/services/horse.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { take, filter } from 'rxjs/operators';
 import { ListItem, FormEvent, ActionType, CrudAction } from '../../shared/models/web.models';
 import { V1Horse } from 'src/app/shared/models/v1.model';
@@ -34,7 +34,7 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
   public cleaningUp = false;
   public uploadingImage = false;
   public selectedGalleryFiles: File[] = [];
-
+ 
   constructor(private horseService: HorseService, private formBuilder: FormBuilder, private mediaService: MediaService) {
     
     this.loaded = false;
@@ -70,7 +70,9 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
       'FormAvailable': [],
       'FormSold': [],
       'FormProgeny': [[]],
-      // Pedigree fields
+      // reactive accolades form array
+      'FormAccolades': this.formBuilder.array([]),
+       // Pedigree fields
       'FormPedigreeSire': [''],
       'FormPedigreeGsiretop': [''],
       'FormPedigreeGsiretopsire': [''],
@@ -321,6 +323,17 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
       }
     });
 
+    // --- NEW: reset and populate the accolades FormArray so previous horse accolades don't persist ---
+    this.AccoladesArray.clear();
+    if (data.accolades && Array.isArray(data.accolades) && data.accolades.length) {
+      data.accolades.forEach((a: any) => {
+        this.AccoladesArray.push(this.formBuilder.group({
+          year: [a.year ? a.year : new Date().getFullYear(), Validators.required],
+          description: [a.description ? a.description : '', Validators.required]
+        }));
+      });
+    }
+
     this.loaded = true;
     
     // load thumbnails for this horse (if an id exists)
@@ -432,6 +445,21 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
     } finally {
       this.cleaningUp = false;
     }
+  }
+
+  // Accolade management using FormArray
+  public AddAccolade() {
+    this.AccoladesArray.push(this.formBuilder.group({ year: [new Date().getFullYear(), Validators.required], description: ['', Validators.required] }));
+  }
+
+  public RemoveAccolade(index: number) {
+    if (index < 0 || index >= this.AccoladesArray.length) return;
+    this.AccoladesArray.removeAt(index);
+  }
+
+  // convenience getter for accolades FormArray
+  get AccoladesArray(): FormArray {
+    return this.form.get('FormAccolades') as FormArray;
   }
 
   get FormId() { return this.form.get('FormId')?.value }
@@ -625,6 +653,10 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
 
       this.horse.info = this.infoList?.map(item => item.Value!);
       this.horse.family = this.familyList?.map(item => item.Id!);
+      // include accolades from FormArray; trim descriptions and filter empties
+      const raw = this.AccoladesArray.value || [];
+      const cleanedAccolades = raw.map((a: any) => ({ year: a.year ? Number(a.year) : undefined, description: a.description ? String(a.description).trim() : '' })).filter((a: any) => a.description && a.description.length);
+      this.horse.accolades = cleanedAccolades.length ? cleanedAccolades : undefined;
 
       switch (this.input?.Type) {
         case ActionType.Add: {
