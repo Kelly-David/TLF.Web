@@ -19,7 +19,7 @@
                     <a class="nav-link" [routerLink]="['/our-farm']">Our Farm</a>
                 </li>
                 <li class="nav-item waves-light" mdbWavesEffect>
-                    <a class="nav-link" [routerLink]="['/horses']">Horses</a>
+                    <a class="nav-link" href="/horses" (click)="router.navigate(['/horses'], { state: { resetFilter: true } }); $event.preventDefault();">Horses</a>
                 </li>
                 <li class="nav-item waves-light" mdbWavesEffect>
                     <a class="nav-link" [routerLink]="['/showing']">Showing</a>

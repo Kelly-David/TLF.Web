@@ -9,7 +9,7 @@
   <div class="text-center">
     <ul class="list-inline">
       <li class="list-inline-item">
-        <a class="text-xs-center" [routerLink]="['/horses']">Horses</a>
+        <a class="text-xs-center" href="/horses" (click)="router.navigate(['/horses'], { state: { resetFilter: true } }); $event.preventDefault();">Horses</a>
       </li>
       <li class="list-inline-item">
         <a class="text-xs-center" [routerLink]="['/showing']">Showing</a>

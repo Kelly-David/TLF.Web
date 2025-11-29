@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +10,7 @@ export class FooterComponent implements OnInit {
 
   public year: number;
 
-  constructor() { 
+  constructor(public router: Router) { 
     this.year = new Date().getFullYear();
   }
 
