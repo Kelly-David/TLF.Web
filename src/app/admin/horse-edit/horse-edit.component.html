@@ -15,8 +15,8 @@
                 </div>
             </div>
 
-            <!-- Added: dropdown to pick existing horse to copy pedigree from (visible when adding) -->
-            <div *ngIf="input?.Type === ActionType.Add" class="col">
+            <!-- Added: dropdown to pick existing horse to copy pedigree from (visible when adding/editing) -->
+            <div *ngIf="input" class="col">
                 <label class="form-label">Copy pedigree from existing horse</label>
                 <div class="input-group mb-3">
                     <select #pedSelect class="form-select" (change)="CopyPedigreeFrom(pedSelect.value)">
@@ -137,6 +137,45 @@
                     <div *ngFor="let p of selectedProgeny" class="d-flex align-items-center mb-1">
                         <div class="flex-grow-1">{{p.Name}} <small class="text-muted">({{p.Id}})</small></div>
                         <button class="btn btn-sm btn-outline-danger ms-2" type="button" (click)="RemoveProgeny(p.Id)">Remove</button>
+                    </div>
+                </div>
+
+                <!-- Pedigree editing section -->
+                <div class="col mt-3">
+                    <div class="card mb-3">
+                        <div class="card-header">Pedigree</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label class="form-label">Sire</label>
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeSire" placeholder="Sire">
+
+                                    <label class="form-label">G-Sire (top)</label>
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGsiretop" placeholder="G-sire top">
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGsiretopsire" placeholder="G-sire top - sire">
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGsiretopdam" placeholder="G-sire top - dam">
+
+                                    <label class="form-label">G-Dam (top)</label>
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGdamtop" placeholder="G-dam top">
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGdamtopsire" placeholder="G-dam top - sire">
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGdamtopdam" placeholder="G-dam top - dam">
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Dam</label>
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeDam" placeholder="Dam">
+
+                                    <label class="form-label">G-Sire (bottom)</label>
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGsirebtm" placeholder="G-sire bottom">
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGsirebtmsire" placeholder="G-sire bottom - sire">
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGsirebtmbtm" placeholder="G-sire bottom - dam">
+
+                                    <label class="form-label">G-Dam (bottom)</label>
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGdambtm" placeholder="G-dam bottom">
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGdambtmsire" placeholder="G-dam bottom - sire">
+                                    <input type="text" class="form-control mb-2" formControlName="FormPedigreeGdambtmbtm" placeholder="G-dam bottom - dam">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

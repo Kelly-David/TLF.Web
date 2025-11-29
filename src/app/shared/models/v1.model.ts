@@ -17,4 +17,20 @@ export interface V1Horse {
     available?: boolean;
     sold?: boolean;
     progeny?: string[];
+    pedigree?: {
+        sire?: string;
+        gsiretop?: string;
+        gsiretopsire?: string;
+        gsiretopdam?: string;
+        gdamtop?: string;
+        gdamtopsire?: string;
+        gdamtopdam?: string;
+        dam?: string;
+        gsirebtm?: string;
+        gsirebtmsire?: string;
+        gsirebtmbtm?: string;
+        gdambtm?: string;
+        gdambtmsire?: string;
+        gdambtmbtm?: string;
+    };
 }

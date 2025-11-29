@@ -63,7 +63,22 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
       'FormCheckFilterFoal': [],
       'FormAvailable': [],
       'FormSold': [],
-      'FormProgeny': [[]]
+      'FormProgeny': [[]],
+      // Pedigree fields
+      'FormPedigreeSire': [''],
+      'FormPedigreeGsiretop': [''],
+      'FormPedigreeGsiretopsire': [''],
+      'FormPedigreeGsiretopdam': [''],
+      'FormPedigreeGdamtop': [''],
+      'FormPedigreeGdamtopsire': [''],
+      'FormPedigreeGdamtopdam': [''],
+      'FormPedigreeDam': [''],
+      'FormPedigreeGsirebtm': [''],
+      'FormPedigreeGsirebtmsire': [''],
+      'FormPedigreeGsirebtmbtm': [''],
+      'FormPedigreeGdambtm': [''],
+      'FormPedigreeGdambtmsire': [''],
+      'FormPedigreeGdambtmbtm': ['']
     })
   }
 
@@ -141,6 +156,23 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
   public CopyPedigreeFrom(horseId: string) {
     if (!horseId) {
       this.copiedPedigree = undefined;
+      // clear pedigree fields on the form
+      this.form.patchValue({
+        FormPedigreeSire: '',
+        FormPedigreeGsiretop: '',
+        FormPedigreeGsiretopsire: '',
+        FormPedigreeGsiretopdam: '',
+        FormPedigreeGdamtop: '',
+        FormPedigreeGdamtopsire: '',
+        FormPedigreeGdamtopdam: '',
+        FormPedigreeDam: '',
+        FormPedigreeGsirebtm: '',
+        FormPedigreeGsirebtmsire: '',
+        FormPedigreeGsirebtmbtm: '',
+        FormPedigreeGdambtm: '',
+        FormPedigreeGdambtmsire: '',
+        FormPedigreeGdambtmbtm: ''
+      });
       return;
     }
 
@@ -152,7 +184,22 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
       // also copy top-level sire/dam fields into the form so user can see them
       this.form.patchValue({
         FormSire: h.sire ? h.sire : this.form.get('FormSire')?.value,
-        FormDam: h.dam ? h.dam : this.form.get('FormDam')?.value
+        FormDam: h.dam ? h.dam : this.form.get('FormDam')?.value,
+        // and patch the pedigree inputs so the form is prefilled for editing
+        FormPedigreeSire: h.pedigree?.sire ? h.pedigree.sire : '',
+        FormPedigreeGsiretop: h.pedigree?.gsiretop ? h.pedigree.gsiretop : '',
+        FormPedigreeGsiretopsire: h.pedigree?.gsiretopsire ? h.pedigree.gsiretopsire : '',
+        FormPedigreeGsiretopdam: h.pedigree?.gsiretopdam ? h.pedigree.gsiretopdam : '',
+        FormPedigreeGdamtop: h.pedigree?.gdamtop ? h.pedigree.gdamtop : '',
+        FormPedigreeGdamtopsire: h.pedigree?.gdamtopsire ? h.pedigree.gdamtopsire : '',
+        FormPedigreeGdamtopdam: h.pedigree?.gdamtopdam ? h.pedigree.gdamtopdam : '',
+        FormPedigreeDam: h.pedigree?.dam ? h.pedigree.dam : '',
+        FormPedigreeGsirebtm: h.pedigree?.gsirebtm ? h.pedigree.gsirebtm : '',
+        FormPedigreeGsirebtmsire: h.pedigree?.gsirebtmsire ? h.pedigree.gsirebtmsire : '',
+        FormPedigreeGsirebtmbtm: h.pedigree?.gsirebtmbtm ? h.pedigree.gsirebtmbtm : '',
+        FormPedigreeGdambtm: h.pedigree?.gdambtm ? h.pedigree.gdambtm : '',
+        FormPedigreeGdambtmsire: h.pedigree?.gdambtmsire ? h.pedigree.gdambtmsire : '',
+        FormPedigreeGdambtmbtm: h.pedigree?.gdambtmbtm ? h.pedigree.gdambtmbtm : ''
       });
     });
   }
@@ -198,7 +245,22 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
       FormCheckFilterFoal: false,
       FormAvailable: data.available === true,
       FormSold: data.sold === true,
-      FormProgeny: data.progeny ? data.progeny : []
+      FormProgeny: data.progeny ? data.progeny : [],
+      // pedigree patching
+      FormPedigreeSire: data.pedigree?.sire ? data.pedigree.sire : '',
+      FormPedigreeGsiretop: data.pedigree?.gsiretop ? data.pedigree.gsiretop : '',
+      FormPedigreeGsiretopsire: data.pedigree?.gsiretopsire ? data.pedigree.gsiretopsire : '',
+      FormPedigreeGsiretopdam: data.pedigree?.gsiretopdam ? data.pedigree.gsiretopdam : '',
+      FormPedigreeGdamtop: data.pedigree?.gdamtop ? data.pedigree.gdamtop : '',
+      FormPedigreeGdamtopsire: data.pedigree?.gdamtopsire ? data.pedigree.gdamtopsire : '',
+      FormPedigreeGdamtopdam: data.pedigree?.gdamtopdam ? data.pedigree.gdamtopdam : '',
+      FormPedigreeDam: data.pedigree?.dam ? data.pedigree.dam : '',
+      FormPedigreeGsirebtm: data.pedigree?.gsirebtm ? data.pedigree.gsirebtm : '',
+      FormPedigreeGsirebtmsire: data.pedigree?.gsirebtmsire ? data.pedigree.gsirebtmsire : '',
+      FormPedigreeGsirebtmbtm: data.pedigree?.gsirebtmbtm ? data.pedigree.gsirebtmbtm : '',
+      FormPedigreeGdambtm: data.pedigree?.gdambtm ? data.pedigree.gdambtm : '',
+      FormPedigreeGdambtmsire: data.pedigree?.gdambtmsire ? data.pedigree.gdambtmsire : '',
+      FormPedigreeGdambtmbtm: data.pedigree?.gdambtmbtm ? data.pedigree.gdambtmbtm : ''
     });
 
     data.registration?.forEach((val: any) => {
@@ -280,6 +342,21 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
   get FormAvailable() { return this.form.get('FormAvailable')?.value }
   get FormSold() { return this.form.get('FormSold')?.value }
   get FormProgeny() { return this.form.get('FormProgeny')?.value as string[] }
+  // Pedigree getters
+  get FormPedigreeSire() { return this.form.get('FormPedigreeSire')?.value }
+  get FormPedigreeGsiretop() { return this.form.get('FormPedigreeGsiretop')?.value }
+  get FormPedigreeGsiretopsire() { return this.form.get('FormPedigreeGsiretopsire')?.value }
+  get FormPedigreeGsiretopdam() { return this.form.get('FormPedigreeGsiretopdam')?.value }
+  get FormPedigreeGdamtop() { return this.form.get('FormPedigreeGdamtop')?.value }
+  get FormPedigreeGdamtopsire() { return this.form.get('FormPedigreeGdamtopsire')?.value }
+  get FormPedigreeGdamtopdam() { return this.form.get('FormPedigreeGdamtopdam')?.value }
+  get FormPedigreeDam() { return this.form.get('FormPedigreeDam')?.value }
+  get FormPedigreeGsirebtm() { return this.form.get('FormPedigreeGsirebtm')?.value }
+  get FormPedigreeGsirebtmsire() { return this.form.get('FormPedigreeGsirebtmsire')?.value }
+  get FormPedigreeGsirebtmbtm() { return this.form.get('FormPedigreeGsirebtmbtm')?.value }
+  get FormPedigreeGdambtm() { return this.form.get('FormPedigreeGdambtm')?.value }
+  get FormPedigreeGdambtmsire() { return this.form.get('FormPedigreeGdambtmsire')?.value }
+  get FormPedigreeGdambtmbtm() { return this.form.get('FormPedigreeGdambtmbtm')?.value }
 
   public InfoChanges(event: FormEvent) {
 
@@ -408,6 +485,27 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
 
       // progeny
       this.horse.progeny = this.FormProgeny ? this.FormProgeny : [];
+      
+      // assemble pedigree object from individual fields
+      const pedigree: any = {};
+      if (this.FormPedigreeSire) pedigree.sire = this.FormPedigreeSire;
+      if (this.FormPedigreeGsiretop) pedigree.gsiretop = this.FormPedigreeGsiretop;
+      if (this.FormPedigreeGsiretopsire) pedigree.gsiretopsire = this.FormPedigreeGsiretopsire;
+      if (this.FormPedigreeGsiretopdam) pedigree.gsiretopdam = this.FormPedigreeGsiretopdam;
+      if (this.FormPedigreeGdamtop) pedigree.gdamtop = this.FormPedigreeGdamtop;
+      if (this.FormPedigreeGdamtopsire) pedigree.gdamtopsire = this.FormPedigreeGdamtopsire;
+      if (this.FormPedigreeGdamtopdam) pedigree.gdamtopdam = this.FormPedigreeGdamtopdam;
+      if (this.FormPedigreeDam) pedigree.dam = this.FormPedigreeDam;
+      if (this.FormPedigreeGsirebtm) pedigree.gsirebtm = this.FormPedigreeGsirebtm;
+      if (this.FormPedigreeGsirebtmsire) pedigree.gsirebtmsire = this.FormPedigreeGsirebtmsire;
+      if (this.FormPedigreeGsirebtmbtm) pedigree.gsirebtmbtm = this.FormPedigreeGsirebtmbtm;
+      if (this.FormPedigreeGdambtm) pedigree.gdambtm = this.FormPedigreeGdambtm;
+      if (this.FormPedigreeGdambtmsire) pedigree.gdambtmsire = this.FormPedigreeGdambtmsire;
+      if (this.FormPedigreeGdambtmbtm) pedigree.gdambtmbtm = this.FormPedigreeGdambtmbtm;
+
+      if (Object.keys(pedigree).length) {
+        (this.horse as any).pedigree = pedigree;
+      }
 
       this.horse.info = this.infoList?.map(item => item.Value!);
       this.horse.family = this.familyList?.map(item => item.Id!);
