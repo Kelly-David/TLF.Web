@@ -5,6 +5,7 @@ import { take, filter } from 'rxjs/operators';
 import { ListItem, FormEvent, ActionType, CrudAction } from '../../shared/models/web.models';
 import { V1Horse } from 'src/app/shared/models/v1.model';
 import { Subscription } from 'rxjs';
+import { MediaService } from '../../shared/services/media.service';
 
 @Component({
   selector: 'app-horse-edit',
@@ -28,8 +29,13 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
   public copiedPedigree: any = undefined;
   public ActionType = ActionType;
   public selectedProgeny: Array<{ Id?: string; Name?: string }> = [];
+  public horseImages: Array<any> = [];
+  public deletingImages = new Set<string>();
+  public cleaningUp = false;
+  public uploadingImage = false;
+  public selectedGalleryFiles: File[] = [];
 
-  constructor(private horseService: HorseService, private formBuilder: FormBuilder) {
+  constructor(private horseService: HorseService, private formBuilder: FormBuilder, private mediaService: MediaService) {
     
     this.loaded = false;
 
@@ -316,6 +322,116 @@ export class HorseEditComponent implements OnChanges, OnInit, OnDestroy {
     });
 
     this.loaded = true;
+    
+    // load thumbnails for this horse (if an id exists)
+    this.LoadImages(data.id);
+  }
+
+  // load image docs for files/{horseId}/images and expose to the template
+  private LoadImages(horseId?: string) {
+    if (!horseId) {
+      this.horseImages = [];
+      return;
+    }
+
+    this.horseService.V1GetImagesByHorseId(horseId).pipe(take(1)).pipe(filter(data => !!data)).subscribe((imgs: any[]) => {
+      this.horseImages = imgs || [];
+    }, err => {
+      this.horseImages = [];
+    });
+  }
+
+  public async DeleteImage(img: any) {
+    if (!img) return;
+    if (!confirm('Delete image? This will remove the file from storage and the database.')) return;
+
+    const horseId = this.FormId;
+    const imageId = img.id || img.Id || img.imageId;
+    const storagePath = img.path || img.storagePath || img.path_full || img.filePath;
+    const imageKey = storagePath || img.downloadURL || imageId || JSON.stringify(img);
+
+    // mark as deleting for UI
+    this.deletingImages.add(imageKey);
+
+    // optimistic remove from local list so UI updates immediately
+    this.horseImages = this.horseImages.filter(i => {
+      const key = i.path || i.storagePath || i.path_full || i.filePath || i.downloadURL || i.id || i.Id || JSON.stringify(i);
+      return key !== imageKey;
+    });
+
+    try {
+      const ok = await this.mediaService.DeleteImage(horseId, imageId, storagePath);
+      if (ok) {
+        // reload fresh list to ensure consistency with backend
+        this.LoadImages(horseId);
+      } else {
+        // reload to restore removed item
+        this.LoadImages(horseId);
+        alert('Failed to delete image');
+      }
+    } catch (err) {
+      console.error(err);
+      // reload to restore removed item
+      this.LoadImages(horseId);
+      alert('Error deleting image');
+    } finally {
+      this.deletingImages.delete(imageKey);
+    }
+  }
+
+  // Handle multi-file selection and upload to file/{horseId}/images
+  public async OnGalleryFilesSelected(event: any) {
+    const fileList: FileList = event?.target?.files || event?.srcElement?.files;
+    if (!fileList || fileList.length === 0) return;
+    this.selectedGalleryFiles = Array.from(fileList);
+
+    if (!this.FormId) return alert('Please save the horse before uploading gallery images.');
+
+    if (!confirm(`Upload ${this.selectedGalleryFiles.length} image(s) to the gallery?`)) {
+      // clear selection if user cancels
+      this.selectedGalleryFiles = [];
+      return;
+    }
+
+    this.uploadingImage = true;
+    try {
+      // upload all files in parallel
+      const uploads = this.selectedGalleryFiles.map(f => this.mediaService.UploadImageForHorse(this.FormId, f));
+      const results = await Promise.all(uploads);
+
+      const failed = results.filter(r => !r);
+      if (failed.length) {
+        alert(`${failed.length} file(s) failed to upload.`);
+      }
+
+      // reload gallery after uploads
+      this.LoadImages(this.FormId);
+      this.selectedGalleryFiles = [];
+    } catch (err) {
+      console.error('OnGalleryFilesSelected error', err);
+      alert('Error uploading images.');
+    } finally {
+      this.uploadingImage = false;
+    }
+  }
+
+  // Run cleanup to remove orphaned image documents whose storage files are missing
+  public async RunCleanupOrphaned() {
+    if (!this.FormId) return alert('No horse id present');
+    if (!confirm('Scan for orphaned image documents and remove them?')) return;
+
+    this.cleaningUp = true;
+    try {
+      const deleted = await this.mediaService.CleanupOrphanedImages(this.FormId);
+      // reload images after cleanup
+      this.LoadImages(this.FormId);
+      alert(`Cleanup complete. ${deleted.length} orphaned image document(s) deleted.`);
+    } catch (err) {
+      console.error('RunCleanupOrphaned error', err);
+      alert('Error running cleanup. See console for details.');
+    } finally {
+      this.cleaningUp = false;
+    }
   }
 
   get FormId() { return this.form.get('FormId')?.value }

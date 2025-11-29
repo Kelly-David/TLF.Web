@@ -5,6 +5,7 @@ import { Strings } from '../strings';
 import { FirestoreService } from './firestore.service';
 import { take } from 'rxjs/operators';
 import { V1Horse } from '../models/v1.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,11 @@ export class HorseService {
 
   public V1GetImagesByHorseId(horseId: string): Observable<any[]> {
 
-    return this.firestore.col$(`${Strings.V1fileCollection}/${horseId}/images`);
+    // valueChanges() doesn't include document IDs; use snapshotChanges() and map id into each doc
+    const collection = this.firestore.col(`${Strings.V1fileCollection}/${horseId}/images`);
+    return (collection as any).snapshotChanges().pipe(
+      map((actions: any[]) => actions.map(a => ({ id: a.payload.doc.id, ...(a.payload.doc.data() as any) })))
+    ) as Observable<any[]>;
   }
 
   public V1GetProgenyByParentId(parentId: string): Observable<any> {
