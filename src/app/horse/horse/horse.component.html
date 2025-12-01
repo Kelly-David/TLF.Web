@@ -43,7 +43,33 @@
       <section>
         <h6>Accolades</h6>
         <div class="line-nospacing"></div>
-        <app-horse-results *ngIf="horse.id" [horseId]=horse.id></app-horse-results>
+
+        <div *ngIf="(sortedAccolades || []).length > 0 || (progenyAccolades || []).length > 0; else noAccolades">
+          <!-- horse accolades (display horse name same way as progeny name) -->
+          <div *ngIf="(sortedAccolades || []).length > 0" class="mt-2">
+        <div class="horse-name">{{horse.name | uppercase}}</div>
+        <ul class="list-unstyled mb-0">
+          <li *ngFor="let a of (sortedAccolades || [])">{{a.description}} | {{a.year}}</li>
+        </ul>
+          </div>
+
+          <!-- progeny accolades -->
+          <div *ngIf="(progenyAccolades || []).length > 0" class="mt-3">
+        <div *ngFor="let p of (progenyAccolades || [])" class="mt-2">
+          <div class="accolade-horse">
+          <app-horse-link [horse]="p" [imageCard]="false"></app-horse-link>
+          <ul class="list-unstyled mb-0">
+            <li *ngFor="let a of (p.accolades || [])">{{a.description}} | {{a.year}}</li>
+          </ul>
+          </div>
+
+        </div>
+          </div>
+        </div>
+
+        <ng-template #noAccolades>
+          <p>No accolades to display.</p>
+        </ng-template>
       </section>
       <section>
         <h6>Pedigree</h6>
